@@ -1,0 +1,38 @@
+[
+  {
+    "id": "why-1",
+    "image": "/Easy.svg",
+    "title": "Easy to use",
+    "summary": "Use all components in the simplest way"
+  },
+  {
+    "id": "why-2",
+    "image": "/Customizable.svg",
+    "title": "Customizable",
+    "summary": "Customize all the components to your liking"
+  },
+  {
+    "id": "why-3",
+    "image": "/Compatibility.svg",
+    "title": "Compatibility",
+    "summary": "Expo compatible to build fast apps"
+  },
+  {
+    "id": "why-4",
+    "image": "/Platform.svg",
+    "title": "Multiple platform",
+    "summary": "You can use them on Android as well as on iOS"
+  },
+  {
+    "id": "why-5",
+    "image": "/Cupertino.svg",
+    "title": "Cupertino design",
+    "summary": "A large part of our designs are based on cupertino, so your application will have a very elegant and beautiful design without the need to add more styles"
+  },
+  {
+    "id": "why-6",
+    "image": "/Beauty.svg",
+    "title": "Cool UI/UX",
+    "summary": "A new range of fresh and innovative elements to create current interfaces"
+  }
+]

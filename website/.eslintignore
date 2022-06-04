@@ -1,0 +1,13 @@
+.next
+next-env.d.ts
+node_modules
+yarn.lock
+package-lock.json
+public
+.eslintrc.js
+prettier.config.js
+next.config.js
+next-i18next.config.js
+config/*.js
+yarn.lock
+src/*/*.js

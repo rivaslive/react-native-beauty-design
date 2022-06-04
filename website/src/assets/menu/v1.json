@@ -1,0 +1,177 @@
+[
+  {
+    "key": "started",
+    "name": "Started",
+    "type": "divider",
+    "children": [
+      {
+        "key": "getting-started",
+        "name": "Getting started",
+        "icon": "rocket"
+      }
+    ]
+  },
+  {
+    "key": "general",
+    "type": "divider",
+    "name": "General",
+    "children": [
+      {
+        "key": "provider",
+        "name": "Provider",
+        "icon": "data"
+      },
+      {
+        "key": "icon",
+        "name": "Icon",
+        "icon": "happy-heart-eyes"
+      },
+      {
+        "key": "space",
+        "name": "Space",
+        "icon": "space-bar"
+      },
+      {
+        "key": "title",
+        "name": "Title",
+        "icon": "text"
+      },
+      {
+        "key": "text",
+        "name": "Text",
+        "icon": "text"
+      },
+      {
+        "key": "button",
+        "name": "Button",
+        "icon": "mouse-alt"
+      }
+    ]
+  },
+  {
+    "key": "data-entry",
+    "type": "divider",
+    "name": "Data Entry",
+    "children": [
+      {
+        "key": "checkbox",
+        "name": "Checkbox",
+        "icon": "check-square"
+      },
+      {
+        "key": "controller",
+        "name": "Controller",
+        "icon": "math"
+      },
+      {
+        "key": "datepicker",
+        "name": "Date Picker",
+        "icon": "time"
+      },
+      {
+        "key": "form",
+        "name": "Form",
+        "icon": "laptop"
+      },
+      {
+        "key": "input",
+        "name": "Input",
+        "icon": "code-alt"
+      },
+      {
+        "key": "radio",
+        "name": "Radio",
+        "icon": "radio-circle-marked"
+      },
+      {
+        "key": "rate",
+        "name": "Rate",
+        "icon": "star"
+      },
+      {
+        "key": "select",
+        "name": "Select",
+        "icon": "select-multiple"
+      },
+      {
+        "key": "switch",
+        "name": "Switch",
+        "icon": "toggle-left"
+      }
+    ]
+  },
+  {
+    "key": "data-display",
+    "type": "divider",
+    "name": "Data Display",
+    "children": [
+      {
+        "key": "avatar",
+        "name": "Avatar",
+        "icon": "happy"
+      },
+      {
+        "key": "badge",
+        "name": "Badge",
+        "icon": "tag-alt"
+      },
+      {
+        "key": "card",
+        "name": "Card",
+        "icon": "id-card"
+      },
+      {
+        "key": "carousel",
+        "name": "Carousel",
+        "icon": "carousel"
+      },
+      {
+        "key": "collapse",
+        "name": "Collapse",
+        "icon": "collection"
+      },
+      {
+        "key": "image",
+        "name": "Image",
+        "icon": "image"
+      },
+      {
+        "key": "tabs",
+        "name": "Tabs",
+        "icon": "food-menu"
+      }
+    ]
+  },
+  {
+    "key": "feedback",
+    "type": "divider",
+    "name": "Feedback",
+    "children": [
+      {
+        "key": "alert",
+        "name": "Alert",
+        "icon": "dock-bottom"
+      },
+      {
+        "key": "modal",
+        "name": "Modal",
+        "icon": "receipt"
+      },
+      {
+        "key": "notification",
+        "name": "Notification",
+        "icon": "bell"
+      },
+      {
+        "key": "message",
+        "name": "Message",
+        "icon": "message-alt"
+      },
+      {
+        "key": "pop-confirm",
+        "name": "Pop Confirm",
+        "icon": "check-shield"
+      }
+    ]
+  }
+]

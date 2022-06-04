@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ex-1",
+    "image": "/Components.png",
+    "title": "All Components",
+    "summary": "See all the components organized"
+  },
+  {
+    "id": "ex-2",
+    "image": "/Pizzas.png",
+    "title": "Pizza App",
+    "summary": "An app for selling pizzas"
+  },
+  {
+    "id": "ex-3",
+    "image": "/Todo.png",
+    "title": "ToDo app",
+    "summary": "A simple elements app"
+  },
+  {
+    "id": "ex-4",
+    "image": "/Gallery.png",
+    "title": "Gallery App",
+    "summary": "An image gallery"
+  }
+]
