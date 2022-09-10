@@ -39,18 +39,19 @@ const AllComponentTemplate = () => {
           html={`This is a list of all the components provided by <b>${defaultName}</b>`}
         />
 
-        <Row
-          gutter={[
-            { xs: 0, md: 20, lg: 25 },
-            { xs: 20, md: 20, lg: 25 },
-          ]}
-        >
-          {v1.map(({ children, name }) => {
-            return (
-              <>
-                <Title level={2} variant="ROBOT_36_50_500">
-                  {name}
-                </Title>
+        {v1.map(({ children, name }) => {
+          return (
+            <>
+              <Title level={2} color="secondaryText" variant="ROBOT_36_50_500">
+                {name}
+              </Title>
+              <Row
+                style={{ marginBottom: 30 }}
+                gutter={[
+                  { xs: 0, md: 20, lg: 25 },
+                  { xs: 20, md: 20, lg: 25 },
+                ]}
+              >
                 {children.sort(sortComponents).map(({ name, key, icon }) => {
                   let path;
                   if (key === 'getting-started') {
@@ -69,10 +70,10 @@ const AllComponentTemplate = () => {
                     </Col>
                   );
                 })}
-              </>
-            );
-          })}
-        </Row>
+              </Row>
+            </>
+          );
+        })}
       </Layout>
     </>
   );

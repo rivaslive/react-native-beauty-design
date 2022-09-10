@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Button, Typography } from 'antd';
 import styled, { css } from 'styled-components';
 import { TitleProps } from 'antd/lib/typography/Title';
-import { mediaQueries } from 'styles/theme/theme';
+import { colors, mediaQueries } from 'styles/theme/theme';
 
 const { Title } = Typography;
 
@@ -162,6 +162,10 @@ export const StyleTitle = styled(Title)<IProps>`
     margin-top: 0;
     margin-bottom: 10px;
     transition: opacity 150ms;
+    color: ${({$color}) => {
+      // @ts-ignore
+      return colors[$color || 'black'] || 'black';
+    }};
     text-transform: ${({ $textTransform }) => transforms[$textTransform]};
 
     ${({ $variant }) => cssTitleVariant[$variant]}

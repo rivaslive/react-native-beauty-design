@@ -22,6 +22,7 @@ export const colors = {
   secondary: '#ff006e',
   purple: '#B468F4',
   black: '#000000',
+  secondaryText: '#555555',
   yellow: '#FAAD14',
   white: '#FFFFFF',
   transparent: 'transparent',
