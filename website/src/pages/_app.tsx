@@ -1,13 +1,3 @@
-/*
-eslint-disable
-no-console,
-global-require,
-@typescript-eslint/no-unsafe-call,
-@typescript-eslint/no-unsafe-return,
-@typescript-eslint/no-unsafe-member-access,
-@typescript-eslint/restrict-template-expressions
-*/
-
 import 'antd/dist/antd.css';
 import 'animate.css/animate.css';
 import 'slick-carousel/slick/slick.css';

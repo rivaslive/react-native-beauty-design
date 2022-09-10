@@ -31,7 +31,13 @@ const BannerHome = () => {
     <StyleFirstSection>
       <StyleContentTitle>
         <StyleImage className="animate__animated animate__fadeIn animate__delay-2s">
-          <Image src={brand} width={200} height={200} objectFit="contain" />
+          <Image
+            alt=""
+            src={brand}
+            width={200}
+            height={200}
+            objectFit="contain"
+          />
         </StyleImage>
         <StyleTitle
           variant="POPPINS_70_77_800"

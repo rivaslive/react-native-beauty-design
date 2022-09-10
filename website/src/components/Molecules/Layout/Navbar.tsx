@@ -63,6 +63,7 @@ const Navbar = ({
                     src={Brand}
                     height={30}
                     width={40}
+                    alt=""
                     objectFit="contain"
                   />
                   <StyleTitle variant="ROBOT_24_28_500">

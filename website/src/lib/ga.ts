@@ -1,10 +1,3 @@
-/*
- eslint-disable
- @typescript-eslint/no-unsafe-call,
- @typescript-eslint/no-shadow,
- @typescript-eslint/no-unsafe-member-access
- */
-
 // log the page view with their URL
 export const pageView = (url: string) => {
   // @ts-ignore

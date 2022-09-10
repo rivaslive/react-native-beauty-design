@@ -1,11 +1,3 @@
-/*
- eslint-disable
- @typescript-eslint/no-unsafe-call,
- @typescript-eslint/no-unsafe-member-access,
- @typescript-eslint/no-unsafe-return,
- no-unused-vars,
- */
-
 import React, { useCallback } from 'react';
 import type { Settings } from 'react-slick';
 
@@ -55,7 +47,7 @@ export default function useSlick(ref: any = null) {
         ),
       };
     },
-    [nextSlider, prevSlider]
+    [nextSlider, prevSlider, ref]
   );
 
   return {

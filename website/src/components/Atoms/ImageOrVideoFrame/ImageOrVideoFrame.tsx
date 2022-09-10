@@ -1,9 +1,3 @@
-/*
- eslint-disable
- @typescript-eslint/no-unsafe-call,
- @typescript-eslint/no-unsafe-member-access,
- jsx-a11y/media-has-caption
- */
 import React, { useMemo } from 'react';
 import videojs from 'video.js';
 import {
@@ -13,6 +7,14 @@ import {
   StyleReload,
   StyleWrapperPlay,
 } from 'components/Molecules/Example/style';
+
+const videoJsOptions = {
+  // lookup the options in the docs for more options
+  autoplay: false,
+  controls: false,
+  responsive: true,
+  fluid: true,
+};
 
 const ImageOrVideoFrame = ({
   src,
@@ -24,14 +26,6 @@ const ImageOrVideoFrame = ({
   const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
   const playerRef = React.useRef<videojs.Player | null>(null);
-
-  const videoJsOptions = {
-    // lookup the options in the docs for more options
-    autoplay: false,
-    controls: false,
-    responsive: true,
-    fluid: true,
-  };
 
   React.useEffect(() => {
     // make sure Video.js player is only initialized once
@@ -47,7 +41,7 @@ const ImageOrVideoFrame = ({
         setIsPlaying(false);
       });
     }
-  }, [videoRef, videoJsOptions]);
+  }, [videoRef]);
 
   // Dispose the Video.js player when the functional component unmounts
   React.useEffect(() => {
@@ -64,7 +58,6 @@ const ImageOrVideoFrame = ({
   const onPlayOrPause = () => {
     const player = playerRef.current;
     if (player?.paused()) {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       player?.play();
       setIsPlaying(true);
     } else {

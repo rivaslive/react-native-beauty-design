@@ -1,13 +1,3 @@
-/*
-eslint-disable
-no-console,
-@typescript-eslint/no-unsafe-argument,
-@typescript-eslint/no-unsafe-call,
-@typescript-eslint/no-unsafe-member-access,
-@typescript-eslint/naming-convention,
-no-underscore-dangle
- */
-
 import { gql } from '@apollo/client';
 import { initializeApollo } from 'apollo/config';
 import {

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/next-script-for-ga */
 import React from 'react';
 import Document, {
   DocumentContext,

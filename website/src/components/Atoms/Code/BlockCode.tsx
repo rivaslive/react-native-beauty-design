@@ -1,12 +1,6 @@
-/*
-eslint-disable
-@typescript-eslint/no-unsafe-call,
-@typescript-eslint/no-unsafe-member-access
-*/
 import React, { useState } from 'react';
 import { Button } from 'antd';
 import Copy from 'copy-to-clipboard';
-// import Refractor from 'react-refractor';
 import { CheckCircleTwoTone, CopyOutlined } from '@ant-design/icons';
 
 // Load any languages you want to use from `refractor`
