@@ -45,25 +45,32 @@ const AllComponentTemplate = () => {
             { xs: 20, md: 20, lg: 25 },
           ]}
         >
-          {v1.map(({ children }) => {
-            return children.sort(sortComponents).map(({ name, key, icon }) => {
-              let path;
-              if (key === 'getting-started') {
-                path = `/${query?.version as string}/`;
-              } else {
-                path = `/${query?.version as string}/components/`;
-              }
+          {v1.map(({ children, name }) => {
+            return (
+              <>
+                <Title level={2} variant="ROBOT_36_50_500">
+                  {name}
+                </Title>
+                {children.sort(sortComponents).map(({ name, key, icon }) => {
+                  let path;
+                  if (key === 'getting-started') {
+                    path = `/${query?.version as string}/`;
+                  } else {
+                    path = `/${query?.version as string}/components/`;
+                  }
 
-              return (
-                <Col key={key} xs={24} md={12} xxl={8}>
-                  <Link href={path + key} passHref>
-                    <a>
-                      <CardComponentList title={name} icon={icon} />
-                    </a>
-                  </Link>
-                </Col>
-              );
-            });
+                  return (
+                    <Col key={key} xs={24} md={12} xxl={8}>
+                      <Link href={path + key} passHref>
+                        <a>
+                          <CardComponentList title={name} icon={icon} />
+                        </a>
+                      </Link>
+                    </Col>
+                  );
+                })}
+              </>
+            );
           })}
         </Row>
       </Layout>

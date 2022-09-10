@@ -16,6 +16,7 @@ const IconRender = ({ icon: Custom, ...rest }: IconProps) => {
   return (
     <Icon
       component={(props: any) => {
+        // @ts-ignore
         return <Custom {...props} {...rest} />;
       }}
     />
