@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
+// TODO: Migrate in the future to nativeComponent and remove lib
 import RNPickerSelect, { PickerSelectProps } from 'react-native-picker-select';
 
 import { Icon } from '../Icon';
@@ -75,6 +76,8 @@ export const Select: React.FC<SelectProps> = ({
         value={value}
         children={children}
         disabled={disabled}
+        // Mimic touchable input on both iOS and Android
+        useNativeAndroidPickerStyle={false}
         Icon={
           icon ??
           (() => (
@@ -89,7 +92,7 @@ export const Select: React.FC<SelectProps> = ({
         placeholder={{
           label: placeholder,
           value: null,
-          color: colors[borderInputColor] ?? borderInputColor,
+          // colors[placeholderColor] ?? placeholderColor
         }}
         onValueChange={onInternalChange}
         items={items.map(({ value: _value, label, key, ...restItem }) => ({
@@ -98,6 +101,7 @@ export const Select: React.FC<SelectProps> = ({
           label,
           ...restItem,
         }))}
+        // IOS props
         pickerProps={{
           itemStyle: {
             backgroundColor: colors[background] ?? background,
@@ -105,19 +109,17 @@ export const Select: React.FC<SelectProps> = ({
           },
           ...pickerProps,
         }}
-        textInputProps={{
-          placeholder,
-          placeholderTextColor: colors[placeholderColor] ?? placeholderColor,
-        }}
+        // general props
         touchableWrapperProps={{
           style: {
             ...sizes[size],
             borderWidth: 1,
+            borderStyle: 'solid',
             borderRadius: borderRadius.lg,
             borderColor: isError
               ? colors.error
               : colors[borderInputColor] ?? borderInputColor,
-            backgroundColor: colors[background] || background,
+            backgroundColor: colors[background] ?? background,
           },
         }}
         style={{

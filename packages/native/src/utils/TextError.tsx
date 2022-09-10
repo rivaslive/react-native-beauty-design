@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 import { useTheme } from '../Context/theme';
 
@@ -18,9 +19,9 @@ export const TextError: React.FC<{ children: string }> = ({ children }) => {
 
 const styles = StyleSheet.create({
   text: {
-    marginTop: 5,
-    fontSize: 12,
-    lineHeight: 14,
+    marginTop: scale(5),
+    fontSize: scale(14),
+    lineHeight: scale(16),
     textAlign: 'left',
   },
 });

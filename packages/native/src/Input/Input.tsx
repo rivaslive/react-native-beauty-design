@@ -75,7 +75,7 @@ export const Input: React.FC<InputProps> = ({
   placeholderColor = 'border',
   ...rest
 }) => {
-  const { colors, borderRadius } = useTheme();
+  const { colors, borderRadius, fontSizes } = useTheme();
 
   // states
   const [show, setShow] = React.useState<boolean>(false);
@@ -134,6 +134,7 @@ export const Input: React.FC<InputProps> = ({
         style={StyleSheet.flatten([
           styles.input,
           {
+            fontSize: fontSizes.base,
             backgroundColor: colors[background] || background,
             borderColor: isError
               ? colors.error

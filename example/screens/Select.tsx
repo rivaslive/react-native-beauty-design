@@ -26,6 +26,7 @@ const SelectScreen = () => {
           <Select
             error={true}
             items={items}
+            size="middle"
             placeholder="Select item..."
             textError="This is error"
           />

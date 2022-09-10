@@ -25,6 +25,9 @@ export * from './Form';
 // Input export
 export * from './Input';
 
+// Radio export
+export * from './Radio';
+
 // Image export
 export * from './Image';
 

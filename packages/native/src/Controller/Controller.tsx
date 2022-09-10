@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 // components
@@ -7,13 +7,14 @@ import { Text } from '../Text';
 import { Button } from '../Button';
 import { useTheme } from '../Context/theme';
 import { TextError } from '../utils/TextError';
+import type { ColorType } from '../Context/colors';
 
 export interface ControllerProps {
   value?: number;
   min?: number;
   max?: number;
-  borderColor?: string;
-  color?: string;
+  borderColor?: ColorType;
+  color?: ColorType;
   width?: number;
   onChange?: (count: number) => void;
   onIncrease?: (count: number) => void;
@@ -42,15 +43,15 @@ export const Controller: React.FC<ControllerProps> = ({
   borderColor = 'accents4',
 }) => {
   const { colors, borderRadius } = useTheme();
-  const [count, setCount] = useState<number>(1);
+  const [count, setCount] = React.useState<number>(1);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (typeof value === 'number') {
       setCount(value);
     }
   }, [value]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (onChange) {
       onChange(count);
     }

@@ -18,8 +18,8 @@ const { TextArea } = Input;
 const { useForm } = Form;
 
 const FormScreen = () => {
-  const [form] = useForm();
-  const [form2] = useForm();
+  const [form, submit1] = useForm();
+  const [form2, submit2] = useForm();
 
   const onSubmit = () => {
     form.submit();
@@ -55,7 +55,7 @@ const FormScreen = () => {
           >
             <Input type="password" />
           </Form.Item>
-          <Button onPress={onSubmit}>Login</Button>
+          <Button onPress={submit1}>Login</Button>
         </Form>
       </View>
 
@@ -156,7 +156,7 @@ const FormScreen = () => {
             />
           </Form.Item>
 
-          <Button onPress={onSubmit2}>Send</Button>
+          <Button onPress={submit2}>Send</Button>
         </Form>
       </View>
       <View style={{ height: 75 }} />

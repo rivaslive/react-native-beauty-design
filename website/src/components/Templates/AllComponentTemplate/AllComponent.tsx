@@ -36,24 +36,34 @@ const AllComponentTemplate = () => {
           ]}
         >
           {v1.map(({ children }) => {
-            return children.map(({ name, key, icon }) => {
-              let path;
-              if (key === 'getting-started') {
-                path = `/${query?.version as string}/`;
-              } else {
-                path = `/${query?.version as string}/components/`;
-              }
+            return children
+              .sort((a, b) => {
+                if (a.name < b.name) {
+                  return -1;
+                }
+                if (a.name > b.name) {
+                  return 1;
+                }
+                return 0;
+              })
+              .map(({ name, key, icon }) => {
+                let path;
+                if (key === 'getting-started') {
+                  path = `/${query?.version as string}/`;
+                } else {
+                  path = `/${query?.version as string}/components/`;
+                }
 
-              return (
-                <Col key={key} xs={24} md={12} xxl={8}>
-                  <Link href={path + key} passHref>
-                    <a>
-                      <CardComponentList title={name} icon={icon} />
-                    </a>
-                  </Link>
-                </Col>
-              );
-            });
+                return (
+                  <Col key={key} xs={24} md={12} xxl={8}>
+                    <Link href={path + key} passHref>
+                      <a>
+                        <CardComponentList title={name} icon={icon} />
+                      </a>
+                    </Link>
+                  </Col>
+                );
+              });
           })}
         </Row>
       </Layout>

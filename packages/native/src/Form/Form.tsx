@@ -1,5 +1,9 @@
-import React from 'react';
-import FormField, { useForm, FormProps as FormFieldProps } from 'rc-field-form';
+import React, { FC } from 'react';
+import FormField, {
+  useForm as useFormField,
+  FormProps as FormFieldProps,
+  FormInstance,
+} from 'rc-field-form';
 import { FormItem, FormItemProps } from './FormItem';
 import { FormProvider, useFormProvider } from './context';
 
@@ -9,7 +13,12 @@ interface GenericValue {
 
 export interface FormProps extends FormFieldProps {}
 
-const FormInstance = ({
+interface ComponentExport {
+  useForm: typeof useForm;
+  Item: typeof FormItem;
+}
+
+const InternalFormInstance = ({
   onFinishFailed,
   onValuesChange,
   ...props
@@ -51,13 +60,20 @@ const FormInstance = ({
   );
 };
 
-const Form = (p: FormProps) => {
+const Form: FC<FormProps> & ComponentExport = (p) => {
   return (
     <FormProvider>
-      <FormInstance {...p} />
+      <InternalFormInstance {...p} />
     </FormProvider>
   );
 };
+
+function useForm<Values = any>(
+  form?: FormInstance<Values>
+): [FormInstance<Values>, () => void] {
+  const [newForm] = useFormField<Values>(form);
+  return [newForm, form.submit];
+}
 
 Form.useForm = useForm;
 Form.Item = FormItem;

@@ -15,7 +15,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import { Title } from 'react-native-beauty-design';
+import { Title, useTheme } from 'react-native-beauty-design';
 
 import AvatarScreen from '../screens/Avatars';
 import TitleScreen from '../screens/Titles';
@@ -32,6 +32,7 @@ import InputScreen from '../screens/Inputs';
 // import CollapseScreen from '../screens/Collapse';
 import AlertScreen from '../screens/Alert';
 import SelectScreen from '../screens/Select';
+import RadioScreen from '../screens/Radio';
 // import MessageScreen from '../screens/Message';
 // import ModalScreen from '../screens/Modal';
 // import PopConfirmScreen from '../screens/PopConfirm';
@@ -77,6 +78,7 @@ function CustomDrawerContent(props: any) {
 }
 
 function RootNavigator() {
+  const { colors } = useTheme();
   return (
     <Drawer.Navigator
       drawerContent={CustomDrawerContent}
@@ -88,6 +90,7 @@ function RootNavigator() {
           paddingRight: 12,
           paddingLeft: 12,
         },
+        headerTintColor: colors.text,
         drawerActiveTintColor: 'white',
         drawerActiveBackgroundColor: '#4a8cff',
       }}
@@ -103,6 +106,7 @@ function RootNavigator() {
       <Drawer.Screen name="Title" component={TitleScreen} />
       <Drawer.Screen name="Text" component={TextsScreen} />
       <Drawer.Screen name="Select" component={SelectScreen} />
+      <Drawer.Screen name="Radio" component={RadioScreen} />
       {/*<Drawer.Screen name="Tabs" component={TabScreen} />*/}
       {/*<Drawer.Screen name="Form" component={FormScreen} />*/}
       {/*<Drawer.Screen name="Badges" component={BadgeScreen} />*/}

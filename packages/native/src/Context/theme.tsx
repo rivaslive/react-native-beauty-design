@@ -44,8 +44,9 @@ interface ThemeProps {
   borderRadius: SizingType;
   paddingSizes: SizingType;
   marginSizes: SizingType;
+  activeOpacity: number;
   colors: {
-    [key: ColorType | string]: string;
+    [key in ColorType]: string;
   };
 }
 
@@ -55,6 +56,7 @@ const initialValue: ThemeProps = {
   fonts: fonts as FontTypes,
   fontSizes,
   titleFontSizes,
+  activeOpacity: 0.6,
   zIndices: {
     1: 100,
     2: 200,
@@ -132,6 +134,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       return {
         isDark: prevTheme.isDark,
         theme: _theme?.theme ?? prevTheme?.theme,
+        activeOpacity: _theme?.activeOpacity ?? prevTheme?.activeOpacity,
         colors: Object.assign(prevTheme?.colors, _theme?.colors),
         fonts: Object.assign(prevTheme.fonts, _theme?.fonts),
         fontSizes: Object.assign(prevTheme.fontSizes, _theme?.fontSizes),
