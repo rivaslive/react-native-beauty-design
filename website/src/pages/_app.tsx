@@ -27,7 +27,8 @@ import GlobalStyle from 'styles/general';
 function MyApp({ Component, pageProps }: AppProps) {
   const [isHome, setIsHome] = useState<boolean>(false);
   const [componentList, setComponentList] = useState<ComponentProps[]>([]);
-  const client = useApollo(pageProps.initialApolloState);
+  // @ts-ignore
+  const client = useApollo(pageProps?.initialApolloState);
   const router = useRouter();
 
   React.useEffect(() => {
