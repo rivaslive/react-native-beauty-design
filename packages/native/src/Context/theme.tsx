@@ -41,6 +41,7 @@ interface ThemeProps {
   fontSizes: FontSizesProps;
   titleFontSizes: TitleFontSizesProps;
   zIndices: ZIndexType;
+  borderWidth: number;
   borderRadius: SizingType;
   paddingSizes: SizingType;
   marginSizes: SizingType;
@@ -66,6 +67,7 @@ const initialValue: ThemeProps = {
     10: 1000,
     max: 9999,
   },
+  borderWidth: 2,
   borderRadius: {
     xxs: scale(1),
     xs: scale(2),
@@ -125,7 +127,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   theme,
   disableDarkMode = false,
 }) => {
-  const [internalTheme, setInternalTheme] = useState<ThemeProps>(initialValue);
+  const [internalTheme, setInternalTheme] = useState<ThemeProps>(
+    JSON.parse(JSON.stringify(initialValue))
+  );
   const colorScheme = Appearance.getColorScheme();
   const isDark: boolean = disableDarkMode ? false : colorScheme === 'dark';
 
@@ -133,8 +137,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     setInternalTheme((prevTheme) => {
       return {
         isDark: prevTheme.isDark,
-        theme: _theme?.theme ?? prevTheme?.theme,
-        activeOpacity: _theme?.activeOpacity ?? prevTheme?.activeOpacity,
+        theme: _theme?.theme ?? prevTheme.theme,
+        borderWidth: _theme?.borderWidth ?? prevTheme.borderWidth,
+        activeOpacity: _theme?.activeOpacity ?? prevTheme.activeOpacity,
         colors: Object.assign(prevTheme?.colors, _theme?.colors),
         fonts: Object.assign(prevTheme.fonts, _theme?.fonts),
         fontSizes: Object.assign(prevTheme.fontSizes, _theme?.fontSizes),

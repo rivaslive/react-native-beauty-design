@@ -11,7 +11,9 @@ interface GenericValue {
   [key: string]: unknown;
 }
 
-export interface FormProps extends FormFieldProps {}
+export interface FormProps extends Omit<FormFieldProps, 'children'> {
+  children?: React.ReactNode;
+}
 
 interface ComponentExport {
   useForm: typeof useForm;

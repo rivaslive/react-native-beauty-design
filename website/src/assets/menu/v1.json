@@ -84,11 +84,6 @@
         "icon": "radio-circle-marked"
       },
       {
-        "key": "rate",
-        "name": "Rate",
-        "icon": "star"
-      },
-      {
         "key": "select",
         "name": "Select",
         "icon": "select-multiple"

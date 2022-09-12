@@ -79,15 +79,14 @@ export const Select: React.FC<SelectProps> = ({
         // Mimic touchable input on both iOS and Android
         useNativeAndroidPickerStyle={false}
         Icon={
-          icon ??
-          (() => (
+          icon ?? (
             <Icon
               size={20}
               name="down"
               type="antdesign"
               color={colors[borderInputColor] ?? borderInputColor}
             />
-          ))
+          )
         }
         placeholder={{
           label: placeholder,

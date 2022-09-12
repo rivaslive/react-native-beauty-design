@@ -8,7 +8,7 @@ import {
   Space,
   Checkbox,
   // Select,
-  // Radio,
+  // Switch,
   // Rate,
   // Switch,
   Icon,
@@ -107,26 +107,26 @@ const InputScreen = () => {
           />
         </View>
         {/*<View>
-          <Title level={3}>Radio</Title>
-          <Radio.Group>
-            <Radio label="Radio 1" value={1} />
-            <Radio label="Radio 2" value={2} />
-            <Radio label="Radio 3" value={3} />
-          </Radio.Group>
+          <Title level={3}>Switch</Title>
+          <Switch.Group>
+            <Switch label="Switch 1" value={1} />
+            <Switch label="Switch 2" value={2} />
+            <Switch label="Switch 3" value={3} />
+          </Switch.Group>
 
           <Title level={4}>Custom colors</Title>
-          <Radio.Group activeColor="warning" defaultValue={2} align="vertical">
-            <Radio label="Radio 1" value={1} />
-            <Radio label="Radio 2" value={2} />
-            <Radio label="Radio 3" value={3} />
-          </Radio.Group>
+          <Switch.Group activeColor="warning" defaultValue={2} align="vertical">
+            <Switch label="Switch 1" value={1} />
+            <Switch label="Switch 2" value={2} />
+            <Switch label="Switch 3" value={3} />
+          </Switch.Group>
 
           <Title level={4}>Horizontal align</Title>
-          <Radio.Group align="horizontal">
-            <Radio label="Radio 1" value={1} />
-            <Radio label="Radio 2" value={2} />
-            <Radio label="Radio 3" value={3} />
-          </Radio.Group>
+          <Switch.Group align="horizontal">
+            <Switch label="Switch 1" value={1} />
+            <Switch label="Switch 2" value={2} />
+            <Switch label="Switch 3" value={3} />
+          </Switch.Group>
         </View>*/}
         <View>
           <Title level={3}>Checkbox</Title>

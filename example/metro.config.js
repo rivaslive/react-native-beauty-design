@@ -19,7 +19,8 @@ config.resolver.nodeModulesPaths = [
 ];
 
 config.projectRoot = projectRoot;
+config.resolver.disableHierarchicalLookup = true;
 
-config.resolver.blacklistRE = /#current-cloud-backend\/.*/;
+// config.resolver.blacklistRE = /#current-cloud-backend\/.*/;
 
 module.exports = config;

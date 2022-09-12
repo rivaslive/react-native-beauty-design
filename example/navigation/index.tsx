@@ -33,6 +33,7 @@ import InputScreen from '../screens/Inputs';
 import AlertScreen from '../screens/Alert';
 import SelectScreen from '../screens/Select';
 import RadioScreen from '../screens/Radio';
+import SwitchScreen from '../screens/Switch';
 // import MessageScreen from '../screens/Message';
 // import ModalScreen from '../screens/Modal';
 // import PopConfirmScreen from '../screens/PopConfirm';
@@ -107,6 +108,7 @@ function RootNavigator() {
       <Drawer.Screen name="Text" component={TextsScreen} />
       <Drawer.Screen name="Select" component={SelectScreen} />
       <Drawer.Screen name="Radio" component={RadioScreen} />
+      <Drawer.Screen name="Switch" component={SwitchScreen} />
       {/*<Drawer.Screen name="Tabs" component={TabScreen} />*/}
       {/*<Drawer.Screen name="Form" component={FormScreen} />*/}
       {/*<Drawer.Screen name="Badges" component={BadgeScreen} />*/}

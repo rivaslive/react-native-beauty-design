@@ -65,23 +65,20 @@ export const Group: React.FC<RadioGroupProps> = ({
   return (
     <View style={styles.wrapper}>
       <View style={StyleSheet.flatten([styles.content, styles[align]])}>
-        {React.Children.map<React.ReactNode, React.ReactNode>(
-          children,
-          (child) => {
-            if (React.isValidElement(child)) {
-              return React.cloneElement<RadioProps>(child as any, {
-                isActive: internalValue === child?.props?.value,
-                activeColor: isError ? 'error' : activeColor,
-                deactiveColor: isError ? 'error' : deactiveColor,
-                size,
-                type,
-                ...(child?.props || {}),
-                onPress: onInternalChange,
-              });
-            }
-            return null;
+        {React.Children.map(children, (child) => {
+          if (React.isValidElement(child)) {
+            return React.cloneElement<RadioProps>(child as any, {
+              isActive: internalValue === child?.props?.value,
+              activeColor: isError ? 'error' : activeColor,
+              deactiveColor: isError ? 'error' : deactiveColor,
+              size,
+              type,
+              ...(child?.props || {}),
+              onPress: onInternalChange,
+            });
           }
-        )}
+          return null;
+        })}
       </View>
       {isError && textError && <TextError>{textError}</TextError>}
     </View>

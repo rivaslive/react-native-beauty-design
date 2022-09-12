@@ -25,6 +25,7 @@ export type ImageProps = Omit<RNImageProps, 'source'> & {
   childrenContainerStyle?: StyleProp<ViewStyle>;
   placeholderStyle?: StyleProp<ViewStyle>;
   transition?: boolean;
+  children?: React.ReactNode;
   transitionDuration?: number;
 };
 

@@ -1,17 +1,20 @@
-// Context export
-export * from './Context/theme';
-
 // Alert export
 export * from './Alert';
 
 // Avatar export
 export * from './Avatar';
 
+// Button export
+export * from './Button';
+
 // Carousel export
 export * from './Carousel';
 
 // Controller export
 export * from './Controller';
+
+// Context export
+export * from './Context/theme';
 
 // DatePicker export
 export * from './DatePicker';
@@ -22,23 +25,18 @@ export * from './Checkbox';
 // Form export
 export * from './Form';
 
+// Icons
+export * from './Icon';
+export { default as getIconType } from './utils/getIconType';
+
 // Input export
 export * from './Input';
-
-// Radio export
-export * from './Radio';
 
 // Image export
 export * from './Image';
 
-// Title export
-export * from './Title';
-
-// Text export
-export * from './Text';
-
-// Button export
-export * from './Button';
+// Radio export
+export * from './Radio';
 
 // Select export
 export * from './Select';
@@ -46,9 +44,14 @@ export * from './Select';
 // Space export
 export * from './Space';
 
-// Icons
-export * from './Icon';
-export { default as getIconType } from './utils/getIconType';
+// Switch export
+export * from './Switch';
+
+// Title export
+export * from './Title';
+
+// Text export
+export * from './Text';
 
 // ScrollInput
 export * from './utils/inputScrollView';

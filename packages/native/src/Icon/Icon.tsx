@@ -86,8 +86,9 @@ export const Icon: React.FC<IconProps> = ({
   ...rest
 }) => {
   const { colors } = useTheme();
-  const color = colors[colorProp] || colorProp || colors?.black;
-  const reverseColor = reverseColorProp || colors?.white;
+  const color = colors[colorProp] || colorProp || colors?.text;
+  const reverseColor =
+    colors[reverseColorProp] || reverseColorProp || colors?.text;
   const IconComponent = getIconType(type);
   const iconSpecificStyle = getIconStyle(type, { solid, brand });
 

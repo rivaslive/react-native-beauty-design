@@ -10,8 +10,8 @@ import Navigation from './navigation';
 
 const colors = {
   magenta: '#9E4F88',
-  opaityWhiteText: 'rgba(0, 0, 0, .6)',
-  opaityBlackText: 'rgba(255, 255, 255, .6)',
+  opacityWhiteText: 'rgba(0, 0, 0, .6)',
+  opacityBlackText: 'rgba(255, 255, 255, .6)',
 };
 
 export default function App() {
