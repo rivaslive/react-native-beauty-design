@@ -1,5 +1,5 @@
 import React, { Children } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 
 import { justifies } from '../utils/justifies';
 import {
@@ -15,6 +15,7 @@ export interface SpaceProps {
   align?: AlignType;
   orientation?: OrientationType;
   gutter?: GutterType;
+  style?: ViewStyle;
 }
 
 export const Space: React.FC<SpaceProps> = ({
@@ -23,6 +24,7 @@ export const Space: React.FC<SpaceProps> = ({
   align = 'start',
   orientation = 'horizontal',
   gutter = [10, 10],
+  style,
 }) => {
   const renderChildren = React.useMemo(() => {
     if (children) {
@@ -44,6 +46,7 @@ export const Space: React.FC<SpaceProps> = ({
           justifyContent: justifies[justify],
           alignItems: justifies[align],
         },
+        style,
       ])}
     >
       {renderChildren}

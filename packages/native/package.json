@@ -45,7 +45,7 @@
     "react-native-modal-datetime-picker": "13.0.1",
     "react-native-picker-select": "8.0.4",
     "dayjs": "1.10.7",
-    "color": "3.2.1",
+    "color": "4.2.3",
     "rc-field-form": "1.24.0"
   },
   "devDependencies": {
@@ -56,7 +56,8 @@
     "react-native-safe-area-context": "^3.1.9",
     "react-native-vector-icons": "^7.0.0",
     "react-test-renderer": "^16.13.1",
-    "utility-types": "^3.10.0"
+    "utility-types": "^3.10.0",
+    "@types/color": "^3.0.3"
   },
   "peerDependencies": {
     "react-native-safe-area-context": ">3.1.9",

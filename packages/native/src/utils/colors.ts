@@ -4,8 +4,8 @@ import { Dimensions } from 'react-native';
 export const width = Dimensions.get('screen').width;
 
 export const isLight = (color: string, lumi = 0.7) => {
-  const _lumi = Color(color).luminosity();
-  return _lumi > lumi;
+  const luminosity = Color(color).luminosity();
+  return luminosity > lumi;
 };
 
 export const getDarken = (color: string, dark: number = 0.6) => {
@@ -17,7 +17,9 @@ export const getLighting = (color: string, light: number = 0.6) => {
 };
 
 export const getOpacity = (color: string, alpha: number = 0.1) => {
-  return Color(color).alpha(alpha).hex();
+  const rgbaColor = Color(color).alpha(alpha).rgb();
+  // @ts-ignore
+  return `rgba(${rgbaColor?.color},${rgbaColor?.valpha})`;
 };
 
 export const getLighten = (color: string, light: number = 50) => {
@@ -35,7 +37,7 @@ export const getRandomColor = () => {
 };
 
 export const getPlaceholderColor = (color: string) => {
-  return Color(color).setAlpha(0.6);
+  return Color(color).alpha(0.6);
 };
 
 export const getColorForBackground = (color: string) => {

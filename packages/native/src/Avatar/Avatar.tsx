@@ -7,8 +7,8 @@ import {
   Text,
   Image as ImageRN,
   StyleProp,
-  TextStyle,
-} from 'react-native';
+  TextStyle, View
+} from "react-native";
 import { IconObject } from '../Icon';
 import { useTheme } from '../Context/theme';
 import { ImageProps, Image } from '../Image';
@@ -35,6 +35,7 @@ export interface AvatarProps extends Omit<TouchableOpacityProps, 'children'> {
   iconStyle?: StyleProp<TextStyle>;
   imageProps?: Partial<ImageProps>;
   ImageComponent?: React.ComponentClass;
+  Component?: React.FunctionComponent | React.ComponentClass;
 }
 
 export const Avatar: React.FC<AvatarProps> = ({
@@ -45,9 +46,10 @@ export const Avatar: React.FC<AvatarProps> = ({
   color,
   icon,
   iconStyle,
+  Component = View,
   ImageComponent = ImageRN,
   size = 40,
-  type = 'square',
+  type = 'circle',
   style = {},
   imageProps = {},
   ...restTouchProps
@@ -68,7 +70,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   const sourceImage = typeof src === 'string' ? { uri: src } : src;
 
   return (
-    <TouchableOpacity
+    <Component
       style={StyleSheet.flatten([
         styles.container,
         { width: scale(size), height: scale(size) },
@@ -103,7 +105,7 @@ export const Avatar: React.FC<AvatarProps> = ({
           ImageComponent={ImageComponent}
         />
       )}
-    </TouchableOpacity>
+    </Component>
   );
 };
 

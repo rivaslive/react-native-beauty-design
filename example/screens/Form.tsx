@@ -10,7 +10,6 @@ import {
   Select,
   Radio,
   Checkbox,
-  Rate,
   Switch,
 } from 'react-native-beauty-design';
 

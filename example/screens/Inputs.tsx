@@ -8,9 +8,9 @@ import {
   Space,
   Checkbox,
   // Select,
-  // Switch,
+  // Badge,
   // Rate,
-  // Switch,
+  // Badge,
   Icon,
 } from 'react-native-beauty-design';
 
@@ -107,26 +107,26 @@ const InputScreen = () => {
           />
         </View>
         {/*<View>
-          <Title level={3}>Switch</Title>
-          <Switch.Group>
-            <Switch label="Switch 1" value={1} />
-            <Switch label="Switch 2" value={2} />
-            <Switch label="Switch 3" value={3} />
-          </Switch.Group>
+          <Title level={3}>Badge</Title>
+          <Badge.Group>
+            <Badge label="Badge 1" value={1} />
+            <Badge label="Badge 2" value={2} />
+            <Badge label="Badge 3" value={3} />
+          </Badge.Group>
 
           <Title level={4}>Custom colors</Title>
-          <Switch.Group activeColor="warning" defaultValue={2} align="vertical">
-            <Switch label="Switch 1" value={1} />
-            <Switch label="Switch 2" value={2} />
-            <Switch label="Switch 3" value={3} />
-          </Switch.Group>
+          <Badge.Group activeColor="warning" defaultValue={2} align="vertical">
+            <Badge label="Badge 1" value={1} />
+            <Badge label="Badge 2" value={2} />
+            <Badge label="Badge 3" value={3} />
+          </Badge.Group>
 
           <Title level={4}>Horizontal align</Title>
-          <Switch.Group align="horizontal">
-            <Switch label="Switch 1" value={1} />
-            <Switch label="Switch 2" value={2} />
-            <Switch label="Switch 3" value={3} />
-          </Switch.Group>
+          <Badge.Group align="horizontal">
+            <Badge label="Badge 1" value={1} />
+            <Badge label="Badge 2" value={2} />
+            <Badge label="Badge 3" value={3} />
+          </Badge.Group>
         </View>*/}
         <View>
           <Title level={3}>Checkbox</Title>
@@ -135,12 +135,12 @@ const InputScreen = () => {
           <Checkbox label="Option 3" error required type="square" />
         </View>
         {/*<View>
-          <Title level={3}>Switch</Title>
-          <Switch />
-          <Switch error textError="Select Switch" />
-          <Switch size="small" />
-          <Switch size="medium" defaultValue={true} />
-          <Switch size="large" value={false} />
+          <Title level={3}>Badge</Title>
+          <Badge />
+          <Badge error textError="Select Badge" />
+          <Badge size="small" />
+          <Badge size="medium" defaultValue={true} />
+          <Badge size="large" value={false} />
         </View>
         <View>
           <Title level={3}>Select</Title>

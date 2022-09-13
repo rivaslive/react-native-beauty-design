@@ -134,6 +134,11 @@
         "key": "tabs",
         "name": "Tabs",
         "icon": "food-menu"
+      },
+      {
+        "key": "header",
+        "name": "Header",
+        "icon": "menu-alt-right"
       }
     ]
   },
@@ -151,11 +156,6 @@
         "key": "modal",
         "name": "Modal",
         "icon": "receipt"
-      },
-      {
-        "key": "notification",
-        "name": "Notification",
-        "icon": "bell"
       },
       {
         "key": "message",

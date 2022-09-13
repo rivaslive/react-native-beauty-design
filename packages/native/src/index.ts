@@ -7,6 +7,9 @@ export * from './Avatar';
 // Button export
 export * from './Button';
 
+// Badge export
+export * from './Badge';
+
 // Carousel export
 export * from './Carousel';
 
@@ -44,7 +47,7 @@ export * from './Select';
 // Space export
 export * from './Space';
 
-// Switch export
+// Badge export
 export * from './Switch';
 
 // Title export
