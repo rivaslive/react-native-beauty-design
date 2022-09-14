@@ -1,36 +1,56 @@
 import React from 'react';
-import { Animated, ScrollView, StyleSheet, View } from 'react-native';
-import { useTheme, Input, Header, Title, Text } from "react-native-beauty-design";
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { useTheme, Header, Title, Button } from 'react-native-beauty-design';
+import { useTheme as useNavigationTheme } from '@react-navigation/native';
+import DrawerToggleButton from '@react-navigation/drawer/src/views/DrawerToggleButton';
 
-const HeaderScreen = () => {
-  const { scrollOffsetY } = useTheme();
+const HeaderScreen = ({ navigation }) => {
+  const { onScroll, colors } = useTheme();
+  const navigationTheme = useNavigationTheme();
 
   return (
     <View style={styles.header}>
       <Header
-        titleOnScroll="Welcome"
-        dynamicComponent={
-          <View style={{ backgroundColor: 'red' }}>
-            <Text>Welcome</Text>
-            <Input
-              size="small"
-              placeholder="Search..."
-              borderInputColor="transparent"
-              wrapperStyle={{ marginBottom: 0 }}
-            />
-          </View>
-        }
+        heightDynamic={25}
+        titleOnScroll="Header"
+        backgroundSticky={navigationTheme.colors.card}
+        leftIcon={<DrawerToggleButton tintColor={colors.text} />}
       />
       <ScrollView
+        onScroll={onScroll}
         scrollEventThrottle={16}
         contentContainerStyle={styles.wrapperScroll}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { y: scrollOffsetY } } }],
-          { useNativeDriver: false }
-        )}
       >
         <View style={styles.container}>
-          <Title style={{ lineHeight: 0 }}>Content here</Title>
+          <Title level={2}>Default Header</Title>
+        </View>
+
+        <View
+          style={[
+            styles.headContent,
+            styles.marginTop,
+            { backgroundColor: navigationTheme.colors.card },
+          ]}
+        >
+          <Title level={4}>With Right Icon</Title>
+          <Button onPress={() => navigation.navigate('HeaderWithRightIcon')}>
+            Try
+          </Button>
+        </View>
+
+        <View
+          style={[
+            styles.headContent,
+            styles.marginTop,
+            { backgroundColor: navigationTheme.colors.card },
+          ]}
+        >
+          <Title level={4}>Header with custom backgrounds</Title>
+          <Button
+            onPress={() => navigation.navigate('HeaderWithCustomBackground')}
+          >
+            Try
+          </Button>
         </View>
 
         <View style={{ height: 1500 }} />
@@ -41,18 +61,23 @@ const HeaderScreen = () => {
 
 const styles = StyleSheet.create({
   header: {},
-  wrapperScroll: {},
-  container: {
-    flex: 1,
+  wrapperScroll: {
     paddingHorizontal: 10,
-    height: '100%',
   },
-  headTitle: {
-    paddingLeft: 20,
-    paddingRight: 20,
-    borderWidth: 1,
-    borderColor: 'transparent',
-    borderBottomColor: 'rgba(100, 100, 100, .3)',
+  container: {
+    paddingTop: 70,
+    paddingBottom: 10,
+  },
+  marginTop: {
+    marginTop: 0,
+  },
+  headContent: {
+    position: 'relative',
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+    marginBottom: 20,
+    borderRadius: 20,
+    backgroundColor: 'rgba(100, 100, 100, .8)',
   },
   space: {
     marginTop: 50,

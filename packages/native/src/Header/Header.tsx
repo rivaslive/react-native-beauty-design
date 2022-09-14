@@ -1,33 +1,48 @@
 import React from 'react';
-import { Animated, StyleSheet } from 'react-native';
-
-import { Text } from '../Text';
-import { useTheme } from '../Context/theme';
-import type { HeaderProps } from './types';
 import { scale } from 'react-native-size-matters';
+import { useSafeAreaFrame } from 'react-native-safe-area-context';
+import { Animated, Platform, StyleSheet, View, ViewStyle } from 'react-native';
 
-const Header_Min_Height = 100;
-const Header_Scroll_Height = Header_Min_Height * 0.7;
+import { useTheme } from '../Context/theme';
+import { getDefaultHeaderHeight, StatusBarHeight } from '../utils/header';
+import type { HeaderProps } from './types';
 
+const defaultTitlePosition = Platform.select<'center' | 'left'>({
+  ios: 'center',
+  default: 'left',
+});
 export const Header: React.FC<HeaderProps> = ({
   titleOnScroll,
-  dynamicComponent,
+  heightDynamic,
+  leftIcon,
+  rightIcon,
+  titleStyle,
+  headerStyle,
+  titlePosition = defaultTitlePosition,
+  background = 'foreground',
+  backgroundSticky = background,
 }) => {
+  const frame = useSafeAreaFrame();
   const { scrollOffsetY, width, colors, zIndices } = useTheme();
   const [fadeInOpacity] = React.useState(new Animated.Value(0));
   const [opacityNumber, setOpacityNumber] = React.useState(0);
-  const [heightDynamic, setHeightDynamic] = React.useState<number>(null);
 
-  const onLayoutDynamic = (event) => {
-    const { height } = event.nativeEvent.layout;
-    setHeightDynamic((prev) => {
-      if (prev > 0) {
-        return prev;
-      }
-      const calcHeight = height - Header_Min_Height;
-      return calcHeight < 1 ? Header_Min_Height + 5 : height;
-    });
+  const propsHeight = {
+    layout: frame,
+    modal: false,
+    headerStatusBarHeight: StatusBarHeight,
   };
+
+  const defaultHeight = getDefaultHeaderHeight(
+    propsHeight.layout,
+    propsHeight.modal,
+    propsHeight.headerStatusBarHeight
+  );
+
+  const { height = defaultHeight, ...restStyle } = StyleSheet.flatten([
+    defaultHeight,
+    headerStyle,
+  ]) as ViewStyle;
 
   const fadeInAnimation = React.useCallback(
     (start: number, end: number) => {
@@ -47,28 +62,16 @@ export const Header: React.FC<HeaderProps> = ({
     [fadeInOpacity]
   );
 
-  const animateDynamicHeight =
-    heightDynamic !== null
-      ? scrollOffsetY.interpolate({
-          inputRange: [0, heightDynamic - Header_Scroll_Height],
-          outputRange: [heightDynamic, 0],
-          extrapolate: 'clamp',
-        })
-      : new Animated.Value(0);
+  const dynamicHeightAnimation = scrollOffsetY.interpolate({
+    inputRange: [0, heightDynamic],
+    outputRange: [heightDynamic, 0],
+    extrapolate: 'clamp',
+  });
 
-  animateDynamicHeight?.addListener(({ value }) => {
+  dynamicHeightAnimation?.addListener(({ value }) => {
     const TOLERANCE_HEIGHT = 2;
     setOpacityNumber(value <= TOLERANCE_HEIGHT ? 1 : 0);
   });
-
-  const animateDynamicTranslate =
-    heightDynamic !== null
-      ? scrollOffsetY.interpolate({
-          inputRange: [0, heightDynamic - Header_Scroll_Height],
-          outputRange: [0, -heightDynamic],
-          extrapolate: 'clamp',
-        })
-      : new Animated.Value(0);
 
   React.useEffect(() => {
     if (opacityNumber > 0) {
@@ -78,6 +81,13 @@ export const Header: React.FC<HeaderProps> = ({
     }
   }, [fadeInAnimation, opacityNumber]);
 
+  const backgroundColor = React.useMemo(() => {
+    if (opacityNumber === 1) {
+      return colors[backgroundSticky] || backgroundSticky;
+    }
+    return colors[background] || background;
+  }, [background, backgroundSticky, opacityNumber, colors]);
+
   return (
     <>
       {/* Title element */}
@@ -85,77 +95,123 @@ export const Header: React.FC<HeaderProps> = ({
         style={StyleSheet.flatten([
           styles.header,
           {
+            height,
             width,
+            backgroundColor,
             zIndex: zIndices.max,
-            backgroundColor:
-              opacityNumber === 1 ? 'rgba(0,0,0,.2)' : colors.foreground,
           },
+          restStyle,
         ])}
       >
-        <Animated.View
-          style={{
-            opacity: fadeInOpacity,
-          }}
-        >
+        <View style={styles.content}>
+          <View
+            style={StyleSheet.flatten([
+              styles.icon,
+              rightIcon && !leftIcon && styles.hideIcon,
+            ])}
+          >
+            {leftIcon || rightIcon}
+          </View>
+
           {typeof titleOnScroll === 'string' ? (
-            <Text bold>{titleOnScroll}</Text>
+            <Animated.Text
+              aria-level="1"
+              numberOfLines={1}
+              style={[
+                styles.defaultTitle,
+                styles.title,
+                {
+                  opacity: fadeInOpacity,
+                  color: colors.text,
+                  textAlign: titlePosition,
+                },
+                titleStyle,
+              ]}
+            >
+              {titleOnScroll}
+            </Animated.Text>
           ) : (
             titleOnScroll
           )}
-        </Animated.View>
+
+          <View
+            style={StyleSheet.flatten([
+              styles.icon,
+              !rightIcon && leftIcon && styles.hideIcon,
+            ])}
+          >
+            {leftIcon || rightIcon}
+          </View>
+        </View>
       </Animated.View>
 
-      {/* dynamic child */}
-      {/*<Animated.View
-        onLayout={onLayoutDynamic}
+      {/* dynamic animation */}
+      <Animated.View
         style={StyleSheet.flatten([
           styles.dynamicHead,
-          animateDynamicHeight !== null && {
-            height: animateDynamicHeight,
-          },
           {
             width,
-            zIndex: zIndices['10'],
+            height: dynamicHeightAnimation,
           },
         ])}
-      >
-        <Animated.View
-          onLayout={onLayoutDynamic}
-          style={StyleSheet.flatten([
-            {
-              transform: [
-                {
-                  translateY: animateDynamicTranslate || 0,
-                },
-              ],
-            },
-          ])}
-        >
-          {dynamicComponent}
-        </Animated.View>
-      </Animated.View>*/}
+      />
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    backgroundColor: 'transparent',
+  wrapper: {},
+  icon: Platform.select({
+    ios: {},
+    default: {
+      marginBottom: scale(5),
+    },
+  }),
+  hideIcon: {
+    opacity: 0,
   },
   header: {
     top: 0,
     left: 0,
     right: 0,
     position: 'absolute',
-    height: Header_Min_Height,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    paddingVertical: scale(10),
-    paddingHorizontal: scale(10),
-    paddingBottom: 0,
+    borderWidth: 0,
+    paddingVertical: 0,
+    paddingHorizontal: 0,
+  },
+  content: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingBottom: scale(5),
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
   },
   dynamicHead: {
     overflow: 'hidden',
-    paddingHorizontal: scale(10),
   },
+  defaultTitle: {
+    flex: 1,
+    paddingHorizontal: scale(16),
+  },
+  title: Platform.select({
+    ios: {
+      fontSize: 17,
+      textAlign: 'center',
+      fontWeight: '600',
+      marginBottom: scale(5),
+    },
+    android: {
+      fontSize: 20,
+      textAlign: 'left',
+      fontFamily: 'sans-serif-medium',
+      fontWeight: 'normal',
+      marginBottom: scale(7),
+    },
+    default: {
+      fontSize: 18,
+      textAlign: 'left',
+      fontWeight: '500',
+      marginBottom: scale(7),
+    },
+  }),
 });

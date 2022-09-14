@@ -22,6 +22,18 @@ export interface TextProps {
   readMore?: boolean;
   textReadMore?: string;
   textReadLess?: string;
+  fontWeight?:
+    | 'normal'
+    | 'bold'
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900';
   size?: keyof FontSizesProps | number;
   lineHeight?: keyof FontSizesProps | number;
   italic?: boolean;
@@ -39,6 +51,7 @@ export const Text: FC<TextProps> = ({
   children,
   lines,
   lineHeight,
+  fontWeight,
   size = 'base',
   color = 'text',
   readMore = false,
@@ -70,7 +83,7 @@ export const Text: FC<TextProps> = ({
         style={StyleSheet.flatten([
           {
             fontFamily: fonts[font].fontFamily,
-            fontWeight: fonts[font].fontWeight,
+            fontWeight: fontWeight || fonts[font].fontWeight,
             textAlign: align,
             fontSize: fontSizes[size] || size,
             color: colors[color] || color,

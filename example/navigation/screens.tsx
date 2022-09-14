@@ -22,6 +22,8 @@ import SelectScreen from '../screens/Select';
 import RadioScreen from '../screens/Radio';
 import SwitchScreen from '../screens/Switch';
 import HeaderScreen from '../screens/Header';
+import HeaderWithCustomBackgroundScreen from '../screens/HeaderWithCustomBackground';
+import HeaderWithRightIconScreen from '../screens/HeaderWithRightIcon';
 // import MessageScreen from '../screens/Message';
 // import ModalScreen from '../screens/Modal';
 // import PopConfirmScreen from '../screens/PopConfirm';
@@ -92,6 +94,16 @@ export const itemsDrawer = [
     name: 'Header',
     options: { headerShown: false },
     component: HeaderScreen,
+  },
+  {
+    name: 'HeaderWithCustomBackground',
+    options: { headerShown: false },
+    component: HeaderWithCustomBackgroundScreen,
+  },
+  {
+    name: 'HeaderWithRightIcon',
+    options: { headerShown: false },
+    component: HeaderWithRightIconScreen,
   },
   // {
   //   name: 'Tabs',

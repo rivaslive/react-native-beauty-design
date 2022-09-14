@@ -1,6 +1,6 @@
 {
   "name": "react-native-beauty-design",
-  "version": "1.0.0-beta.1.3.5",
+  "version": "1.0.0-beta.1.3.6",
   "description": "React Native Beauty Design & UI Toolkit",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -37,27 +37,26 @@
   },
   "homepage": "https://www.beauty-design.app/",
   "dependencies": {
-    "@types/react-native-vector-icons": "6.4.12",
     "@react-native-community/datetimepicker": "5.1.0",
-    "react-native-ratings": "8.1.0",
-    "react-native-size-matters": "0.4.0",
+    "@types/react-native-vector-icons": "6.4.12",
+    "color": "4.2.3",
+    "dayjs": "1.10.7",
+    "rc-field-form": "1.24.0",
     "react-native-input-scroll-view": "1.11.0",
     "react-native-modal-datetime-picker": "13.0.1",
     "react-native-picker-select": "8.0.4",
-    "dayjs": "1.10.7",
-    "color": "4.2.3",
-    "rc-field-form": "1.24.0"
+    "react-native-size-matters": "0.4.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-numeric-separator": "7.16.7",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@types/color": "^3.0.3",
     "@types/react-test-renderer": "^17.0.0",
     "metro-react-native-babel-preset": "^0.63.0",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-vector-icons": "^7.0.0",
     "react-test-renderer": "^16.13.1",
-    "utility-types": "^3.10.0",
-    "@types/color": "^3.0.3"
+    "utility-types": "^3.10.0"
   },
   "peerDependencies": {
     "react-native-safe-area-context": ">3.1.9",

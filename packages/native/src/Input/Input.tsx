@@ -52,9 +52,7 @@ export interface InputProps {
   onChange?: (v: string) => void;
   style?: StyleProp<TextStyle>;
   wrapperStyle?: StyleProp<ViewStyle>;
-
-  // rest TextInput props https://reactnative.dev/docs/textinput
-  [key: string]: unknown;
+  withMarginBottom?: boolean;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -76,6 +74,7 @@ export const Input: React.FC<InputProps> = ({
   background = 'inputColor',
   borderInputColor = 'border',
   placeholderColor = 'border',
+  withMarginBottom = false,
   ...rest
 }) => {
   const { colors, borderRadius, fontSizes, borderWidth } = useTheme();
@@ -111,7 +110,13 @@ export const Input: React.FC<InputProps> = ({
   }, [error]);
 
   return (
-    <View style={StyleSheet.flatten([styles.wrapper, wrapperStyle])}>
+    <View
+      style={StyleSheet.flatten([
+        styles.wrapper,
+        withMarginBottom && styles.withBorder,
+        wrapperStyle,
+      ])}
+    >
       {/* prefix icon */}
       {prefix && (
         <TouchableOpacity
@@ -178,8 +183,8 @@ export const Input: React.FC<InputProps> = ({
 export const styles = StyleSheet.create({
   wrapper: {
     position: 'relative',
-    marginBottom: 22,
   },
+  withBorder: { marginBottom: 22 },
   input: {},
   wrapperIcon: {
     position: 'absolute',

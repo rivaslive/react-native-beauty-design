@@ -110,12 +110,14 @@ interface ThemeContextProps extends ThemeProps {
   setTheme?: (newTheme: OptionalThemeProps) => void;
   width: number;
   scrollOffsetY: Animated.Value;
+  onScroll: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextProps>({
   ...initialValue,
   width,
   scrollOffsetY: new Animated.Value(0),
+  onScroll() {},
 });
 
 interface ThemeProviderProps {
@@ -130,11 +132,21 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   disableDarkMode = false,
 }) => {
   let scrollOffsetY = React.useRef(new Animated.Value(0)).current;
+
   const [internalTheme, setInternalTheme] = useState<ThemeProps>(
     JSON.parse(JSON.stringify(initialValue))
   );
   const colorScheme = Appearance.getColorScheme();
   const isDark: boolean = disableDarkMode ? false : colorScheme === 'dark';
+
+  const onScroll = React.useMemo(
+    () =>
+      Animated.event(
+        [{ nativeEvent: { contentOffset: { y: scrollOffsetY } } }],
+        { useNativeDriver: false }
+      ),
+    [scrollOffsetY]
+  );
 
   const setTheme = React.useCallback((_theme: OptionalThemeProps) => {
     setInternalTheme((prevTheme) => {
@@ -185,8 +197,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       width,
       isDark,
       scrollOffsetY,
+      onScroll,
     };
-  }, [internalTheme, isDark, setTheme, scrollOffsetY]);
+  }, [internalTheme, isDark, setTheme, scrollOffsetY, onScroll]);
 
   return (
     <ThemeContext.Provider value={output}>{children}</ThemeContext.Provider>
