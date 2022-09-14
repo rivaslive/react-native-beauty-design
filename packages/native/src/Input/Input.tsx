@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
+  ViewStyle,
 } from 'react-native';
 
 import { Icon } from '../Icon';
@@ -50,6 +51,7 @@ export interface InputProps {
   placeholderColor?: ColorType;
   onChange?: (v: string) => void;
   style?: StyleProp<TextStyle>;
+  wrapperStyle?: StyleProp<ViewStyle>;
 
   // rest TextInput props https://reactnative.dev/docs/textinput
   [key: string]: unknown;
@@ -62,6 +64,7 @@ export const Input: React.FC<InputProps> = ({
   onChange,
   textError,
   prefix,
+  wrapperStyle,
   style = {},
   type = 'default',
   suffix = type === 'password' ? (
@@ -108,7 +111,7 @@ export const Input: React.FC<InputProps> = ({
   }, [error]);
 
   return (
-    <View style={styles.wrapper}>
+    <View style={StyleSheet.flatten([styles.wrapper, wrapperStyle])}>
       {/* prefix icon */}
       {prefix && (
         <TouchableOpacity

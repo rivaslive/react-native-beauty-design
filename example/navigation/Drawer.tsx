@@ -32,7 +32,7 @@ function CustomDrawerContent(props: any) {
 const Drawer = createDrawerNavigator();
 
 type RootDrawerType = {
-  items: { name: string; component: any }[];
+  items: { name: string; component: any; options?: any }[];
 };
 
 function RootDrawer({ items }: RootDrawerType) {
@@ -54,8 +54,13 @@ function RootDrawer({ items }: RootDrawerType) {
         drawerActiveBackgroundColor: '#4a8cff',
       }}
     >
-      {items.map(({ name, component }, i) => (
-        <Drawer.Screen name={name} key={`key-${i}`} component={component} />
+      {items.map(({ name, component, options }, i) => (
+        <Drawer.Screen
+          name={name}
+          key={`key-${i}`}
+          component={component}
+          options={options}
+        />
       ))}
     </Drawer.Navigator>
   );

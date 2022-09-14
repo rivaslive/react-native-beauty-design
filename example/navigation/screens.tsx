@@ -21,6 +21,7 @@ import BadgeScreen from '../screens/Badges';
 import SelectScreen from '../screens/Select';
 import RadioScreen from '../screens/Radio';
 import SwitchScreen from '../screens/Switch';
+import HeaderScreen from '../screens/Header';
 // import MessageScreen from '../screens/Message';
 // import ModalScreen from '../screens/Modal';
 // import PopConfirmScreen from '../screens/PopConfirm';
@@ -87,6 +88,11 @@ export const itemsDrawer = [
   //   name: 'Collapse',
   //   component: CollapseScreen,
   // },
+  {
+    name: 'Header',
+    options: { headerShown: false },
+    component: HeaderScreen,
+  },
   // {
   //   name: 'Tabs',
   //   component: TabScreen,

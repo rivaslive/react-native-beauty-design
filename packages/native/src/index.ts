@@ -28,6 +28,9 @@ export * from './Checkbox';
 // Form export
 export * from './Form';
 
+// Header export
+export * from './Header';
+
 // Icons
 export * from './Icon';
 export { default as getIconType } from './utils/getIconType';
@@ -38,7 +41,7 @@ export * from './Input';
 // Image export
 export * from './Image';
 
-// Radio export
+// Header export
 export * from './Radio';
 
 // Select export

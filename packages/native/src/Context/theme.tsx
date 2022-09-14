@@ -1,4 +1,4 @@
-import { Appearance, Dimensions } from 'react-native';
+import { Animated, Appearance, Dimensions } from 'react-native';
 import { scale } from 'react-native-size-matters';
 import React, { createContext, useEffect, useState } from 'react';
 import {
@@ -109,11 +109,13 @@ type OptionalThemeProps = Omit<
 interface ThemeContextProps extends ThemeProps {
   setTheme?: (newTheme: OptionalThemeProps) => void;
   width: number;
+  scrollOffsetY: Animated.Value;
 }
 
 const ThemeContext = createContext<ThemeContextProps>({
   ...initialValue,
   width,
+  scrollOffsetY: new Animated.Value(0),
 });
 
 interface ThemeProviderProps {
@@ -127,6 +129,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   theme,
   disableDarkMode = false,
 }) => {
+  let scrollOffsetY = React.useRef(new Animated.Value(0)).current;
   const [internalTheme, setInternalTheme] = useState<ThemeProps>(
     JSON.parse(JSON.stringify(initialValue))
   );
@@ -175,17 +178,18 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     }));
   }, [isDark, theme]);
 
+  const output = React.useMemo(() => {
+    return {
+      ...internalTheme,
+      setTheme,
+      width,
+      isDark,
+      scrollOffsetY,
+    };
+  }, [internalTheme, isDark, setTheme, scrollOffsetY]);
+
   return (
-    <ThemeContext.Provider
-      value={{
-        ...internalTheme,
-        setTheme,
-        width,
-        isDark,
-      }}
-    >
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={output}>{children}</ThemeContext.Provider>
   );
 };
 
