@@ -19,6 +19,8 @@ export type ImageProps = Omit<RNImageProps, 'source'> & {
   onPress?(): void;
   onLongPress?(): void;
   source: ImageSrcType;
+  height?: number | string;
+  width?: number | string;
   ImageComponent?: typeof React.Component;
   PlaceholderContent?: React.ReactElement;
   containerStyle?: StyleProp<ViewStyle>;
@@ -43,6 +45,8 @@ export const Image: React.FC<ImageProps> = ({
   onLoad,
   children,
   transition,
+  height,
+  width,
   transitionDuration = 360,
   ...props
 }) => {
@@ -79,7 +83,11 @@ export const Image: React.FC<ImageProps> = ({
         {...{ transition, transitionDuration }}
         source={sourceResolve}
         onLoad={onLoadHandler}
-        style={StyleSheet.flatten([StyleSheet.absoluteFill, style])}
+        style={StyleSheet.flatten([
+          StyleSheet.absoluteFill,
+          { width, height },
+          style,
+        ])}
       />
       {/* Transition placeholder */}
       <Animated.View
@@ -95,6 +103,7 @@ export const Image: React.FC<ImageProps> = ({
       >
         <View
           style={StyleSheet.flatten([
+            { width, height },
             style,
             styles.placeholder,
             placeholderStyle,
@@ -106,7 +115,14 @@ export const Image: React.FC<ImageProps> = ({
         </View>
       </Animated.View>
       {/* Children for Image */}
-      <View style={childrenContainerStyle ?? style}>{children}</View>
+      <View
+        style={StyleSheet.flatten([
+          { width, height },
+          childrenContainerStyle ?? style,
+        ])}
+      >
+        {children}
+      </View>
     </Component>
   );
 };

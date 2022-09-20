@@ -1,112 +1,138 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, Image } from 'react-native';
 import {
   Card,
-  StoreCard,
-  ProductCard,
   Title,
-  ShoppingCard,
+  useTheme,
+  Text,
+  Button,
+  Avatar,
 } from 'react-native-beauty-design';
 
+const ExpandContent = () => (
+  <View>
+    <Title marginBottom={0} level={3}>
+      Title here
+    </Title>
+    <Text>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid
+      assumenda blanditiis distinctio dolore dolorem eum hic illum ipsa laborum
+      nam nemo nesciunt optio, quasi quo sequi similique soluta tempora!
+    </Text>
+    <Button style={{ marginVertical: 20 }}>Start up</Button>
+  </View>
+);
+
 const CardScreen = () => {
+  const { borderRadius } = useTheme();
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <View>
-          <Card
-            image="https://img.bekiafit.com/articulos/portada/67000/67260.jpg"
-            subTitle="NEW"
-            title='Chicken Pizza 12"'
-            summary="Delicious charcoal burgers"
-          />
-          <Card
-            image="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/burger-best-seller-ad-template-design-8627a123f54b4dcdab1789d3c47007e9_screen.jpg?ts=1586668777"
-            subTitle="NEW"
-            title='Chicken Pizza 12"'
-          />
-        </View>
-        <View style={styles.marginTop}>
-          <Title level={2}>Store Cards</Title>
-          <StoreCard
-            image="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/burger-best-seller-ad-template-design-8627a123f54b4dcdab1789d3c47007e9_screen.jpg?ts=1586668777"
-            feature="NEW ITEM"
-            tag="Tag para mostrar"
-            title="BURGER HAUS"
-            summary="Summary for show"
-          />
-          <StoreCard
-            image="https://img.bekiafit.com/articulos/portada/67000/67260.jpg"
-            title="Chicken Pizza"
-            tag="Tag for show"
-            summary="Summary for show"
-          />
-        </View>
-        <View style={styles.marginTop}>
-          <Title level={2}>Product Cards</Title>
-          <ProductCard
-            withBorderBottom
-            image="https://www.hola.com/imagenes/cocina/noticiaslibros/20210528190401/dia-internacional-hamburguesa-recetas-2021/0-957-454/dia-hamburguesa-m.jpg"
-            feature="NEW ITEM"
-            title="BURGER HAUS"
-            brand="RivasLive"
-            price="$30.00"
-            beforePrice="$15.00"
-            rating={4.5}
-          />
-          <ProductCard
-            withBorderBottom
-            image="https://es.beyondtype2.org/wp-content/uploads/2019/05/BT2-THUMB-RECIPES-CHICKEN-PARM-PIZZA.png"
-            title="Chicken Pizza lorem ipsum generate extra title here, maximum"
-            brand="Nike"
-            price="$10.00"
-          />
-          <ProductCard
-            image="https://www.hola.com/imagenes/cocina/noticiaslibros/20210528190401/dia-internacional-hamburguesa-recetas-2021/0-957-454/dia-hamburguesa-m.jpg"
-            title="BURGER HAUS"
-            brand="RivasLive"
-            beforePrice="$5.00"
-            rating={false}
-            price="$3.00"
-          />
-        </View>
-        <View style={styles.marginTop}>
-          <Title level={2}>Shopping carts</Title>
-          <Title level={4}>Default Shopping Card</Title>
-          <ShoppingCard
-            withBorderBottom={false}
-            image="https://www.hola.com/imagenes/cocina/noticiaslibros/20210528190401/dia-internacional-hamburguesa-recetas-2021/0-957-454/dia-hamburguesa-m.jpg"
-            title="BURGER HAUS"
-            beforePrice="$5.00"
-            bottomText="In stock"
-            price="$3.00"
-          />
-          <Title level={4}>With max value</Title>
-          <ShoppingCard
-            withBorderBottom={false}
-            stockText="In stock"
-            image="https://www.hola.com/imagenes/cocina/noticiaslibros/20210528190401/dia-internacional-hamburguesa-recetas-2021/0-957-454/dia-hamburguesa-m.jpg"
-            title="BURGER HAUS"
-            price="$30.00"
-            beforePrice="$15.00"
-            controllerProps={{
-              max: 3,
-              maxOverflow: () => alert('Maximo'),
+        <Card isPressable style={styles.card}>
+          <Image
+            style={{ borderRadius: borderRadius.card, height: 150 }}
+            source={{
+              uri: 'https://i.pinimg.com/736x/8b/28/c8/8b28c857a9103b63efe150977668674a.jpg',
             }}
           />
-          <Title level={4}>With min value and bottom line</Title>
-          <ShoppingCard
-            withBorderBottom
-            stockText="In stock"
-            image="https://es.beyondtype2.org/wp-content/uploads/2019/05/BT2-THUMB-RECIPES-CHICKEN-PARM-PIZZA.png"
-            title="Chicken Pizza lorem ipsum generate extra title here, maximum"
-            price="$10.00"
-            controllerProps={{
-              minOverflow: () => alert('Minimo alcanzado'),
+        </Card>
+
+        <Card style={styles.card} expandContent={<ExpandContent />}>
+          <Card.Header isAbsolute>
+            <Title marginBottom={0} level={3}>
+              Absolute
+            </Title>
+            <Text>This is a Fox</Text>
+          </Card.Header>
+          <Card.Body>
+            <Image
+              style={{ borderRadius: borderRadius.card, height: 250 }}
+              source={{
+                uri: 'https://i.pinimg.com/736x/8b/28/c8/8b28c857a9103b63efe150977668674a.jpg',
+              }}
+            />
+          </Card.Body>
+          <Card.Footer isAbsolute>
+            <Text>This is a footer</Text>
+          </Card.Footer>
+        </Card>
+
+        <Card style={styles.card} expandContent={<ExpandContent />}>
+          <Card.Header>
+            <Title marginBottom={0} level={3}>
+              Default
+            </Title>
+            <Text>This is a Fox</Text>
+          </Card.Header>
+          <Image
+            style={{ height: 250 }}
+            source={{
+              uri: 'https://i.pinimg.com/736x/8b/28/c8/8b28c857a9103b63efe150977668674a.jpg',
             }}
           />
-          <View style={{ height: 75 }} />
-        </View>
+          <Card.Footer>
+            <Text>This is a footer</Text>
+          </Card.Footer>
+        </Card>
+
+        <Card
+          style={styles.card}
+          isPressable
+          rippleProps={{ disableRipple: false }}
+        >
+          <Card.Header>
+            <Title marginBottom={0} level={3}>
+              With Ripple
+            </Title>
+            <Text>This is a Fox</Text>
+          </Card.Header>
+          <Image
+            style={{ height: 250 }}
+            source={{
+              uri: 'https://i.pinimg.com/736x/8b/28/c8/8b28c857a9103b63efe150977668674a.jpg',
+            }}
+          />
+          <Card.Footer>
+            <Text>This is a footer</Text>
+          </Card.Footer>
+        </Card>
+
+        <Card style={styles.card}>
+          <Card.Header isAbsolute={false} style={styles.contentHead}>
+            <Avatar text="Avatar" />
+            <View style={{ marginLeft: 10 }}>
+              <Title marginBottom={0} level={3}>
+                Fox
+              </Title>
+              <Text>This is an Animal</Text>
+            </View>
+          </Card.Header>
+          <Card.Body withPadding>
+            <Text>
+              Make beautiful websites regardless of your design experience.
+            </Text>
+          </Card.Body>
+          <Card.Footer>
+            <Button type="link">Visit source code on GitHub.</Button>
+          </Card.Footer>
+        </Card>
+
+        <Card style={styles.card} withBorder>
+          <Card.Header isAbsolute={false}>
+            <Title marginBottom={0} level={3}>
+              With Border
+            </Title>
+            <Text>This is an Animal</Text>
+          </Card.Header>
+          <Card.Divider />
+          <Card.Body withPadding>
+            <Text>
+              Make beautiful websites regardless of your design experience.
+            </Text>
+          </Card.Body>
+        </Card>
       </View>
+      <View style={{ height: 75 }} />
     </ScrollView>
   );
 };
@@ -121,29 +147,13 @@ const styles = StyleSheet.create({
     padding: 10,
     height: '100%',
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-  button: {},
-  headTitle: {
-    paddingLeft: 20,
-    paddingRight: 20,
-    borderWidth: 1,
-    borderColor: 'transparent',
-    borderBottomColor: 'rgba(100, 100, 100, .3)',
-  },
-  darkView: { backgroundColor: 'rgb(0, 0, 0)', padding: 20 },
-  space: {
-    marginTop: 50,
-  },
-  cardOne: {},
-  cardContent: {
+  contentHead: {
+    flex: 1,
+    alignItems: 'center',
     flexDirection: 'row',
   },
-  marginTop: {
-    marginTop: 20,
+  card: {
+    marginBottom: 20,
   },
 });
 

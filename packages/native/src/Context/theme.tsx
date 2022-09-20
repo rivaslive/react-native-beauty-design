@@ -11,7 +11,7 @@ import {
 } from './fonts';
 import { ColorType, colorsDark, colorsLight } from './colors';
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 interface ZIndexType {
   1: number;
@@ -28,6 +28,7 @@ interface SizingType {
   xs: number;
   sm: number;
   md: number;
+  card: number;
   lg: number;
   xl: number;
   xxl: number;
@@ -73,6 +74,7 @@ const initialValue: ThemeProps = {
     xs: scale(2),
     sm: scale(4),
     md: scale(5),
+    card: scale(20),
     lg: scale(8),
     xl: scale(12),
     xxl: scale(14),
@@ -83,6 +85,7 @@ const initialValue: ThemeProps = {
     xs: scale(7),
     sm: scale(10),
     md: scale(12),
+    card: scale(15),
     lg: scale(14),
     xl: scale(20),
     xxl: scale(24),
@@ -93,6 +96,7 @@ const initialValue: ThemeProps = {
     xs: scale(7),
     sm: scale(10),
     md: scale(12),
+    card: scale(20),
     lg: scale(14),
     xl: scale(20),
     xxl: scale(24),
@@ -109,6 +113,7 @@ type OptionalThemeProps = Omit<
 interface ThemeContextProps extends ThemeProps {
   setTheme?: (newTheme: OptionalThemeProps) => void;
   width: number;
+  height: number;
   scrollOffsetY: Animated.Value;
   onScroll: () => void;
 }
@@ -116,6 +121,7 @@ interface ThemeContextProps extends ThemeProps {
 const ThemeContext = createContext<ThemeContextProps>({
   ...initialValue,
   width,
+  height,
   scrollOffsetY: new Animated.Value(0),
   onScroll() {},
 });
@@ -195,6 +201,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       ...internalTheme,
       setTheme,
       width,
+      height,
       isDark,
       scrollOffsetY,
       onScroll,

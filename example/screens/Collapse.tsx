@@ -5,7 +5,6 @@ import {
   Text,
   InputScrollView,
   Collapse,
-  Avatar,
   Icon,
   Space,
 } from 'react-native-beauty-design';
@@ -17,209 +16,286 @@ const CollapseScreen = () => {
         <View>
           <Title level={3}>Collapse</Title>
           <Collapse>
-            <Collapse.Panel header="Panel 1" id="1">
+            <Collapse.Panel title="Panel 1" id="1">
               Este es el contenido
             </Collapse.Panel>
-            <Collapse.Panel header="Personal Info" id="2">
+            <Collapse.Panel title="Personal Info" id="2">
               <View>
                 <Title level={3}>Hi Kevin!</Title>
-                <Avatar fullName="Kevin Rivas" />
-                <Text>This is my avatar.</Text>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+                  autem blanditiis dolore dolores, fuga laboriosam magni modi
+                  necessitatibus optio provident tempore totam. Eaque libero non
+                  provident quas quos sed veritatis!
+                </Text>
               </View>
             </Collapse.Panel>
           </Collapse>
         </View>
 
-        <View>
-          <Title level={3}>Accordion Collapse</Title>
-          <Collapse accordion>
-            <Collapse.Panel header="Panel 1" id="1">
+        <View style={styles.space}>
+          <Title level={3}>Without Accordion</Title>
+          <Collapse accordion={false}>
+            <Collapse.Panel title="Panel 1" id="1">
               Este es el contenido
             </Collapse.Panel>
-            <Collapse.Panel header="Personal Info" id="2">
+            <Collapse.Panel title="Personal Info" id="2">
               <View>
                 <Title level={3}>Hi Kevin!</Title>
-                <Avatar fullName="Kevin Rivas" />
-                <Text>This is my avatar.</Text>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Adipisci dignissimos eius nihil provident ratione sed
+                  suscipit. Animi, dolorum esse exercitationem in nam officia
+                  praesentium quisquam repellendus reprehenderit saepe tenetur
+                  voluptas!
+                </Text>
               </View>
             </Collapse.Panel>
           </Collapse>
         </View>
 
-        <View>
+        <View style={styles.space}>
+          <Title level={3}>With subtitle</Title>
+          <Collapse>
+            <Collapse.Panel
+              title="Panel 1"
+              subTitle="This is s subtitle"
+              id="1"
+            >
+              Este es el contenido
+            </Collapse.Panel>
+            <Collapse.Panel
+              title="Personal Info"
+              subTitle="This is s subtitle"
+              id="2"
+            >
+              <View>
+                <Title level={3}>Hi Kevin!</Title>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+                  autem blanditiis dolore dolores, fuga laboriosam magni modi
+                  necessitatibus optio provident tempore totam. Eaque libero non
+                  provident quas quos sed veritatis!
+                </Text>
+              </View>
+            </Collapse.Panel>
+          </Collapse>
+        </View>
+
+        <View style={styles.space}>
           <Title level={3}>Nested Collapse</Title>
-          <Collapse accordion>
-            <Collapse.Panel header="Panel 1" id="1">
-              <Collapse accordion>
-                <Collapse.Panel header="Panel 1" id="1">
+          <Collapse>
+            <Collapse.Panel title="Panel 1" id="1">
+              <Collapse accordion={false}>
+                <Collapse.Panel title="Panel 1" id="1">
                   Este es el contenido
                 </Collapse.Panel>
-                <Collapse.Panel header="Personal Info" id="2">
+                <Collapse.Panel title="Personal Info" id="2">
                   <View>
                     <Title level={3}>Hi Kevin!</Title>
-                    <Avatar fullName="Kevin Rivas" />
-                    <Text>This is my avatar.</Text>
+                    <Text>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Eius hic itaque sed. Asperiores assumenda, aut blanditiis
+                      consectetur delectus dolor doloribus exercitationem
+                      magnam, maiores numquam quia, ratione sint totam
+                      voluptatem voluptatum?
+                    </Text>
                   </View>
                 </Collapse.Panel>
               </Collapse>
             </Collapse.Panel>
-            <Collapse.Panel header="Personal Info" id="2">
+            <Collapse.Panel title="Personal Info" id="2">
               <View>
                 <Title level={3}>Hi Kevin!</Title>
-                <Avatar fullName="Kevin Rivas" />
-                <Text>This is my avatar.</Text>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Accusamus aliquam commodi, cum facere obcaecati reiciendis sit
+                  ut? Accusamus adipisci deleniti eius ipsum molestias officiis
+                  omnis optio, porro quo, rerum sapiente.
+                </Text>
               </View>
             </Collapse.Panel>
           </Collapse>
         </View>
 
-        <View>
+        <View style={styles.space}>
           <Title level={3}>Custom icon collapse</Title>
           <Collapse
             icon={<Icon type="antdesign" name="caretright" size={12} />}
           >
-            <Collapse.Panel header="Panel 1" id="1">
+            <Collapse.Panel title="Panel 1" id="1">
               Este es el contenido
             </Collapse.Panel>
-            <Collapse.Panel header="Personal Info" id="2">
+            <Collapse.Panel title="Personal Info" id="2">
               <View>
                 <Title level={3}>Hi Kevin!</Title>
-                <Avatar fullName="Kevin Rivas" />
-                <Text>This is my avatar.</Text>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Animi, architecto, dolore ea exercitationem fuga laboriosam
+                  minima nesciunt nihil placeat praesentium quasi sapiente
+                  voluptas voluptatum. Assumenda enim id minima reprehenderit
+                  voluptate?
+                </Text>
               </View>
             </Collapse.Panel>
           </Collapse>
         </View>
 
-        <View>
+        <View style={styles.space}>
           <Title level={3}>Borderless</Title>
-          <Collapse borderColor={false}>
-            <Collapse.Panel header="Panel 1" id="1">
+          <Collapse borderless>
+            <Collapse.Panel title="Panel 1" id="1">
               Este es el contenido
             </Collapse.Panel>
-            <Collapse.Panel header="Personal Info" id="2">
+            <Collapse.Panel title="Personal Info" id="2">
               <View>
                 <Title level={3}>Hi Kevin!</Title>
-                <Avatar fullName="Kevin Rivas" />
-                <Text>This is my avatar.</Text>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Adipisci animi aperiam dolores error ex ipsam, maxime odit
+                  quis rem vitae! Adipisci assumenda at deserunt dolore
+                  doloribus fugit odit soluta velit.
+                </Text>
               </View>
             </Collapse.Panel>
           </Collapse>
         </View>
 
-        <View>
+        <View style={styles.space}>
           <Title level={3}>Show Arrow</Title>
-          <Collapse borderColor={false}>
-            <Collapse.Panel header="Panel 1" id="1">
+          <Collapse borderless showArrow={false}>
+            <Collapse.Panel title="Panel 1" id="1">
               Este es el contenido
             </Collapse.Panel>
-            <Collapse.Panel showArrow={false} header="Personal Info" id="2">
+            <Collapse.Panel title="Personal Info" id="2">
               <View>
                 <Title level={3}>Hi Kevin!</Title>
-                <Avatar fullName="Kevin Rivas" />
-                <Text>This is my avatar.</Text>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
+                  dolores doloribus, ducimus earum fugiat ipsa libero nemo nobis
+                  quisquam quo sit totam, vero. Cupiditate harum iure magnam
+                  quo, tenetur voluptas!
+                </Text>
               </View>
             </Collapse.Panel>
           </Collapse>
         </View>
 
-        <View>
+        <View style={styles.space}>
           <Title level={3}>Open Keys</Title>
           <Collapse openKeys={['1']} onChange={console.log}>
-            <Collapse.Panel header="Panel 1" id="1">
+            <Collapse.Panel title="Panel 1" id="1">
               Este es el contenido
             </Collapse.Panel>
-            <Collapse.Panel header="Personal Info" id="2">
+            <Collapse.Panel title="Personal Info" id="2">
               <View>
                 <Title level={3}>Hi Kevin!</Title>
-                <Avatar fullName="Kevin Rivas" />
-                <Text>This is my avatar.</Text>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Accusamus cum dolorum eaque eos id minus natus necessitatibus
+                  omnis porro quae quam qui, recusandae rem repudiandae rerum,
+                  soluta temporibus unde veritatis?
+                </Text>
               </View>
             </Collapse.Panel>
           </Collapse>
         </View>
 
-        <View>
+        <View style={styles.space}>
           <Title level={3}>Default Open Keys</Title>
           <Collapse defaultOpenKeys={['2']} accordion>
-            <Collapse.Panel header="Panel 1" id="1">
+            <Collapse.Panel title="Panel 1" id="1">
               Este es el contenido
             </Collapse.Panel>
-            <Collapse.Panel header="Personal Info" id="2">
+            <Collapse.Panel title="Personal Info" id="2">
               <View>
                 <Title level={3}>Hi Kevin!</Title>
-                <Avatar fullName="Kevin Rivas" />
-                <Text>This is my avatar.</Text>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Accusantium ad, assumenda cumque deleniti exercitationem
+                  libero minima modi neque non optio porro qui suscipit
+                  voluptates. Animi aperiam aspernatur deserunt quis tempore?
+                </Text>
               </View>
             </Collapse.Panel>
           </Collapse>
         </View>
 
-        <View>
+        <View style={styles.space}>
           <Title level={3}>Icon Position</Title>
           <Space orientation="vertical" gutter={[0, 50]}>
             <Collapse iconPosition="left">
-              <Collapse.Panel header="Panel 1" id="1">
+              <Collapse.Panel title="Panel 1" id="1">
                 Este es el contenido
               </Collapse.Panel>
-              <Collapse.Panel header="Personal Info" id="2">
+              <Collapse.Panel title="Personal Info" id="2">
                 <View>
                   <Title level={3}>Hi Kevin!</Title>
-                  <Avatar fullName="Kevin Rivas" />
-                  <Text>This is my avatar.</Text>
+                  <Text>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Animi asperiores aspernatur at aut corporis deleniti dolore
+                    eius explicabo facilis, hic ipsum iste modi molestias
+                    mollitia perspiciatis quisquam sunt tenetur ullam.
+                  </Text>
                 </View>
               </Collapse.Panel>
             </Collapse>
             <Collapse iconPosition="right">
-              <Collapse.Panel header="Panel 1" id="1">
+              <Collapse.Panel title="Panel 1" id="1">
                 Este es el contenido
               </Collapse.Panel>
-              <Collapse.Panel header="Personal Info" id="2">
+              <Collapse.Panel title="Personal Info" id="2">
                 <View>
                   <Title level={3}>Hi Kevin!</Title>
-                  <Avatar fullName="Kevin Rivas" />
-                  <Text>This is my avatar.</Text>
+                  <Text>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Cum doloribus ducimus iste laboriosam minima natus officiis
+                    omnis quis vel veritatis? Esse ipsum optio quia quibusdam
+                    rem sequi similique, temporibus veniam?
+                  </Text>
                 </View>
               </Collapse.Panel>
             </Collapse>
           </Space>
         </View>
 
-        <View>
+        <View style={styles.space}>
           <Title level={3}>Custom background</Title>
           <Space orientation="vertical" gutter={[0, 50]}>
-            <Collapse
-              borderColor={false}
-              headerProps={{ style: { backgroundColor: 'transparent' } }}
-            >
-              <Collapse.Panel header="Panel 1" id="1">
+            <Collapse borderless headerColor="transparent">
+              <Collapse.Panel title="Panel 1" id="1">
                 Este es el contenido
               </Collapse.Panel>
-              <Collapse.Panel header="Personal Info" id="2">
+              <Collapse.Panel title="Personal Info" id="2">
                 <View>
                   <Title level={3}>Hi Kevin!</Title>
-                  <Avatar fullName="Kevin Rivas" />
-                  <Text>This is my avatar.</Text>
+                  <Text>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Eius eos, explicabo itaque laboriosam laborum neque nobis
+                    sequi! Ab et eveniet, id iusto laboriosam molestiae quasi
+                    quod sed, ut veritatis voluptatem.
+                  </Text>
                 </View>
               </Collapse.Panel>
             </Collapse>
             <Collapse
               borderColor="rgba(255, 100, 100, .8)"
-              headerProps={{
-                style: { backgroundColor: 'rgba(255, 100, 100, .8)' },
-              }}
-              contentProps={{
-                style: { backgroundColor: 'rgba(50, 50, 255, .6)' },
-              }}
+              headerColor="rgba(255, 100, 100, .8)"
+              contentColor="rgba(50, 50, 255, .6)"
             >
-              <Collapse.Panel header="Panel 1" id="1">
+              <Collapse.Panel title="Panel 1" id="1">
                 Este es el contenido
               </Collapse.Panel>
-              <Collapse.Panel header="Personal Info" id="2">
+              <Collapse.Panel title="Personal Info" id="2">
                 <View>
                   <Title level={3}>Hi Kevin!</Title>
-                  <Avatar fullName="Kevin Rivas" />
-                  <Text>This is my avatar.</Text>
+                  <Text>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Aliquam asperiores atque aut autem consequuntur debitis
+                    delectus deleniti ducimus est fuga, fugiat, laudantium
+                    magnam, modi molestiae odio quibusdam quisquam vitae
+                    voluptatibus!
+                  </Text>
                 </View>
               </Collapse.Panel>
             </Collapse>

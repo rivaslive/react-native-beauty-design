@@ -11,6 +11,7 @@ export interface TitleProps extends TextProps {
   color?: ColorType;
   font?: FontType;
   align?: AlignType;
+  marginBottom?: string | number;
   transform?: TransformType;
 }
 
@@ -21,6 +22,7 @@ export const Title: React.FC<TitleProps> = ({
   align = 'left',
   transform = 'none',
   level = 1,
+  marginBottom = stylesLevel[level].marginBottom,
   style = {},
 }) => {
   const { colors, titleFontSizes, fonts } = useTheme();
@@ -29,13 +31,13 @@ export const Title: React.FC<TitleProps> = ({
     <Text
       style={StyleSheet.flatten([
         {
+          marginBottom,
           fontSize: titleFontSizes[`level${level}`],
           fontFamily: fonts[font].fontFamily,
           fontWeight: fonts[font].fontWeight,
         },
         { textAlign: align, textTransform: transform },
         { color: colors[color] || color },
-        stylesLevel[level],
         style,
       ])}
     >

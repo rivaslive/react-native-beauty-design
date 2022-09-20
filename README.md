@@ -4,7 +4,7 @@ The objective of this project is to create a complete and advanced framework suc
 
 # Documentation
 
-[Documentation](https://www.beauty-design.app) under construction, launch scheduled for August 31, 2021.
+[Documentation](https://www.beauty-design.app) under construction, launch scheduled for November 30, 2022.
 
 ## Installation
 

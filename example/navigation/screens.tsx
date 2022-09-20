@@ -13,10 +13,10 @@ import DatePickerScreen from '../screens/DatePicker';
 import ControllerScreen from '../screens/Controller';
 import CarouselScreen from '../screens/Carousel';
 import InputScreen from '../screens/Inputs';
-// import CardScreen from '../screens/Cards';
+import CardScreen from '../screens/Cards';
 import FormScreen from '../screens/Form';
 import BadgeScreen from '../screens/Badges';
-// import CollapseScreen from '../screens/Collapse';
+import CollapseScreen from '../screens/Collapse';
 // import AlertScreen from '../screens/Alert';
 import SelectScreen from '../screens/Select';
 import RadioScreen from '../screens/Radio';
@@ -27,7 +27,6 @@ import HeaderWithRightIconScreen from '../screens/HeaderWithRightIcon';
 // import MessageScreen from '../screens/Message';
 // import ModalScreen from '../screens/Modal';
 // import PopConfirmScreen from '../screens/PopConfirm';
-// import TabScreen from '../screens/Tabs';
 
 export const itemsDrawer = [
   {
@@ -83,13 +82,17 @@ export const itemsDrawer = [
     component: BadgeScreen,
   },
   {
+    name: 'Card',
+    component: CardScreen,
+  },
+  {
     name: 'Carousel',
     component: CarouselScreen,
   },
-  // {
-  //   name: 'Collapse',
-  //   component: CollapseScreen,
-  // },
+  {
+    name: 'Collapse',
+    component: CollapseScreen,
+  },
   {
     name: 'Header',
     options: { headerShown: false },
@@ -105,10 +108,6 @@ export const itemsDrawer = [
     options: { headerShown: false },
     component: HeaderWithRightIconScreen,
   },
-  // {
-  //   name: 'Tabs',
-  //   component: TabScreen,
-  // },
   // {
   //   name: 'Alert',
   //   component: AlertScreen,

@@ -4,6 +4,7 @@ export const colorsBase = {
   success: '#17c964',
   warning: '#f5a623',
   error: '#f21361',
+  card: '#16181A',
   blue100: '#bfd8fc',
   blue200: '#98D5FD',
   blue300: '#64B8FB',
@@ -80,6 +81,7 @@ export const colorsBase = {
 
 export const colorsLight = {
   ...colorsBase,
+  card: '#ffffff',
   inputColor: '#f4f4f4',
   accents1: '#111111',
   accents2: '#333333',
@@ -91,7 +93,7 @@ export const colorsLight = {
   accents8: '#EAEAEA',
   accents9: '#F4F4F4',
   background: '#000000',
-  foreground: '#ffffff',
+  foreground: '#f4f4f4',
   text: '#333333',
   border: '#a1a1a1',
   white: '#ffffff',

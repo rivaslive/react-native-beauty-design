@@ -63,7 +63,7 @@ export type IconProps = Omit<IconButtonProps, 'color'> & {
 export const Icon: React.FC<IconProps> = ({
   type = 'material',
   name,
-  size = 24,
+  size = 18,
   color: colorProp,
   iconStyle,
   iconProps,

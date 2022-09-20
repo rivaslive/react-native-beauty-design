@@ -3,6 +3,8 @@ import { StyleSheet, View } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
 import { TextError } from '../utils/TextError';
+import { useChildren } from '../hooks/useChildren';
+import { renderChildren } from '../utils/render';
 import type { NumberStringValue, RadioGroupProps, RadioProps } from './types';
 
 export const GAP = scale(10);
@@ -24,15 +26,7 @@ export const Group: React.FC<RadioGroupProps> = ({
     React.useState<NumberStringValue>('');
   const [isError, setError] = React.useState<undefined | boolean>(false);
 
-  const children = React.useMemo(() => {
-    if (!_children) {
-      return [];
-    }
-    if (React.Children.count(_children) === 1) {
-      return [_children];
-    }
-    return _children;
-  }, [_children]);
+  const children = useChildren(_children);
 
   const onInternalChange = (val: NumberStringValue) => {
     setInternalValue(val);
@@ -65,20 +59,15 @@ export const Group: React.FC<RadioGroupProps> = ({
   return (
     <View style={styles.wrapper}>
       <View style={StyleSheet.flatten([styles.content, styles[align]])}>
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child)) {
-            return React.cloneElement<RadioProps>(child as any, {
-              isActive: internalValue === child?.props?.value,
-              activeColor: isError ? 'error' : activeColor,
-              deactiveColor: isError ? 'error' : deactiveColor,
-              size,
-              type,
-              ...(child?.props || {}),
-              onPress: onInternalChange,
-            });
-          }
-          return null;
-        })}
+        {renderChildren<RadioProps>(children, (child) => ({
+          isActive: internalValue === child?.props?.value,
+          activeColor: isError ? 'error' : activeColor,
+          deactiveColor: isError ? 'error' : deactiveColor,
+          size,
+          type,
+          ...(child?.props || {}),
+          onPress: onInternalChange,
+        }))}
       </View>
       {isError && textError && <TextError>{textError}</TextError>}
     </View>

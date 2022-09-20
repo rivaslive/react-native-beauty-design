@@ -13,6 +13,12 @@ export * from './Badge';
 // Carousel export
 export * from './Carousel';
 
+// Card export
+export * from './Card';
+
+// Collapse export
+export * from './Collapse';
+
 // Controller export
 export * from './Controller';
 

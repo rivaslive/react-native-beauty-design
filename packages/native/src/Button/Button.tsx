@@ -21,7 +21,7 @@ export type ButtonType = 'solid' | 'link' | 'flat' | 'outline';
 
 export interface ButtonProps extends TouchableOpacityProps {
   children: string | ReactNode;
-  onPress?: () => void;
+  onPress?: (event?: any) => void;
   color?: string;
   loading?: boolean;
   disabled?: boolean;
