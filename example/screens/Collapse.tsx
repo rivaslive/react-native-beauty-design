@@ -120,9 +120,7 @@ const CollapseScreen = () => {
 
         <View style={styles.space}>
           <Title level={3}>Custom icon collapse</Title>
-          <Collapse
-            icon={<Icon type="antdesign" name="caretright" size={12} />}
-          >
+          <Collapse icon={<Icon type="material" name="wb-sunny" size={18} />}>
             <Collapse.Panel title="Panel 1" id="1">
               Este es el contenido
             </Collapse.Panel>
@@ -188,6 +186,26 @@ const CollapseScreen = () => {
               Este es el contenido
             </Collapse.Panel>
             <Collapse.Panel title="Personal Info" id="2">
+              <View>
+                <Title level={3}>Hi Kevin!</Title>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Accusamus cum dolorum eaque eos id minus natus necessitatibus
+                  omnis porro quae quam qui, recusandae rem repudiandae rerum,
+                  soluta temporibus unde veritatis?
+                </Text>
+              </View>
+            </Collapse.Panel>
+          </Collapse>
+        </View>
+
+        <View style={styles.space}>
+          <Title level={3}>Disabled Panel</Title>
+          <Collapse>
+            <Collapse.Panel title="Panel 1" id="1">
+              Este es el contenido
+            </Collapse.Panel>
+            <Collapse.Panel disabled title="Personal Info" id="2">
               <View>
                 <Title level={3}>Hi Kevin!</Title>
                 <Text>

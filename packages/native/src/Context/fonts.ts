@@ -1,4 +1,3 @@
-import { scale } from 'react-native-size-matters';
 import { Platform } from 'react-native';
 
 export type FontType =
@@ -84,21 +83,21 @@ export interface TitleFontSizesProps {
 }
 
 export const fontSizes: FontSizesProps = {
-  tiny: scale(12),
-  xs: scale(14),
-  base: scale(16),
-  sm: scale(18),
-  md: scale(20),
-  lg: scale(22),
-  xl: scale(24),
+  tiny: 12,
+  xs: 14,
+  base: 16,
+  sm: 18,
+  md: 20,
+  lg: 22,
+  xl: 24,
 };
 
 export const titleFontSizes: TitleFontSizesProps = {
-  level1: scale(40),
-  level2: scale(30),
-  level3: scale(25),
-  level4: scale(20),
-  level5: scale(18),
+  level1: 30,
+  level2: 25,
+  level3: 20,
+  level4: 18,
+  level5: 16,
 };
 
 export interface LetterSpacingsProps {

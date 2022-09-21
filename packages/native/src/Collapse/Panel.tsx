@@ -8,10 +8,22 @@ import { useCollapse } from './Context';
 import { useTheme } from '../Context/theme';
 import type { CollapseInternalItemProps, CollapseItemProps } from './types';
 
-const Panel: React.FC<CollapseItemProps> = (props) => {
-  let rotate = React.useRef<Animated.Value>(new Animated.Value(0)).current;
+const animationDuration = 150;
 
-  const { colors, paddingSizes, fontSizes } = useTheme();
+const Panel: React.FC<CollapseItemProps> = (props) => {
+  let rotateAnimation = React.useRef<Animated.Value>(
+    new Animated.Value(0)
+  ).current;
+  let fadeAnimation = React.useRef<Animated.Value>(
+    new Animated.Value(0)
+  ).current;
+  let heightAnimation = React.useRef<Animated.Value>(
+    new Animated.Value(0)
+  ).current;
+
+  const [isInternalOpen, setIsInternalOpen] = React.useState<boolean>(false);
+
+  const { colors, paddingSizes, fontSizes, borderRadius } = useTheme();
 
   const {
     openKeys,
@@ -26,17 +38,19 @@ const Panel: React.FC<CollapseItemProps> = (props) => {
   } = useCollapse();
 
   const {
-    children,
-    title,
-    subTitle,
     id,
+    title,
+    disabled,
+    children,
+    subTitle,
     styleHeader,
     styleContent,
     isFirstElement,
+    isLastElement,
   } = props as CollapseInternalItemProps;
 
   const isOpen = openKeys.includes(id);
-  const spin = rotate.interpolate({
+  const spin = rotateAnimation.interpolate({
     inputRange: [0, 1],
     outputRange: ['0deg', '90deg'],
   });
@@ -52,30 +66,94 @@ const Panel: React.FC<CollapseItemProps> = (props) => {
             iconPosition === 'right' && styles.iconRight,
           ])}
         >
-          {icon}
+          {React.cloneElement(icon as any, {
+            color: disabled ? 'accents7' : 'text',
+          })}
         </Animated.View>
       );
     }
     return null;
-  }, [icon, iconPosition, showArrow, spin]);
+  }, [icon, iconPosition, showArrow, spin, disabled]);
+
+  const startInAnimation = React.useCallback(() => {
+    // height animation
+    Animated.timing(heightAnimation, {
+      toValue: 0,
+      duration: animationDuration * 3,
+      useNativeDriver: true,
+    }).start(() => {
+      Animated.timing(heightAnimation, {
+        toValue: 1,
+        duration: animationDuration * 3,
+        useNativeDriver: true,
+      }).start();
+    });
+
+    // fadeIn animation
+    Animated.timing(fadeAnimation, {
+      toValue: 1,
+      delay: animationDuration,
+      duration: animationDuration,
+      useNativeDriver: true,
+    }).start();
+
+    setIsInternalOpen(true);
+  }, [fadeAnimation, heightAnimation]);
+
+  const startOutAnimation = React.useCallback(() => {
+    // height animation
+    Animated.timing(heightAnimation, {
+      toValue: 1,
+      duration: animationDuration * 3,
+      useNativeDriver: true,
+    }).start(() => {
+      Animated.timing(heightAnimation, {
+        toValue: 0,
+        duration: animationDuration * 3,
+        useNativeDriver: true,
+      }).start();
+    });
+
+    // fadeIn animation
+    Animated.timing(fadeAnimation, {
+      toValue: 0,
+      delay: animationDuration,
+      duration: animationDuration,
+      useNativeDriver: true,
+    }).start();
+
+    setTimeout(() => {
+      setIsInternalOpen(false);
+    }, animationDuration * 0.7);
+  }, [fadeAnimation, heightAnimation]);
+
+  const onInternalChange = () => {
+    onChange(id);
+  };
 
   // effects
   React.useEffect(() => {
     // First set up animation
-    Animated.timing(rotate, {
+    Animated.timing(rotateAnimation, {
       toValue: isOpen ? 1 : 0,
       duration: 150,
       easing: Easing.linear, // Easing is an additional import from react-native
       useNativeDriver: true, // To make use of native driver for performance
     }).start();
-  }, [isOpen, rotate]);
+    if (isOpen) {
+      startInAnimation();
+    } else {
+      startOutAnimation();
+    }
+  }, [isOpen, rotateAnimation, startInAnimation, startOutAnimation]);
 
   return (
     <Animated.View>
       <Ripple
-        onPress={() => onChange(id)}
+        disabled={disabled}
         disableRipple={false}
         disableTransform={true}
+        onPress={onInternalChange}
         style={StyleSheet.flatten([
           styles.header,
           {
@@ -85,27 +163,47 @@ const Panel: React.FC<CollapseItemProps> = (props) => {
             borderColor: colors[borderColor] || borderColor,
             backgroundColor: colors[headerColor] || headerColor,
           },
+          isFirstElement && {
+            borderTopLeftRadius: borderRadius.card,
+            borderTopRightRadius: borderRadius.card,
+          },
+          isLastElement &&
+            !isOpen && {
+              borderBottomLeftRadius: borderRadius.card,
+              borderBottomRightRadius: borderRadius.card,
+            },
           styleHeader,
         ])}
       >
         <>
           {iconPosition === 'left' ? internalOpenIcon : null}
           <Animated.View style={styles.headerContent}>
-            {typeof title === 'string' ? (
-              <Text size={fontSizes.sm} fontWeight="500">
+            {typeof title === 'string' || typeof title === 'number' ? (
+              <Text
+                fontWeight="500"
+                size={fontSizes.sm}
+                color={disabled ? 'accents7' : 'text'}
+              >
                 {title}
               </Text>
             ) : (
-              title
+              React.cloneElement(title as any, {
+                color: disabled ? 'accents7' : 'text',
+              })
             )}
 
             {typeof subTitle === 'string' ? (
-              <Text size={fontSizes.xs} color="accents5">
+              <Text
+                size={fontSizes.xs}
+                color={disabled ? 'accents7' : 'accents5'}
+              >
                 {subTitle}
               </Text>
-            ) : (
-              subTitle
-            )}
+            ) : subTitle ? (
+              React.cloneElement(subTitle as any, {
+                color: disabled ? 'accents7' : 'accents5',
+              })
+            ) : null}
           </Animated.View>
           {iconPosition === 'right' ? internalOpenIcon : null}
         </>
@@ -114,16 +212,33 @@ const Panel: React.FC<CollapseItemProps> = (props) => {
         style={StyleSheet.flatten([
           styles.content,
           {
-            height: isOpen ? 'auto' : 0,
-            display: isOpen ? 'flex' : 'none',
-            paddingVertical: isOpen ? paddingSizes.card : 0,
-            paddingHorizontal: isOpen ? paddingSizes.card : 0,
+            display: !isInternalOpen ? 'none' : 'flex',
+            paddingTop: paddingSizes.card / 2,
+            paddingBottom: paddingSizes.card,
+            paddingHorizontal: paddingSizes.card,
             backgroundColor: colors[contentColor] || contentColor,
           },
+          isLastElement &&
+            isOpen && {
+              borderBottomLeftRadius: borderRadius.card,
+              borderBottomRightRadius: borderRadius.card,
+            },
           styleContent,
         ])}
       >
-        {typeof children === 'object' ? children : <Text>{children}</Text>}
+        <Animated.View
+          style={StyleSheet.flatten([
+            {
+              opacity: fadeAnimation,
+            },
+          ])}
+        >
+          {typeof children === 'string' || typeof children === 'number' ? (
+            <Text>{children}</Text>
+          ) : (
+            children
+          )}
+        </Animated.View>
       </Animated.View>
     </Animated.View>
   );

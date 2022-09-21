@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { useTheme, Header, Title, Button } from 'react-native-beauty-design';
 import { useTheme as useNavigationTheme } from '@react-navigation/native';
 import DrawerToggleButton from '@react-navigation/drawer/src/views/DrawerToggleButton';

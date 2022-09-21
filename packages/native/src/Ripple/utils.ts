@@ -6,7 +6,7 @@ export const onAnimationSet = (
     | number
     | Animated.Value
     | Animated.ValueXY
-    | Animated.AnimatedInterpolation
+    | Animated.AnimatedInterpolation<any>
     | { x: number; y: number }
 ) => {
   return Animated.timing(state, {

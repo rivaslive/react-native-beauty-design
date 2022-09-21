@@ -5,6 +5,7 @@ import Panel from './Panel';
 import { useChildren } from '../hooks/useChildren';
 
 import { Icon } from '../Icon';
+import { useTheme } from '../Context/theme';
 import { defaultContextCollapse, CollapseContext } from './Context';
 import type {
   CollapseInternalItemProps,
@@ -32,6 +33,7 @@ export const Collapse: React.FC<CollapseProps> & ComponentExport = ({
   accordion = true,
   iconPosition = 'right',
 }) => {
+  const { colors, borderRadius } = useTheme();
   const [state, setState] = React.useState<CollapseContextProps>(
     defaultContextCollapse
   );
@@ -111,13 +113,22 @@ export const Collapse: React.FC<CollapseProps> & ComponentExport = ({
         borderColor,
       }}
     >
-      <View style={style}>
+      <View
+        style={StyleSheet.flatten([
+          {
+            borderRadius: borderRadius.card,
+            backgroundColor: colors[contentColor] || contentColor,
+          },
+          style,
+        ])}
+      >
         {React.Children.map(children, (child, index) => {
           if (React.isValidElement(child)) {
             return (
               <Animated.View>
                 {React.cloneElement<CollapseInternalItemProps>(child as any, {
                   isFirstElement: index === 0,
+                  isLastElement: index === children?.length - 1,
                   id: child?.props?.id ?? index,
                 })}
               </Animated.View>
@@ -131,5 +142,3 @@ export const Collapse: React.FC<CollapseProps> & ComponentExport = ({
 };
 
 Collapse.Panel = Panel;
-
-const styles = StyleSheet.create({});

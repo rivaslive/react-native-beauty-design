@@ -9,7 +9,7 @@ const XSMAX_HEIGHT = 896;
 const { height, width } = Dimensions.get('window');
 
 export const isIPhoneX = () =>
-  Platform.OS === 'ios' && !Platform.isPad && !Platform.isTVOS
+  Platform.OS === 'ios' && !Platform.isPad && !Platform.isTV
     ? (width === X_WIDTH && height === X_HEIGHT) ||
       (width === XSMAX_WIDTH && height === XSMAX_HEIGHT)
     : false;
@@ -32,7 +32,7 @@ export function getDefaultHeaderHeight(
   const isLandscape = layout.width > layout.height;
 
   if (Platform.OS === 'ios') {
-    if (Platform.isPad || Platform.isTVOS) {
+    if (Platform.isPad || Platform.isTV) {
       if (modalPresentation) {
         headerHeight = 56;
       } else {

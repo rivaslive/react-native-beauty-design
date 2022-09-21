@@ -34,14 +34,16 @@ export interface CollapseContextProps {
 }
 
 export type CollapseItemProps = {
-  children?: ReactNode;
-  title: ReactNode;
-  subTitle?: ReactNode;
   id?: KeyType;
+  title: ReactNode;
+  disabled?: boolean;
+  children?: ReactNode;
+  subTitle?: ReactNode;
   styleHeader?: StyleProp<ViewStyle>;
   styleContent?: StyleProp<ViewStyle>;
 };
 
 export type CollapseInternalItemProps = CollapseItemProps & {
   isFirstElement?: boolean;
+  isLastElement?: boolean;
 };
