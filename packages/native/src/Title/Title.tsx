@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, TextProps, StyleSheet } from 'react-native';
 
-import { useTheme } from '../Context/theme';
-import type { FontType } from '../Context/fonts';
-import type { ColorType } from '../Context/colors';
+import { useTheme } from '../Context/theme/context';
+import type { FontType } from '../Context/theme/fonts';
+import type { ColorType } from '../Context/theme/colors';
 import type { AlignType, LevelType, TransformType } from '../@types/typography';
 
 export interface TitleProps extends TextProps {

@@ -1,41 +1,11 @@
-import React, { ReactNode } from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  ViewStyle,
-  Text,
-  TextProps,
-  ActivityIndicator,
-  View,
-} from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, ActivityIndicator, View } from 'react-native';
 
-import type { ColorType } from '../Context/colors';
-
-import { useTheme } from '../Context/theme';
+import { Ripple } from '../Ripple';
+import { useTheme } from '../Context/theme/context';
 import { getColorForBackground, getOpacity } from '../utils';
 
-export type ButtonSize = 'small' | 'middle' | 'large' | 'xLarge';
-export type ButtonType = 'solid' | 'link' | 'flat' | 'outline';
-
-export interface ButtonProps extends TouchableOpacityProps {
-  children: string | ReactNode;
-  onPress?: (event?: any) => void;
-  color?: string;
-  loading?: boolean;
-  disabled?: boolean;
-  shadow?: boolean;
-  textColor?: ColorType;
-  size?: ButtonSize;
-  icon?: ReactNode;
-  borderRadius?: number;
-  type?: ButtonType;
-  shape?: 'circle' | 'round';
-  style?: StyleProp<ViewStyle>;
-  styleInternal?: StyleProp<ViewStyle>;
-  textProps?: Omit<TextProps, 'children'>;
-}
+import type { ButtonProps } from './types';
 
 export const Button: React.FC<ButtonProps> = ({
   children,
@@ -43,24 +13,34 @@ export const Button: React.FC<ButtonProps> = ({
   textColor,
   disabled,
   loading,
+  style,
+  textStyle,
+  contentStyle,
+  disableTransform,
+  disableRipple,
   shadow,
+  textAlign = 'center',
+  Component = Ripple,
   size = 'middle',
   color = 'primary',
   type = 'solid',
   shape = 'round',
-  styleInternal = {},
   textProps = {},
-  style = {},
   ...rest
 }) => {
-  const { colors, borderRadius, isDark, fonts, fontSizes } = useTheme();
+  const { colors, borderRadius, isDark, fonts, fontSizes, activeOpacity } =
+    useTheme();
 
   const isSolid = type === 'solid';
   const internalColor = colors[color] || color;
   const colorText = textColor || getColorForBackground(internalColor);
 
   return (
-    <TouchableOpacity
+    <Component
+      disabled={disabled}
+      disableRipple={disabled || disableRipple}
+      activeOpacity={activeOpacity}
+      disableTransform={disabled || disableTransform}
       onPress={loading || disabled ? undefined : onPress}
       {...rest}
       style={StyleSheet.flatten([
@@ -96,29 +76,13 @@ export const Button: React.FC<ButtonProps> = ({
         style,
       ])}
     >
-      <View style={StyleSheet.flatten([styles.button, styleInternal])}>
-        <Text
-          {...textProps}
-          style={StyleSheet.flatten([
-            fonts.bold,
-            {
-              fontSize: fontSizes.base,
-              color: !isSolid ? internalColor : colors[colorText] || colorText,
-            },
-            type === 'flat' && {
-              color: colors[textColor] || internalColor,
-            },
-            disabled &&
-              !isSolid && {
-                color: colors.accents5,
-              },
-            textProps?.style,
-          ])}
-        >
-          {children}
-          {loading ? ' ' : ''}
-        </Text>
-
+      <View
+        style={StyleSheet.flatten([
+          styles.button,
+          styles[`text_${textAlign}`],
+          contentStyle,
+        ])}
+      >
         {loading && (
           <ActivityIndicator
             style={styles.loading}
@@ -130,8 +94,29 @@ export const Button: React.FC<ButtonProps> = ({
             }
           />
         )}
+        <Text
+          {...textProps}
+          style={StyleSheet.flatten([
+            fonts.bold,
+            {
+              textAlign,
+              fontSize: fontSizes.base,
+              color: !isSolid ? internalColor : colors[colorText] || colorText,
+            },
+            type === 'flat' && {
+              color: colors[textColor] || internalColor,
+            },
+            disabled &&
+              !isSolid && {
+                color: colors.accents5,
+              },
+            textStyle,
+          ])}
+        >
+          {children}
+        </Text>
       </View>
-    </TouchableOpacity>
+    </Component>
   );
 };
 
@@ -140,9 +125,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  text_left: {
+    justifyContent: 'flex-start',
+  },
+  text_center: {
+    justifyContent: 'center',
+  },
+  text_right: {
+    justifyContent: 'flex-end',
+  },
   loading: {
     lineHeight: 0,
     paddingTop: 2,
+    marginRight: 5,
   },
   shadow: {
     shadowOffset: {

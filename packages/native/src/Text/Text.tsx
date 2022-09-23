@@ -1,57 +1,20 @@
 import React, { FC, useState } from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  Text as TextNative,
-  TextStyle,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { StyleSheet, Text as TextNative, View } from 'react-native';
 
-import type { AlignType } from '../@types/typography';
-import type { ColorType } from '../Context/colors';
-import type { FontSizesProps } from '../Context/fonts';
-
-import { ButtonProps, Button } from '../Button';
-import { useTheme } from '../Context/theme';
-
-export interface TextProps {
-  children?: any;
-  color?: ColorType;
-  lines?: number;
-  readMore?: boolean;
-  textReadMore?: string;
-  textReadLess?: string;
-  fontWeight?:
-    | 'normal'
-    | 'bold'
-    | '100'
-    | '200'
-    | '300'
-    | '400'
-    | '500'
-    | '600'
-    | '700'
-    | '800'
-    | '900';
-  size?: keyof FontSizesProps | number;
-  lineHeight?: keyof FontSizesProps | number;
-  italic?: boolean;
-  underline?: boolean;
-  bold?: boolean;
-  align?: AlignType;
-  style?: StyleProp<TextStyle>;
-  containerStyle?: StyleProp<ViewStyle>;
-  readMoreButtonProps?: Partial<ButtonProps>;
-
-  [key: string]: unknown;
-}
+import { Button } from '../Button';
+import { useTheme } from '../Context/theme/context';
+import type { TextProps } from './types';
 
 export const Text: FC<TextProps> = ({
   children,
   lines,
   lineHeight,
   fontWeight,
+  margin,
+  marginTop,
+  marginBottom,
+  marginVertical,
+  marginHorizontal,
   size = 'base',
   color = 'text',
   readMore = false,
@@ -82,6 +45,11 @@ export const Text: FC<TextProps> = ({
         numberOfLines={showMore ? 0 : lines}
         style={StyleSheet.flatten([
           {
+            margin,
+            marginTop,
+            marginBottom,
+            marginVertical,
+            marginHorizontal,
             fontFamily: fonts[font].fontFamily,
             fontWeight: fontWeight || fonts[font].fontWeight,
             textAlign: align,

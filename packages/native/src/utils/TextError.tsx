@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 
 export const TextError: React.FC<{ children: string }> = ({ children }) => {
   const { colors } = useTheme();

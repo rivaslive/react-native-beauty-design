@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 import { getOpacity } from '../utils/colors';
 import { useCardProvider } from './Context';
 

@@ -25,3 +25,8 @@ export const getTextForAvatar = (
 
   return out;
 };
+
+export const getRandomId = (prefix = 'idx') => {
+  const random = Date.now() + Math.random().toString().replace('.', '-');
+  return `${prefix}-${random}`;
+};

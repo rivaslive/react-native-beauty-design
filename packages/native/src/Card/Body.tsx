@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 import { useCardProvider } from './Context';
 import type { CardBodyProps } from './types';
 

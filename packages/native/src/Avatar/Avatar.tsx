@@ -7,10 +7,11 @@ import {
   Text,
   Image as ImageRN,
   StyleProp,
-  TextStyle, View
-} from "react-native";
+  TextStyle,
+  View,
+} from 'react-native';
 import { IconObject } from '../Icon';
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 import { ImageProps, Image } from '../Image';
 import { ImageSrcType } from '../@types/image';
 import {

@@ -1,7 +1,7 @@
 import React, { Children, FC, useEffect, useRef } from 'react';
 import { View, StyleSheet, ScrollView, ScrollViewProps } from 'react-native';
 
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 
 export interface CarouselProps {
   children?: JSX.Element[] | JSX.Element;

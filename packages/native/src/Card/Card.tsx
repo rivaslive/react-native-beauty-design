@@ -16,7 +16,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Divider from './Divider';
 import { Ripple } from '../Ripple';
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 import BaseComponent from './Base';
@@ -42,7 +42,9 @@ const CardRender: React.FC<CardProps> = React.memo(
     borderWidth = 1,
     withBorder = false,
     background = 'card',
-    rippleProps = {},
+    rippleProps = {
+      disableRipple: true,
+    },
     style = {},
     ...restProps
   }) => {

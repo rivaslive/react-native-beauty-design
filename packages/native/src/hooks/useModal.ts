@@ -2,24 +2,28 @@ import { useCallback, useState } from 'react';
 
 type VoidFunc = () => void;
 
-type UseModalType = [boolean, VoidFunc, { open: VoidFunc; close: VoidFunc }];
+export type UseModalType = [
+  boolean,
+  VoidFunc,
+  { onVisible: VoidFunc; onHidden: VoidFunc }
+];
 
 export default function useModal(initialState = false): UseModalType {
   // State
-  const [isOpen, setIsOpen] = useState<boolean>(initialState);
+  const [visible, setVisible] = useState<boolean>(initialState);
 
   // Handlers
-  const open = useCallback(() => {
-    setIsOpen(true);
+  const onVisible = useCallback(() => {
+    setVisible(true);
   }, []);
 
-  const close = useCallback(() => {
-    setIsOpen(false);
+  const onHidden = useCallback(() => {
+    setVisible(false);
   }, []);
 
-  const toggle = useCallback(() => {
-    setIsOpen((s) => !s);
+  const onToggle = useCallback(() => {
+    setVisible((s) => !s);
   }, []);
 
-  return [isOpen, toggle, { close, open }];
+  return [visible, onToggle, { onVisible, onHidden }];
 }

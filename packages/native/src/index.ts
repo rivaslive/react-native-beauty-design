@@ -1,3 +1,5 @@
+import useModal from './hooks/useModal';
+
 // Alert export
 export * from './Alert';
 
@@ -16,6 +18,9 @@ export * from './Carousel';
 // Card export
 export * from './Card';
 
+// Checkbox export
+export * from './Checkbox';
+
 // Collapse export
 export * from './Collapse';
 
@@ -23,13 +28,10 @@ export * from './Collapse';
 export * from './Controller';
 
 // Context export
-export * from './Context/theme';
+export * from './Context';
 
 // DatePicker export
 export * from './DatePicker';
-
-// Checkbox export
-export * from './Checkbox';
 
 // Form export
 export * from './Form';
@@ -47,8 +49,17 @@ export * from './Input';
 // Image export
 export * from './Image';
 
-// Header export
+// Modal export
+export * from './Modal';
+
+// PopConfirm export
+export * from './PopConfim';
+
+// Radio export
 export * from './Radio';
+
+// Ripple export
+export * from './Ripple';
 
 // Select export
 export * from './Select';
@@ -70,3 +81,6 @@ export * from './utils/inputScrollView';
 
 // Colors utilities
 export * from './utils/colors';
+
+// useModal
+export { useModal };

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Animated, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 import { getOpacity } from '../utils/colors';
 import type { CardFooterProps } from './types';
 import { useCardProvider } from './Context';

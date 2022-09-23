@@ -1,10 +1,9 @@
 import React from 'react';
 import { scale } from 'react-native-size-matters';
-import { useSafeAreaFrame } from 'react-native-safe-area-context';
 import { Animated, Platform, StyleSheet, View, ViewStyle } from 'react-native';
 
-import { useTheme } from '../Context/theme';
-import { getDefaultHeaderHeight, StatusBarHeight } from '../utils/header';
+import { useTheme } from '../Context/theme/context';
+import useHeaderHeight from '../hooks/useHeaderHeight';
 import type { HeaderProps } from './types';
 
 const defaultTitlePosition = Platform.select<'center' | 'left'>({
@@ -22,22 +21,11 @@ export const Header: React.FC<HeaderProps> = ({
   background = 'foreground',
   backgroundSticky = background,
 }) => {
-  const frame = useSafeAreaFrame();
   const { scrollOffsetY, width, colors, zIndices } = useTheme();
   const [fadeInOpacity] = React.useState(new Animated.Value(0));
   const [opacityNumber, setOpacityNumber] = React.useState(0);
 
-  const propsHeight = {
-    layout: frame,
-    modal: false,
-    headerStatusBarHeight: StatusBarHeight,
-  };
-
-  const defaultHeight = getDefaultHeaderHeight(
-    propsHeight.layout,
-    propsHeight.modal,
-    propsHeight.headerStatusBarHeight
-  );
+  const defaultHeight = useHeaderHeight();
 
   const { height = defaultHeight, ...restStyle } = StyleSheet.flatten([
     defaultHeight,

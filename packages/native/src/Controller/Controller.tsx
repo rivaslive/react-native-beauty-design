@@ -5,9 +5,9 @@ import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { Button } from '../Button';
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 import { TextError } from '../utils/TextError';
-import type { ColorType } from '../Context/colors';
+import type { ColorType } from '../Context/theme/colors';
 
 export interface ControllerProps {
   value?: number;
@@ -102,15 +102,13 @@ export const Controller: React.FC<ControllerProps> = ({
             type="link"
             color="black"
             onPress={onPrev}
-            styleInternal={styles.button}
-            textProps={{
-              style: StyleSheet.flatten([
-                {
-                  color: colors.accents3,
-                },
-                styles.icon,
-              ]),
-            }}
+            contentStyle={styles.button}
+            textStyle={StyleSheet.flatten([
+              {
+                color: colors.accents3,
+              },
+              styles.icon,
+            ])}
           >
             <Icon
               size={18}
@@ -133,15 +131,13 @@ export const Controller: React.FC<ControllerProps> = ({
             type="link"
             color="black"
             onPress={onAdd}
-            styleInternal={styles.button}
-            textProps={{
-              style: StyleSheet.flatten([
-                {
-                  color: colors.accents3,
-                },
-                styles.icon,
-              ]),
-            }}
+            contentStyle={styles.button}
+            textStyle={StyleSheet.flatten([
+              {
+                color: colors.accents3,
+              },
+              styles.icon,
+            ])}
           >
             <Icon
               size={18}

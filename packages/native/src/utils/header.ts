@@ -8,16 +8,20 @@ const XSMAX_HEIGHT = 896;
 
 const { height, width } = Dimensions.get('window');
 
-export const isIPhoneX = () =>
-  Platform.OS === 'ios' && !Platform.isPad && !Platform.isTV
-    ? (width === X_WIDTH && height === X_HEIGHT) ||
+export const isIPhoneX = () => {
+  if (Platform.OS === 'ios' && !Platform.isPad && !Platform.isTV) {
+    return (
+      (width === X_WIDTH && height === X_HEIGHT) ||
       (width === XSMAX_WIDTH && height === XSMAX_HEIGHT)
-    : false;
+    );
+  }
+  return false;
+};
 
 export const StatusBarHeight = Platform.select({
   ios: isIPhoneX() ? 44 : 20,
   android: StatusBar.currentHeight,
-  default: 0,
+  default: 20,
 });
 
 export type LayoutType = { width: number; height: number };

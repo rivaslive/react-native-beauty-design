@@ -25,3 +25,13 @@ export function renderChildren<T = any>(
     return null;
   });
 }
+
+export function isValidChild(children: React.ReactNode) {
+  return !(
+    typeof children === 'string' ||
+    typeof children === 'number' ||
+    typeof children === 'bigint' ||
+    typeof children === 'symbol' ||
+    typeof children === 'boolean'
+  );
+}

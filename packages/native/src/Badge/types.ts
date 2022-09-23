@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ViewStyle } from 'react-native';
 import type { SizeType } from '../@types/input';
-import type { ColorType } from '../Context/colors';
+import type { ColorType } from '../Context/theme/colors';
 
 export type BadgeVariant = 'default' | 'flat' | 'dot' | 'bordered';
 export type BadgeType = 'rounded' | 'square';
@@ -14,6 +14,8 @@ export type BadgePlacements =
 export interface BadgeProps {
   content?: number | string;
   size?: SizeType;
+  isPressable?: boolean;
+  onPress?: (e: any) => void;
   bold?: boolean;
   disableOutline?: boolean;
   type?: BadgeType;

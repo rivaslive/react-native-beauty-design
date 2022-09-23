@@ -14,7 +14,7 @@ import {
 
 import { onAnimationSet } from './utils';
 import { styles, radius } from './styles';
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 import type { RippleProps, StateType } from './type';
 
 export const Ripple: React.FC<RippleProps> = ({
@@ -24,8 +24,8 @@ export const Ripple: React.FC<RippleProps> = ({
   onLongPress,
   onLayout: onLayoutProp,
   disableTransform,
-  disableRipple = true,
-  rippleColor = 'foreground',
+  disableRipple = false,
+  rippleColor = 'hover',
   rippleOpacity = 0.3,
   rippleDuration = 350,
   rippleSize = 0,
@@ -154,6 +154,7 @@ export const Ripple: React.FC<RippleProps> = ({
             outputRange: [rippleOpacity, 0],
           })
         : rippleOpacity,
+      borderRadius: R / radius,
     };
 
     return <Animated.View style={[styles.ripple, rippleStyle]} key={_unique} />;

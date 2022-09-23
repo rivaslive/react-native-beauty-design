@@ -3,7 +3,8 @@ import { Animated, StyleSheet, View } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
 import { Text } from '../Text';
-import { useTheme } from '../Context/theme';
+import { Ripple } from '../Ripple';
+import { useTheme } from '../Context/theme/context';
 import { getOpacity } from '../utils';
 
 import type { BadgeProps } from './types';
@@ -24,6 +25,8 @@ export const Badge: React.FC<BadgeProps> = ({
   enableShadow,
   children,
   childrenStyle,
+  onPress,
+  isPressable = !!onPress,
   placement = 'top-right',
   bold = true,
   size = children ? 'small' : 'middle',
@@ -65,8 +68,18 @@ export const Badge: React.FC<BadgeProps> = ({
     return backgroundColor;
   }, [isBordered, disableOutline, isFlat, backgroundColor, colors, background]);
 
+  const Component = React.useMemo<any>(() => {
+    if (isPressable) {
+      return Ripple;
+    }
+    return View;
+  }, [isPressable]);
+
   return (
-    <View style={StyleSheet.flatten([styles.wrapper, wrapperStyle])}>
+    <Component
+      onPress={onPress}
+      style={StyleSheet.flatten([styles.wrapper, wrapperStyle])}
+    >
       {isInvisible ? null : (
         <Animated.View
           style={StyleSheet.flatten([
@@ -108,7 +121,7 @@ export const Badge: React.FC<BadgeProps> = ({
       >
         {children}
       </View>
-    </View>
+    </Component>
   );
 };
 

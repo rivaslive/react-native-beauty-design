@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { getOpacity } from '../utils';
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Animated, TouchableOpacity, View } from 'react-native';
 
-import { useTheme } from '../Context/theme';
+import { useTheme } from '../Context/theme/context';
 import { TextError } from '../utils/TextError';
 import type { SwitchProps } from './types';
 import { scale } from 'react-native-size-matters';

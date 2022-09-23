@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
-import type { ColorType } from '../Context/colors';
+import type { ColorType } from '../Context/theme/colors';
 
 export type KeyType = string | number;
 export type IconPosition = 'right' | 'left';
