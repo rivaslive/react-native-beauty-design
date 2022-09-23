@@ -17,7 +17,10 @@ const CollapseScreen = () => {
           <Title level={3}>Collapse</Title>
           <Collapse>
             <Collapse.Panel title="Panel 1" id="1">
-              Este es el contenido
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
+              eum maiores molestiae molestias neque, quas qui voluptatum. A
+              aliquam aliquid at dolores fuga impedit necessitatibus nisi totam
+              ullam ut, voluptate.
             </Collapse.Panel>
             <Collapse.Panel title="Personal Info" id="2">
               <View>
@@ -37,7 +40,10 @@ const CollapseScreen = () => {
           <Title level={3}>Without Accordion</Title>
           <Collapse accordion={false}>
             <Collapse.Panel title="Panel 1" id="1">
-              Este es el contenido
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+              consequatur doloribus eveniet facere fuga fugiat, in ipsa
+              molestias nemo nobis odit, pariatur quidem rerum saepe sint, sit
+              tempore veniam vitae?
             </Collapse.Panel>
             <Collapse.Panel title="Personal Info" id="2">
               <View>
@@ -62,7 +68,10 @@ const CollapseScreen = () => {
               subTitle="This is s subtitle"
               id="1"
             >
-              Este es el contenido
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Blanditiis commodi deserunt distinctio doloremque ea ex, excepturi
+              expedita hic in laborum natus nobis praesentium quis quisquam
+              repudiandae sint tenetur ullam vitae!
             </Collapse.Panel>
             <Collapse.Panel
               title="Personal Info"
@@ -88,7 +97,10 @@ const CollapseScreen = () => {
             <Collapse.Panel title="Panel 1" id="1">
               <Collapse accordion={false}>
                 <Collapse.Panel title="Panel 1" id="1">
-                  Este es el contenido
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+                  asperiores deserunt hic magnam, neque nobis omnis sequi ut
+                  veritatis voluptatem. Delectus illum laboriosam libero
+                  pariatur possimus quaerat reiciendis suscipit vero?
                 </Collapse.Panel>
                 <Collapse.Panel title="Personal Info" id="2">
                   <View>
@@ -122,7 +134,10 @@ const CollapseScreen = () => {
           <Title level={3}>Custom icon collapse</Title>
           <Collapse icon={<Icon type="material" name="wb-sunny" size={18} />}>
             <Collapse.Panel title="Panel 1" id="1">
-              Este es el contenido
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque,
+              natus optio! Asperiores at cum ipsam libero non nostrum qui quo
+              quos sequi ullam? Alias deleniti inventore nesciunt non,
+              praesentium sunt.
             </Collapse.Panel>
             <Collapse.Panel title="Personal Info" id="2">
               <View>
@@ -143,7 +158,10 @@ const CollapseScreen = () => {
           <Title level={3}>Borderless</Title>
           <Collapse borderless>
             <Collapse.Panel title="Panel 1" id="1">
-              Este es el contenido
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
+              ipsam nihil odit pariatur? Dolorum expedita minus natus
+              repellendus sed? Cum dicta impedit incidunt magnam molestiae nemo,
+              nostrum perspiciatis porro veritatis!
             </Collapse.Panel>
             <Collapse.Panel title="Personal Info" id="2">
               <View>
@@ -163,7 +181,10 @@ const CollapseScreen = () => {
           <Title level={3}>Show Arrow</Title>
           <Collapse borderless showArrow={false}>
             <Collapse.Panel title="Panel 1" id="1">
-              Este es el contenido
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
+              natus, voluptatibus. Accusamus aperiam architecto delectus, dicta
+              distinctio exercitationem hic id, ipsum iste maxime nobis, omnis
+              perferendis praesentium provident quis rem?
             </Collapse.Panel>
             <Collapse.Panel title="Personal Info" id="2">
               <View>
@@ -183,7 +204,11 @@ const CollapseScreen = () => {
           <Title level={3}>Open Keys</Title>
           <Collapse openKeys={['1']} onChange={console.log}>
             <Collapse.Panel title="Panel 1" id="1">
-              Este es el contenido
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+              consequuntur cumque, doloremque error expedita, maiores
+              necessitatibus obcaecati optio placeat provident quia ratione
+              recusandae tenetur voluptate voluptatem. Ad repudiandae tempora
+              temporibus?
             </Collapse.Panel>
             <Collapse.Panel title="Personal Info" id="2">
               <View>
@@ -203,7 +228,10 @@ const CollapseScreen = () => {
           <Title level={3}>Disabled Panel</Title>
           <Collapse>
             <Collapse.Panel title="Panel 1" id="1">
-              Este es el contenido
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+              dolore dolorem similique tenetur vero. Aliquam at dolor dolores
+              facilis minima, modi nemo nisi nostrum pariatur qui recusandae ut
+              veritatis, voluptatum.
             </Collapse.Panel>
             <Collapse.Panel disabled title="Personal Info" id="2">
               <View>
@@ -223,7 +251,10 @@ const CollapseScreen = () => {
           <Title level={3}>Default Open Keys</Title>
           <Collapse defaultOpenKeys={['2']} accordion>
             <Collapse.Panel title="Panel 1" id="1">
-              Este es el contenido
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, et
+              eum eveniet ex ipsam nostrum omnis perspiciatis quo repellat
+              soluta ullam veritatis? Distinctio iure nostrum possimus quam
+              ratione sapiente, veritatis!
             </Collapse.Panel>
             <Collapse.Panel title="Personal Info" id="2">
               <View>
@@ -244,7 +275,10 @@ const CollapseScreen = () => {
           <Space orientation="vertical" gutter={[0, 50]}>
             <Collapse iconPosition="left">
               <Collapse.Panel title="Panel 1" id="1">
-                Este es el contenido
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Blanditiis cum, eum nihil nulla porro quia quos repudiandae ut?
+                Aspernatur dicta ea esse explicabo magni modi obcaecati
+                quibusdam recusandae saepe voluptate!
               </Collapse.Panel>
               <Collapse.Panel title="Personal Info" id="2">
                 <View>
@@ -260,7 +294,10 @@ const CollapseScreen = () => {
             </Collapse>
             <Collapse iconPosition="right">
               <Collapse.Panel title="Panel 1" id="1">
-                Este es el contenido
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                eligendi exercitationem, id illum iusto odit quis repellendus
+                velit vitae. Consectetur cumque, dolor facere libero molestias
+                omnis vero vitae. Error, nobis!
               </Collapse.Panel>
               <Collapse.Panel title="Personal Info" id="2">
                 <View>
@@ -282,7 +319,10 @@ const CollapseScreen = () => {
           <Space orientation="vertical" gutter={[0, 50]}>
             <Collapse borderless headerColor="transparent">
               <Collapse.Panel title="Panel 1" id="1">
-                Este es el contenido
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut
+                distinctio labore maiores praesentium reprehenderit totam unde
+                voluptatibus voluptatum. Doloremque eius esse ex fugit impedit,
+                iure nobis pariatur quaerat saepe voluptates!
               </Collapse.Panel>
               <Collapse.Panel title="Personal Info" id="2">
                 <View>
@@ -302,7 +342,10 @@ const CollapseScreen = () => {
               contentColor="rgba(50, 50, 255, .6)"
             >
               <Collapse.Panel title="Panel 1" id="1">
-                Este es el contenido
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
+                aliquam consectetur debitis deleniti ea, eius esse explicabo
+                fugiat ipsum laudantium molestias neque nihil nobis quidem quis
+                quisquam quo saepe voluptate!
               </Collapse.Panel>
               <Collapse.Panel title="Personal Info" id="2">
                 <View>

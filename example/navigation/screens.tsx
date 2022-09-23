@@ -17,16 +17,16 @@ import CardScreen from '../screens/Cards';
 import FormScreen from '../screens/Form';
 import BadgeScreen from '../screens/Badges';
 import CollapseScreen from '../screens/Collapse';
-// import AlertScreen from '../screens/Alert';
 import SelectScreen from '../screens/Select';
 import RadioScreen from '../screens/Radio';
 import SwitchScreen from '../screens/Switch';
 import HeaderScreen from '../screens/Header';
 import HeaderWithCustomBackgroundScreen from '../screens/HeaderWithCustomBackground';
 import HeaderWithRightIconScreen from '../screens/HeaderWithRightIcon';
-// import MessageScreen from '../screens/Message';
-// import ModalScreen from '../screens/Modal';
-// import PopConfirmScreen from '../screens/PopConfirm';
+import MessageScreen from '../screens/Message';
+import AlertScreen from '../screens/Alert';
+import ModalScreen from '../screens/Modal';
+import PopConfirmScreen from '../screens/PopConfirm';
 
 export const itemsDrawer = [
   {
@@ -108,20 +108,20 @@ export const itemsDrawer = [
     options: { headerShown: false },
     component: HeaderWithRightIconScreen,
   },
-  // {
-  //   name: 'Alert',
-  //   component: AlertScreen,
-  // },
-  // {
-  //   name: 'Message',
-  //   component: MessageScreen,
-  // },
-  // {
-  //   name: 'Modal',
-  //   component: ModalScreen,
-  // },
-  // {
-  //   name: 'PopConfirm',
-  //   component: PopConfirmScreen,
-  // },
+  {
+    name: 'Alert',
+    component: AlertScreen,
+  },
+  {
+    name: 'Message',
+    component: MessageScreen,
+  },
+  {
+    name: 'Modal',
+    component: ModalScreen,
+  },
+  {
+    name: 'PopConfirm',
+    component: PopConfirmScreen,
+  },
 ];

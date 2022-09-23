@@ -1,53 +1,85 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Title, InputScrollView, Space, Button, message } from 'react-native-beauty-design';
+import {
+  Title,
+  InputScrollView,
+  Space,
+  Button,
+  useMessage,
+} from 'react-native-beauty-design';
 
-type Type = 'success' | 'error' | 'warning' | 'info';
+type Type = 'default' | 'success' | 'error' | 'warning' | 'info';
 
-const types: Type[] = ['success', 'error', 'warning', 'info'];
+const types: Type[] = ['default', 'success', 'error', 'warning', 'info'];
 
 const MessageScreen = () => {
-  const onPress = (type: Type) => {
-    message[type]({
-      message: type,
+  const { message } = useMessage();
+
+  const onPressDefault = (type: Type) => {
+    message[type](type);
+  };
+
+  const onPressIcon = (type: Type) => {
+    message[type](type, { withIcon: true });
+  };
+
+  const onPressShadowBox = (type: Type) => {
+    message[type](type, { withIcon: true, withBoxShadow: true });
+  };
+
+  const onPressShadow = (type: Type) => {
+    message[type](type, {
+      type: 'shadow',
+      withBoxShadow: true,
+      withIcon: true,
     });
   };
 
-  const onPressDesc = (type: Type) => {
-    message[type]({
-      message: type,
-      description: type,
-    });
-  };
+  // React.useEffect(() => {
+  //   message.setHeight(100);
+  // }, [message]);
 
   return (
     <InputScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <View>
-          <Title level={3}>Message</Title>
-          <Space orientation="vertical">
+        <View style={{ alignItems: 'center' }}>
+          <Title level={3}>Default Message</Title>
+          <Space>
             {types.map((f) => (
-              <Button
-                key={f}
-                color={f === 'info' ? 'primary' : f}
-                onPress={() => onPress(f)}
-              >
+              <Button key={f} onPress={() => onPressDefault(f)}>
                 {f}
               </Button>
             ))}
           </Space>
         </View>
 
-        <View>
-          <Title level={3}>Message with title</Title>
-          <Space orientation="vertical">
+        <View style={{ alignItems: 'center' }}>
+          <Title level={3}>With icon</Title>
+          <Space>
             {types.map((f) => (
-              <Button
-                key={f}
-                type="outline"
-                color={f === 'info' ? 'primary' : f}
-                onPress={() => onPressDesc(f)}
-              >
+              <Button key={f} onPress={() => onPressIcon(f)}>
+                {f}
+              </Button>
+            ))}
+          </Space>
+        </View>
+
+        <View style={{ alignItems: 'center' }}>
+          <Title level={3}>With Shadow Box</Title>
+          <Space>
+            {types.map((f) => (
+              <Button key={f} onPress={() => onPressShadowBox(f)}>
+                {f}
+              </Button>
+            ))}
+          </Space>
+        </View>
+
+        <View style={{ alignItems: 'center' }}>
+          <Title level={3}>Shadow</Title>
+          <Space>
+            {types.map((f) => (
+              <Button key={f} onPress={() => onPressShadow(f)}>
                 {f}
               </Button>
             ))}

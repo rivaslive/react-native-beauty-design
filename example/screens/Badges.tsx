@@ -64,11 +64,21 @@ const BadgeScreen = () => {
         </View>
 
         <View>
-          <Title level={3}>Flat Variant</Title>
+          <Title level={3}>Flat Variant / Pressables</Title>
           <Space>
-            <Badge content="Default" variant="flat" />
-            <Badge content="Primary" background="primary" variant="flat" />
-            <Badge variant="flat" content="Secondary" background="secondary" />
+            <Badge isPressable content="Default" variant="flat" />
+            <Badge
+              isPressable
+              content="Primary"
+              background="primary"
+              variant="flat"
+            />
+            <Badge
+              isPressable
+              variant="flat"
+              content="Secondary"
+              background="secondary"
+            />
           </Space>
         </View>
 

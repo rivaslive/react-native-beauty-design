@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import {
   useTheme,
   Text,
   Title,
   InputScrollView,
   Space,
+  Ripple,
   getColorForBackground,
 } from 'react-native-beauty-design';
 
@@ -17,7 +18,7 @@ const ThemeScreen = () => {
         <Title>Colors</Title>
         <Space orientation="vertical">
           {Object.keys(colors).map((color) => (
-            <TouchableOpacity
+            <Ripple
               key={color}
               style={StyleSheet.flatten([
                 styles.box,
@@ -30,7 +31,7 @@ const ThemeScreen = () => {
               <Text color={getColorForBackground(colors[color])}>
                 {colors[color]}
               </Text>
-            </TouchableOpacity>
+            </Ripple>
           ))}
         </Space>
       </View>

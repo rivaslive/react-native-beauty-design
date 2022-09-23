@@ -54,19 +54,6 @@ const ButtonsScreen = () => {
         <View style={styles.space} />
 
         <View>
-          <Title level={4}>Shadow buttons</Title>
-          <Space>
-            {colors.map((c, i) => (
-              <Button key={i} shape="circle" isShadow color={c}>
-                {c}
-              </Button>
-            ))}
-          </Space>
-        </View>
-
-        <View style={styles.space} />
-
-        <View>
           <Title level={4}>Outline buttons</Title>
           <Space>
             {colors.map((c, i) => (
@@ -156,11 +143,21 @@ const ButtonsScreen = () => {
               Disabled
             </Button>
 
-            <Button size="middle" type="outline" disabled onPress={() => alert('onPress')}>
+            <Button
+              size="middle"
+              type="outline"
+              disabled
+              onPress={() => alert('onPress')}
+            >
               Disabled
             </Button>
 
-            <Button size="large" disabled type="link" onPress={() => alert('onPress')}>
+            <Button
+              size="large"
+              disabled
+              type="link"
+              onPress={() => alert('onPress')}
+            >
               Disabled
             </Button>
           </Space>
