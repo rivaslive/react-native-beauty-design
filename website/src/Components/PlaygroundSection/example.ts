@@ -19,8 +19,9 @@ const MyComponent = () => {
     <>
       <Header
         heightDynamic={25}
-        titleOnScroll="Header"
-        backgroundSticky="primary"
+        title="Beauty Design"
+        titleOnScroll="Welcome"
+        backgroundSticky="green100"
       />
 
       <ScrollView

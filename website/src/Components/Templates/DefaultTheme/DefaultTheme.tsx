@@ -1,13 +1,20 @@
-import {Text, Link as NLink, useTheme, Grid, Tooltip} from '@nextui-org/react';
+import { useMemo } from 'react';
+import {
+  Text,
+  Link as NLink,
+  useTheme,
+  Grid,
+  Tooltip
+} from '@nextui-org/react';
 import Link from 'next/link';
 
 import { libTheme } from '@/config';
 import ROUTES from '@/config/routes';
 import Title from '@/Components/Title';
+import BlockCode from '@/Components/BlockCode';
+import processColor, { isLight } from '@/utils/processColor';
 
 import { ColorStyle, WrapperStyle } from './style';
-import { useMemo } from 'react';
-import processColor, { isLight } from '@/utils/processColor';
 
 const DefaultThemeTemplate = () => {
   const { isDark } = useTheme();
@@ -60,7 +67,9 @@ const DefaultThemeTemplate = () => {
                         style={{ background: color }}
                       >
                         <div className="text-center">
-                          <p className={`text-sm ${isWhiteText}`}>{nameColor}</p>
+                          <p className={`text-sm ${isWhiteText}`}>
+                            {nameColor}
+                          </p>
                           <p className={`font-bold ${isWhiteText}`}>{color}</p>
                         </div>
                       </ColorStyle>
@@ -76,7 +85,8 @@ const DefaultThemeTemplate = () => {
       <Title level={2} className="mt-12">
         Paddings:
       </Title>
-      <p className="font-bold">BUILDING...</p>
+
+      <BlockCode language="JSON" code={JSON.stringify(libTheme.paddingSizes)} />
 
       <Title level={2} className="mt-12">
         Margins:

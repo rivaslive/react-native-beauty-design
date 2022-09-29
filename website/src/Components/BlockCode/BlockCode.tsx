@@ -28,7 +28,7 @@ const md: any = new MarkdownIt({
 type BlockCodeProps = {
   code: string;
   className?: string;
-  language?: 'typescript' | 'bash';
+  language?: 'typescript' | 'bash' | 'JSON';
 };
 
 const BlockCode = ({
