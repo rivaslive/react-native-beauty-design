@@ -7,10 +7,16 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { scale } from 'react-native-size-matters';
 
 import { fonts, fontSizes, titleFontSizes } from './fonts';
-import { colorsDark, colorsLight } from './colors';
+import {
+  colorsDark,
+  colorsLight,
+  paddingSizes,
+  marginSizes,
+  zIndices,
+  borderRadius,
+} from './defaultValues';
 import type { FontTypes, ThemeProps } from './types';
 
 const { width, height } = Dimensions.get('window');
@@ -24,53 +30,12 @@ const initialValue: ThemeProps = {
   fontSizes,
   titleFontSizes,
   activeOpacity: 0.6,
-  zIndices: {
-    1: 100,
-    2: 200,
-    3: 300,
-    4: 400,
-    5: 500,
-    10: 1000,
-    max: 9999,
-  },
+  zIndices,
   borderWidth: 2,
-  borderRadius: {
-    xxs: 1,
-    xs: 2,
-    sm: 4,
-    md: 5,
-    card: 20,
-    modal: 8,
-    lg: 8,
-    xl: 12,
-    xxl: 14,
-    max: 20,
-  },
-  paddingSizes: {
-    xxs: 5,
-    xs: 7,
-    sm: 10,
-    md: 12,
-    card: 15,
-    modal: 15,
-    lg: 14,
-    xl: 20,
-    xxl: 24,
-    max: 30,
-  },
-  marginSizes: {
-    xxs: scale(5),
-    xs: scale(7),
-    sm: scale(10),
-    md: scale(12),
-    card: scale(20),
-    modal: scale(20),
-    lg: scale(14),
-    xl: scale(20),
-    xxl: scale(24),
-    max: scale(30),
-  },
-  colors: colorsLight,
+  borderRadius,
+  paddingSizes,
+  marginSizes,
+  colors: colorScheme === 'dark' ? colorsDark : colorsLight,
 };
 
 type OptionalThemeProps = Omit<

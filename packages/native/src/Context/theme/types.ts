@@ -1,4 +1,4 @@
-import { colorsLight } from './colors';
+import { colorsLight } from './defaultValues';
 
 export type ColorType = keyof typeof colorsLight | string;
 

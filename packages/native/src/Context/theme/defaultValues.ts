@@ -1,3 +1,52 @@
+export const zIndices = {
+  1: 100,
+  2: 200,
+  3: 300,
+  4: 400,
+  5: 500,
+  10: 1000,
+  max: 9999,
+};
+
+export const borderRadius = {
+  xxs: 1,
+  xs: 2,
+  sm: 4,
+  md: 5,
+  card: 20,
+  modal: 8,
+  lg: 8,
+  xl: 12,
+  xxl: 14,
+  max: 20,
+};
+
+export const paddingSizes = {
+  xxs: 5,
+  xs: 7,
+  sm: 10,
+  md: 12,
+  card: 15,
+  modal: 15,
+  lg: 14,
+  xl: 20,
+  xxl: 24,
+  max: 30,
+};
+
+export const marginSizes = {
+  xxs: 5,
+  xs: 7,
+  sm: 10,
+  md: 12,
+  card: 20,
+  modal: 20,
+  lg: 14,
+  xl: 20,
+  xxl: 24,
+  max: 30,
+};
+
 export const colorsBase = {
   primary: '#0070F3',
   secondary: '#7928ca',
