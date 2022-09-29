@@ -1,7 +1,6 @@
 import { Button, Grid, Image, Text } from '@nextui-org/react';
 import Title from '@/Components/Title';
 
-
 type WhatCanDoItProps = {};
 
 const WhatCanDoIt = (props: WhatCanDoItProps) => {
