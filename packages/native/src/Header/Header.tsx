@@ -11,6 +11,7 @@ const defaultTitlePosition = Platform.select<'center' | 'left'>({
   default: 'left',
 });
 export const Header: React.FC<HeaderProps> = ({
+  title,
   titleOnScroll,
   heightDynamic,
   leftIcon,
@@ -101,7 +102,27 @@ export const Header: React.FC<HeaderProps> = ({
             {leftIcon || rightIcon}
           </View>
 
-          {typeof titleOnScroll === 'string' ? (
+          {typeof title === 'string' && opacityNumber === 0 ? (
+            <Animated.Text
+              aria-level="1"
+              numberOfLines={1}
+              style={[
+                styles.defaultTitle,
+                styles.title,
+                {
+                  color: colors.text,
+                  textAlign: titlePosition,
+                },
+                titleStyle,
+              ]}
+            >
+              {title}
+            </Animated.Text>
+          ) : opacityNumber === 0 ? (
+            title
+          ) : null}
+
+          {typeof titleOnScroll === 'string' && opacityNumber !== 0 ? (
             <Animated.Text
               aria-level="1"
               numberOfLines={1}
@@ -118,9 +139,9 @@ export const Header: React.FC<HeaderProps> = ({
             >
               {titleOnScroll}
             </Animated.Text>
-          ) : (
+          ) : opacityNumber !== 0 ? (
             titleOnScroll
-          )}
+          ) : null}
 
           <View
             style={StyleSheet.flatten([

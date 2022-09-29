@@ -5,6 +5,7 @@ import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
 export interface HeaderProps {
   heightDynamic: number;
   titleOnScroll: ReactNode | string;
+  title?: ReactNode | string;
   background?: ColorType;
   backgroundSticky?: ColorType;
   leftIcon?: ReactNode;

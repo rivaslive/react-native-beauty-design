@@ -2,6 +2,8 @@ import { Grid, Text } from '@nextui-org/react';
 import Playground from '@/Components/Playground';
 import Title from '@/Components/Title';
 
+import { basicExample } from './example';
+
 const PlaygroundSection = () => {
   return (
     <Grid.Container
@@ -17,7 +19,7 @@ const PlaygroundSection = () => {
       </Grid>
 
       <Grid xs={12} sm={10} justify="center">
-        <Playground snackId="@rivaslive/beauty-design" />
+        <Playground code={basicExample} />
       </Grid>
     </Grid.Container>
   );

@@ -11,6 +11,7 @@ const HeaderScreen = ({ navigation }) => {
   return (
     <View style={styles.header}>
       <Header
+        title="Hola"
         heightDynamic={25}
         titleOnScroll="Header"
         backgroundSticky={navigationTheme.colors.card}
