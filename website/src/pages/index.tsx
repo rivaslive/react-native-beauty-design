@@ -1,9 +1,15 @@
-import React from 'react';
+import type { NextPage } from 'next';
 
-// version
-// components
-import HomeTemplate from 'components/Templates/HomeTemplate';
+import ROUTES from '@/config/routes';
+import Layout from '@/Components/Layout';
+import HomeTemplate from '@/Components/Templates/Home';
 
-export default function Home() {
-  return <HomeTemplate />;
-}
+const Home: NextPage = () => {
+  return (
+    <Layout withAside={false} isActive={ROUTES.HOME.name}>
+      <HomeTemplate />
+    </Layout>
+  );
+};
+
+export default Home;
