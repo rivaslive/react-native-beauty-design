@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { StyleSheet, Text as TextNative, View } from 'react-native';
 
 import { Button } from '../Button';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import type { TextProps } from './types';
 
 export const Text: FC<TextProps> = ({

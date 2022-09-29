@@ -15,7 +15,7 @@ import DateTimePickerModal, {
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { TextError } from '../utils/TextError';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import type { ColorType } from '../Context/theme/types';
 import { SizeType, sizes } from '../@types/input';
 

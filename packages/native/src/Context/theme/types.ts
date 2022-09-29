@@ -52,3 +52,44 @@ export interface TitleFontSizesProps {
   level4: number;
   level5: number;
 }
+
+
+interface ZIndexType {
+  1: number;
+  2: number;
+  3: number;
+  4: number;
+  5: number;
+  10: number;
+  max: number;
+}
+
+interface SizingType {
+  xxs: number;
+  xs: number;
+  sm: number;
+  md: number;
+  card: number;
+  modal: number;
+  lg: number;
+  xl: number;
+  xxl: number;
+  max: number;
+}
+
+export interface ThemeProps {
+  theme: 'light' | 'dark';
+  isDark: boolean;
+  fonts: FontTypes;
+  fontSizes: FontSizesProps;
+  titleFontSizes: TitleFontSizesProps;
+  zIndices: ZIndexType;
+  borderWidth: number;
+  borderRadius: SizingType;
+  paddingSizes: SizingType;
+  marginSizes: SizingType;
+  activeOpacity: number;
+  colors: {
+    [key in ColorType]: string;
+  };
+}

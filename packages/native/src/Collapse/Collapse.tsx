@@ -5,7 +5,7 @@ import Panel from './Panel';
 import { useChildren } from '../hooks/useChildren';
 
 import { Icon } from '../Icon';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { defaultContextCollapse, CollapseContext } from './Context';
 import type {
   CollapseInternalItemProps,

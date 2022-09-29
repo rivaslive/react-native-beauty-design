@@ -16,7 +16,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Divider from './Divider';
 import { Ripple } from '../Ripple';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 import BaseComponent from './Base';

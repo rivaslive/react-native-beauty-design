@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import RNPickerSelect, { PickerSelectProps } from 'react-native-picker-select';
 
 import { Icon } from '../Icon';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { TextError } from '../utils/TextError';
 import { SizeType, sizes } from '../@types/input';
 import { getDarken, getLighten } from '../utils/colors';

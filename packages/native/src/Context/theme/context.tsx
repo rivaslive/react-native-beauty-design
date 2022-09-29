@@ -11,58 +11,15 @@ import { scale } from 'react-native-size-matters';
 
 import { fonts, fontSizes, titleFontSizes } from './fonts';
 import { colorsDark, colorsLight } from './colors';
-import type {
-  ColorType,
-  FontTypes,
-  FontSizesProps,
-  TitleFontSizesProps,
-} from './types';
+import type { FontTypes, ThemeProps } from './types';
 
 const { width, height } = Dimensions.get('window');
 
-interface ZIndexType {
-  1: number;
-  2: number;
-  3: number;
-  4: number;
-  5: number;
-  10: number;
-  max: number;
-}
-
-interface SizingType {
-  xxs: number;
-  xs: number;
-  sm: number;
-  md: number;
-  card: number;
-  modal: number;
-  lg: number;
-  xl: number;
-  xxl: number;
-  max: number;
-}
-
-interface ThemeProps {
-  theme: 'light' | 'dark';
-  isDark: boolean;
-  fonts: FontTypes;
-  fontSizes: FontSizesProps;
-  titleFontSizes: TitleFontSizesProps;
-  zIndices: ZIndexType;
-  borderWidth: number;
-  borderRadius: SizingType;
-  paddingSizes: SizingType;
-  marginSizes: SizingType;
-  activeOpacity: number;
-  colors: {
-    [key in ColorType]: string;
-  };
-}
+const colorScheme = Appearance.getColorScheme();
 
 const initialValue: ThemeProps = {
-  theme: 'light',
-  isDark: false,
+  theme: colorScheme === 'dark' ? 'dark' : 'light',
+  isDark: colorScheme === 'dark',
   fonts: fonts as FontTypes,
   fontSizes,
   titleFontSizes,
@@ -121,7 +78,7 @@ type OptionalThemeProps = Omit<
   'isDark' | 'device' | 'isIos' | 'isAndroid'
 >;
 
-interface ThemeContextProps extends ThemeProps {
+export interface ThemeContextProps extends ThemeProps {
   setTheme?: (newTheme: OptionalThemeProps) => void;
   width: number;
   height: number;
@@ -129,7 +86,7 @@ interface ThemeContextProps extends ThemeProps {
   onScroll: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextProps>({
+export const ThemeContext = createContext<ThemeContextProps>({
   ...initialValue,
   width,
   height,
@@ -150,8 +107,10 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = React.memo(
     const [internalTheme, setInternalTheme] = useState<ThemeProps>(
       JSON.parse(JSON.stringify(initialValue))
     );
-    const colorScheme = Appearance.getColorScheme();
-    const isDark: boolean = disableDarkMode ? false : colorScheme === 'dark';
+
+    const isDark = React.useMemo<boolean>(() => {
+      return disableDarkMode ? false : colorScheme === 'dark';
+    }, [disableDarkMode]);
 
     const onScroll = React.useMemo(
       () =>
@@ -162,36 +121,51 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = React.memo(
       [scrollOffsetY]
     );
 
-    const setTheme = React.useCallback((_theme: OptionalThemeProps) => {
-      setInternalTheme((prevTheme) => {
-        return {
-          isDark: prevTheme.isDark,
-          theme: _theme?.theme ?? prevTheme.theme,
-          borderWidth: _theme?.borderWidth ?? prevTheme.borderWidth,
-          activeOpacity: _theme?.activeOpacity ?? prevTheme.activeOpacity,
-          colors: Object.assign(prevTheme?.colors, _theme?.colors),
-          fonts: Object.assign(prevTheme.fonts, _theme?.fonts),
-          fontSizes: Object.assign(prevTheme.fontSizes, _theme?.fontSizes),
-          titleFontSizes: Object.assign(
-            prevTheme.titleFontSizes,
-            _theme?.titleFontSizes
-          ),
-          marginSizes: Object.assign(
-            prevTheme.marginSizes,
-            _theme?.marginSizes
-          ),
-          paddingSizes: Object.assign(
-            prevTheme.paddingSizes,
-            _theme?.paddingSizes
-          ),
-          zIndices: Object.assign(prevTheme.zIndices, _theme?.zIndices),
-          borderRadius: Object.assign(
-            prevTheme.borderRadius,
-            _theme?.borderRadius
-          ),
-        };
-      });
-    }, []);
+    const setTheme = React.useCallback(
+      (_theme: OptionalThemeProps) => {
+        setInternalTheme((prevTheme) => {
+          let colors = Object.assign(prevTheme?.colors, _theme?.colors);
+          if (!disableDarkMode && _theme?.theme) {
+            const defaultColors =
+              _theme.theme === 'dark' ? colorsDark : colorsLight;
+
+            colors = {
+              ...prevTheme?.colors,
+              ...defaultColors,
+              ...(_theme?.colors ?? {}),
+            };
+          }
+
+          return {
+            isDark: _theme.theme === 'dark' || prevTheme.isDark,
+            theme: _theme?.theme ?? prevTheme.theme,
+            borderWidth: _theme?.borderWidth ?? prevTheme.borderWidth,
+            activeOpacity: _theme?.activeOpacity ?? prevTheme.activeOpacity,
+            colors,
+            fonts: Object.assign(prevTheme.fonts, _theme?.fonts),
+            fontSizes: Object.assign(prevTheme.fontSizes, _theme?.fontSizes),
+            titleFontSizes: Object.assign(
+              prevTheme.titleFontSizes,
+              _theme?.titleFontSizes
+            ),
+            marginSizes: Object.assign(
+              prevTheme.marginSizes,
+              _theme?.marginSizes
+            ),
+            paddingSizes: Object.assign(
+              prevTheme.paddingSizes,
+              _theme?.paddingSizes
+            ),
+            zIndices: Object.assign(prevTheme.zIndices, _theme?.zIndices),
+            borderRadius: Object.assign(
+              prevTheme.borderRadius,
+              _theme?.borderRadius
+            ),
+          };
+        });
+      },
+      [disableDarkMode]
+    );
 
     useEffect(() => {
       if (theme) {
@@ -243,5 +217,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-export const useTheme = () => React.useContext(ThemeContext);

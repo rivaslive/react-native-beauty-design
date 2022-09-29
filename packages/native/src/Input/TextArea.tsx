@@ -9,7 +9,7 @@ import {
 
 import { styles } from './Input';
 import { TextError } from '../utils/TextError';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { sizes } from '../@types/input';
 
 export interface TextAreaProps {

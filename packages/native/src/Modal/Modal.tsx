@@ -12,7 +12,7 @@ import {
 
 import { Icon } from '../Icon';
 import { Button } from '../Button';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import useHeaderHeight from '../hooks/useHeaderHeight';
 import useModal, { UseModalType } from '../hooks/useModal';
 

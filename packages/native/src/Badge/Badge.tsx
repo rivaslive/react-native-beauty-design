@@ -4,7 +4,7 @@ import { scale } from 'react-native-size-matters';
 
 import { Text } from '../Text';
 import { Ripple } from '../Ripple';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { getOpacity } from '../utils';
 
 import type { BadgeProps } from './types';

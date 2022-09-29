@@ -5,7 +5,7 @@ import { StyleSheet, Animated, Easing } from 'react-native';
 import { Text } from '../Text';
 import { Ripple } from '../Ripple';
 import { useCollapse } from './Context';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import type { CollapseInternalItemProps, CollapseItemProps } from './types';
 
 const animationDuration = 150;

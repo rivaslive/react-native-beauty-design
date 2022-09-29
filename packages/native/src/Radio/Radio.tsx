@@ -4,7 +4,7 @@ import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { Group, GAP } from './Group';
 import { Text } from '../Text';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import type { RadioProps } from './types';
 
 interface ComponentExport {

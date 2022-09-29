@@ -30,6 +30,9 @@ export * from './Controller';
 // Context export
 export * from './Context';
 
+// Context export
+export { default as useTheme } from './Context/theme/useTheme';
+
 // DatePicker export
 export * from './DatePicker';
 

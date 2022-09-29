@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { usePopConfirm } from './Context';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import type { PropFooterProps } from './types';
 
 const Footer: React.FC<PropFooterProps> = ({

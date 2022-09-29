@@ -5,7 +5,7 @@ import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { Button } from '../Button';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { TextError } from '../utils/TextError';
 import type { ColorType } from '../Context/theme/types';
 

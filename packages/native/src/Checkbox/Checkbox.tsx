@@ -2,7 +2,7 @@ import React from 'react';
 import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { Text } from '../Text';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { ColorType } from '../Context/theme/types';
 
 export type RadioType = 'circle' | 'square';

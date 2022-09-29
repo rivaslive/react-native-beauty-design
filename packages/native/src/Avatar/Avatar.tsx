@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import { IconObject } from '../Icon';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { ImageProps, Image } from '../Image';
 import { ImageSrcType } from '../@types/image';
 import {

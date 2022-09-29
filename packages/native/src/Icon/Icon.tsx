@@ -17,7 +17,7 @@ import Color from 'color';
 import getIconType from '../helpers/getIconType';
 import getIconStyle from '../helpers/getIconStyle';
 import androidRipple from '../helpers/androidRipple';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { ColorType } from '../Context/theme/types';
 
 export type IconType =

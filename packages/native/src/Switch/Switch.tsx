@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Animated, TouchableOpacity, View } from 'react-native';
 
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { TextError } from '../utils/TextError';
 import type { SwitchProps } from './types';
 import { scale } from 'react-native-size-matters';
@@ -39,7 +39,7 @@ export const Switch: React.FC<SwitchProps> = ({
   React.useEffect(() => {
     typeof defaultValue === 'boolean' &&
       setIsEnabled((prev) => {
-        if (!prev) {
+        if (prev !== defaultValue) {
           onChange && onChange(defaultValue);
           return defaultValue;
         }
@@ -48,13 +48,15 @@ export const Switch: React.FC<SwitchProps> = ({
   }, [defaultValue, onChange]);
 
   React.useEffect(() => {
-    setIsEnabled((prev) => {
-      if (!prev) {
-        onChange && onChange(value);
-        return value;
-      }
-      return prev;
-    });
+    if (typeof value === 'boolean') {
+      setIsEnabled((prev) => {
+        if (prev !== value) {
+          onChange && onChange(value);
+          return value;
+        }
+        return prev;
+      });
+    }
   }, [value, onChange]);
 
   React.useEffect(() => {
@@ -110,7 +112,7 @@ export const Switch: React.FC<SwitchProps> = ({
                 size: calcSizeIcon,
                 color:
                   // @ts-ignore
-                  icon.true?.props?.color || 'white',
+                  icon.true?.props?.color || 'text',
               })}
             {icon &&
               !isEnabled &&
@@ -118,7 +120,7 @@ export const Switch: React.FC<SwitchProps> = ({
                 size: calcSizeIcon,
                 color:
                   // @ts-ignore
-                  icon.false?.props?.color || 'white',
+                  icon.false?.props?.color || 'text',
               })}
           </Animated.View>
         </Animated.View>

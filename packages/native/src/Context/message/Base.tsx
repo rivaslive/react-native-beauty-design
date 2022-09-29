@@ -4,7 +4,7 @@ import { StyleSheet, Animated, View, Platform } from 'react-native';
 
 import { Text } from '../../Text';
 import { Ripple } from '../../Ripple';
-import { useTheme } from '../theme/context';
+import useTheme from '../theme/useTheme';
 import { isValidChild } from '../../utils/render';
 import { getDarken, getLighten, getOpacity } from '../../utils';
 import type { MessageProps } from './types';

@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { isValidChild } from '../utils/render';
 import { Text } from '../Text';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { usePopConfirm } from './Context';
 import type { PropHeaderProps } from './types';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { scale } from 'react-native-size-matters';
 import { Animated, Platform, StyleSheet, View, ViewStyle } from 'react-native';
 
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import useHeaderHeight from '../hooks/useHeaderHeight';
 import type { HeaderProps } from './types';
 

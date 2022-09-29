@@ -1,44 +1,35 @@
 export const basic = `import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { ThemeProvider, useTheme, Switch, Icon } from 'react-native-beauty-design';
+import {
+  ThemeProvider,
+  Switch,
+  Icon,
+  useTheme,
+} from 'react-native-beauty-design';
 
 const MyScreen = () => {
-  const { setTheme } = useTheme();
-
+  const { setTheme, theme } = useTheme();
   return (
     <Switch
       thumbStyle={{ marginTop: 100 }}
-      onChange={(isDark: boolean) => {
+      value={theme === 'dark'}
+      onChange={(isDark) => {
         setTheme({
-          isDark: isDark
-        })
+          theme: isDark ? 'dark' : 'light',
+        });
       }}
       icon={{
-        false: (
-          <Icon
-            name="sunny"
-            type="ionicon"
-            color="white"
-          />
-        ),
-        true: (
-          <Icon
-            name="moon"
-            type="ionicon"
-            color="white"
-          />
-        ),
+        false: <Icon name="sunny" type="ionicon" />,
+        true: <Icon name="moon" type="ionicon" />,
       }}
     />
-  )
-}
+  );
+};
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <ThemeProvider>
-        <MyScreen />
-      </ThemeProvider>
-    </SafeAreaProvider>
-)};
+    <ThemeProvider>
+      <MyScreen />
+    </ThemeProvider>
+  );
+}
 `;

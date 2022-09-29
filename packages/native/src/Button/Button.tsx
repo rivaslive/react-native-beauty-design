@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, ActivityIndicator, View } from 'react-native';
 
 import { Ripple } from '../Ripple';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import { getColorForBackground, getOpacity } from '../utils';
 
 import type { ButtonProps } from './types';

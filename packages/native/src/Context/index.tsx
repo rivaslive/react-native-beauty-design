@@ -2,7 +2,6 @@ import React from 'react';
 import {
   ThemeProviderProps,
   ThemeProvider as InternalThemeProvider,
-  useTheme,
 } from './theme/context';
 import { MessageProvider, useMessage } from './message/context';
 
@@ -18,4 +17,4 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({
   );
 };
 
-export { useTheme, ThemeProvider, useMessage };
+export { ThemeProvider, useMessage };

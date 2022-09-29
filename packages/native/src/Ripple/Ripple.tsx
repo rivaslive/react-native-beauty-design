@@ -14,7 +14,7 @@ import {
 
 import { onAnimationSet } from './utils';
 import { styles, radius } from './styles';
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import type { RippleProps, StateType } from './type';
 
 export const Ripple: React.FC<RippleProps> = ({

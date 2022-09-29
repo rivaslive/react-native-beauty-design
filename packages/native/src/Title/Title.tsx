@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TextProps, StyleSheet } from 'react-native';
 
-import { useTheme } from '../Context/theme/context';
+import useTheme from '../Context/theme/useTheme';
 import type { ColorType, FontType } from '../Context/theme/types';
 import type { AlignType, LevelType, TransformType } from '../@types/typography';
 
