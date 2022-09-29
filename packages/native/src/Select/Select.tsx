@@ -5,10 +5,10 @@ import RNPickerSelect, { PickerSelectProps } from 'react-native-picker-select';
 
 import { Icon } from '../Icon';
 import { useTheme } from '../Context/theme/context';
-import { ColorType } from '../Context/theme/colors';
 import { TextError } from '../utils/TextError';
 import { SizeType, sizes } from '../@types/input';
 import { getDarken, getLighten } from '../utils/colors';
+import type { ColorType } from '../Context/theme/types';
 
 export interface SelectItemProps {
   label: string;

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { ColorType } from '../Context/theme/colors';
+import type { ColorType } from '../Context/theme/types';
 import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export interface HeaderProps {

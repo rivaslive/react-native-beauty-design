@@ -2,7 +2,7 @@ import Dots from '@/Components/Dots';
 import Banner from '@/Components/Banner';
 import Container from '@/Components/Container';
 import Donations from '@/Components/Donations';
-import Playground from '@/Components/Playground';
+import PlaygroundSection from '@/Components/PlaygroundSection';
 import WhatCanDoIt from '@/Components/WhatCanDoIt';
 import DarkAndLightTheme from '@/Components/DarkAndLightTheme';
 import WhyBeautyDesign from '@/Components/WhyBeautyDesign';
@@ -16,7 +16,7 @@ const HomeTemplate = () => {
         <Dots />
         <Banner />
         <WhyBeautyDesign />
-        <Playground />
+        <PlaygroundSection />
         <WhatCanDoIt />
         <DarkAndLightTheme />
         <Donations />

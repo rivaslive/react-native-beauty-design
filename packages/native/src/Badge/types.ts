@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ViewStyle } from 'react-native';
 import type { SizeType } from '../@types/input';
-import type { ColorType } from '../Context/theme/colors';
+import type { ColorType } from '../Context/theme/types';
 
 export type BadgeVariant = 'default' | 'flat' | 'dot' | 'bordered';
 export type BadgeType = 'rounded' | 'square';

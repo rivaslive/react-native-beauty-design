@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
   titleStyle,
   headerStyle,
   titlePosition = defaultTitlePosition,
-  background = 'foreground',
+  background = 'background',
   backgroundSticky = background,
 }) => {
   const { scrollOffsetY, width, colors, zIndices } = useTheme();

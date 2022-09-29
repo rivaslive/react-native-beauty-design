@@ -1,5 +1,5 @@
 import { TouchableOpacityProps } from 'react-native';
-import { ColorType } from '../Context/theme/colors';
+import type { ColorType } from '../Context/theme/types';
 
 export type StateType = {
   width: number;

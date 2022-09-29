@@ -7,7 +7,7 @@ import { Text } from '../Text';
 import { Button } from '../Button';
 import { useTheme } from '../Context/theme/context';
 import { TextError } from '../utils/TextError';
-import type { ColorType } from '../Context/theme/colors';
+import type { ColorType } from '../Context/theme/types';
 
 export interface ControllerProps {
   value?: number;

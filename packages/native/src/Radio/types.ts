@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { SizeType } from '../@types/input';
-import { ColorType } from '../Context/theme/colors';
+import { ColorType } from '../Context/theme/types';
 
 type RadioType = 'circle' | 'square';
 

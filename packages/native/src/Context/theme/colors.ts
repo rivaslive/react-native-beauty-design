@@ -100,8 +100,8 @@ export const colorsLight = {
   accents7: '#C1C1C1',
   accents8: '#EAEAEA',
   accents9: '#F4F4F4',
-  background: '#000000',
-  foreground: '#f4f4f4',
+  background: '#f4f4f4',
+  foreground: '#000000',
   text: '#333333',
   border: '#a1a1a1',
   white: '#ffffff',
@@ -123,13 +123,11 @@ export const colorsDark = {
   accents7: '#444444',
   accents8: '#333333',
   accents9: '#111111',
-  background: '#ffffff',
-  foreground: '#000000',
+  background: '#000000',
+  foreground: '#ffffff',
   border: '#777777',
   text: '#ffffff',
   link: '#0070F3',
   selection: '#98D5FD',
   code: '#DB39BD',
 };
-
-export type ColorType = keyof typeof colorsLight | string;

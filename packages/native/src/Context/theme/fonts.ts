@@ -1,37 +1,5 @@
 import { Platform } from 'react-native';
-
-export type FontType =
-  | 'thin'
-  | 'light'
-  | 'regular'
-  | 'medium'
-  | 'bold'
-  | 'black';
-
-interface FontProps {
-  fontFamily: string;
-  fontWeight:
-    | 'normal'
-    | 'bold'
-    | '100'
-    | '200'
-    | '300'
-    | '400'
-    | '500'
-    | '600'
-    | '700'
-    | '800'
-    | '900';
-}
-
-export interface FontTypes {
-  thin: FontProps;
-  light: FontProps;
-  regular: FontProps;
-  medium: FontProps;
-  bold: FontProps;
-  black: FontProps;
-}
+import { FontSizesProps, TitleFontSizesProps } from './types';
 
 const isIOS = Platform.OS === 'ios';
 
@@ -64,24 +32,6 @@ export const fonts = {
   },
 };
 
-export interface FontSizesProps {
-  tiny: number;
-  xs: number;
-  base: number;
-  sm: number;
-  md: number;
-  lg: number;
-  xl: number;
-}
-
-export interface TitleFontSizesProps {
-  level1: number;
-  level2: number;
-  level3: number;
-  level4: number;
-  level5: number;
-}
-
 export const fontSizes: FontSizesProps = {
   tiny: 12,
   xs: 14,
@@ -99,12 +49,3 @@ export const titleFontSizes: TitleFontSizesProps = {
   level4: 18,
   level5: 16,
 };
-
-export interface LetterSpacingsProps {
-  tighter: number;
-  tight: number;
-  normal: number;
-  wide: number;
-  wider: number;
-  widest: number;
-}

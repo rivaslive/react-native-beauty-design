@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'react-native-beauty-design';
 
 import useCachedResources from './hooks/useCachedResources';
@@ -22,12 +21,10 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
+      <ThemeProvider theme={{ colors }}>
         <StatusBar />
-        <ThemeProvider theme={{ colors }}>
-          <Navigation colorScheme={colorScheme} />
-        </ThemeProvider>
-      </SafeAreaProvider>
+        <Navigation colorScheme={colorScheme} />
+      </ThemeProvider>
     );
   }
 }

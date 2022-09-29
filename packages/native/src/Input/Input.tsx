@@ -12,7 +12,7 @@ import {
 import { Icon } from '../Icon';
 import { TextError } from '../utils/TextError';
 import { useTheme } from '../Context/theme/context';
-import type { ColorType } from '../Context/theme/colors';
+import type { ColorType } from '../Context/theme/types';
 import { SizeType, sizes } from '../@types/input';
 
 export type InputTypes =

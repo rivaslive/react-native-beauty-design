@@ -60,7 +60,7 @@ export const Badge: React.FC<BadgeProps> = ({
       return colors[background] || background;
     }
     if (!disableOutline && !isBordered) {
-      return colors.foreground;
+      return colors.background;
     }
     if (isFlat) {
       return 'transparent';

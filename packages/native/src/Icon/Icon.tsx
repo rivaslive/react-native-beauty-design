@@ -18,7 +18,7 @@ import getIconType from '../helpers/getIconType';
 import getIconStyle from '../helpers/getIconStyle';
 import androidRipple from '../helpers/androidRipple';
 import { useTheme } from '../Context/theme/context';
-import { ColorType } from '../Context/theme/colors';
+import { ColorType } from '../Context/theme/types';
 
 export type IconType =
   | 'material'

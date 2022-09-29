@@ -2,8 +2,7 @@ import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import type { ButtonProps } from '../Button';
 import type { AlignType } from '../@types/typography';
-import type { ColorType } from '../Context/theme/colors';
-import type { FontSizesProps } from '../Context/theme/fonts';
+import type { ColorType, FontSizesProps } from '../Context/theme/types';
 
 export interface TextProps {
   children?: any;

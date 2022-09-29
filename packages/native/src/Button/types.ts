@@ -1,7 +1,7 @@
 import type { ReactNode, Component } from 'react';
 import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
-import type { ColorType } from '../Context/theme/colors';
+import type { ColorType } from '../Context/theme/types';
 import type { TextProps } from '../Text';
 
 export type ButtonSize = 'small' | 'middle' | 'large' | 'xLarge';

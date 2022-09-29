@@ -113,7 +113,7 @@ const CardRender: React.FC<CardProps> = React.memo(
             style={StyleSheet.flatten([
               styles.openCard,
               {
-                backgroundColor: colors.foreground,
+                backgroundColor: colors.background,
               },
             ])}
             disableRipple={true}

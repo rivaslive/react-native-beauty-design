@@ -1,12 +1,25 @@
-import { Text, Link as NLink } from '@nextui-org/react';
+import {Text, Link as NLink, useTheme, Grid, Tooltip} from '@nextui-org/react';
 import Link from 'next/link';
 
+import { libTheme } from '@/config';
 import ROUTES from '@/config/routes';
 import Title from '@/Components/Title';
 
-import { WrapperStyle } from './style';
+import { ColorStyle, WrapperStyle } from './style';
+import { useMemo } from 'react';
+import processColor, { isLight } from '@/utils/processColor';
 
 const DefaultThemeTemplate = () => {
+  const { isDark } = useTheme();
+
+  const colors = useMemo(() => {
+    return processColor(libTheme[isDark ? 'colorsDark' : 'colorsLight']);
+  }, [isDark]);
+
+  const onCopy = (color: string) => {
+    return navigator.clipboard.writeText(color);
+  };
+
   return (
     <WrapperStyle>
       <Title>Default Theme</Title>
@@ -26,7 +39,39 @@ const DefaultThemeTemplate = () => {
         for more information.
       </Text>
 
-      <p className="font-bold">BUILDING...</p>
+      {colors.map(({ colors, name }) => {
+        return (
+          <div key={name}>
+            <Title level={2} className="font-bold">
+              {name}
+            </Title>
+
+            <Grid.Container gap={2}>
+              {colors.map(({ value: color, name: nameColor }) => {
+                const isWhiteText = isLight(color)
+                  ? 'text-black'
+                  : 'text-white';
+                return (
+                  <Grid key={nameColor}>
+                    <Tooltip trigger="click" content="Copied!">
+                      <ColorStyle
+                        onClick={() => onCopy(color)}
+                        className="h-28 w-28 rounded-2xl grid place-items-center cursor-pointer"
+                        style={{ background: color }}
+                      >
+                        <div className="text-center">
+                          <p className={`text-sm ${isWhiteText}`}>{nameColor}</p>
+                          <p className={`font-bold ${isWhiteText}`}>{color}</p>
+                        </div>
+                      </ColorStyle>
+                    </Tooltip>
+                  </Grid>
+                );
+              })}
+            </Grid.Container>
+          </div>
+        );
+      })}
 
       <Title level={2} className="mt-12">
         Paddings:

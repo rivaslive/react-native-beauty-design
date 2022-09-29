@@ -2,7 +2,7 @@ import type { Component, ReactNode } from 'react';
 import type { StyleProp, TouchableOpacityProps, ViewStyle } from 'react-native';
 
 import type { RippleProps } from '../Ripple/type';
-import type { ColorType } from '../Context/theme/colors';
+import type { ColorType } from '../Context/theme/types';
 
 export interface CardProps extends TouchableOpacityProps {
   Component?: typeof Component;

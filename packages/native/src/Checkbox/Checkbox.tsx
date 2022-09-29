@@ -3,7 +3,7 @@ import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { Text } from '../Text';
 import { useTheme } from '../Context/theme/context';
-import { ColorType } from '../Context/theme/colors';
+import { ColorType } from '../Context/theme/types';
 
 export type RadioType = 'circle' | 'square';
 export type SizeRadioType = 'small' | 'middle' | 'large';

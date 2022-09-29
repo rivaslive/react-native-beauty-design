@@ -2,6 +2,8 @@ import { Button, Grid, Text } from '@nextui-org/react';
 import Frame from '@/Components/Frame';
 import BlockCode from '@/Components/BlockCode';
 import Title from '@/Components/Title';
+import Link from 'next/link';
+import ROUTES from '@/config/routes';
 
 type BannerProps = {};
 
@@ -43,7 +45,9 @@ const Banner = (props: BannerProps) => {
             background: 'linear-gradient(45deg, $yellow600 -20%, $red600 100%)'
           }}
         >
-          Get Started
+          <Link href={ROUTES.DOCS.path} passHref>
+            <a className="text-current">Get Started</a>
+          </Link>
         </Button>
       </Grid>
 

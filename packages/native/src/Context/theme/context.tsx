@@ -1,16 +1,22 @@
-import { Animated, Appearance, Dimensions } from 'react-native';
-import { scale } from 'react-native-size-matters';
 import React, { createContext, useEffect, useState } from 'react';
-
 import {
-  fonts,
-  fontSizes,
-  FontSizesProps,
+  Animated,
+  Appearance,
+  Dimensions,
+  StyleSheet,
+  View,
+} from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { scale } from 'react-native-size-matters';
+
+import { fonts, fontSizes, titleFontSizes } from './fonts';
+import { colorsDark, colorsLight } from './colors';
+import type {
+  ColorType,
   FontTypes,
-  titleFontSizes,
+  FontSizesProps,
   TitleFontSizesProps,
-} from './fonts';
-import { ColorType, colorsDark, colorsLight } from './colors';
+} from './types';
 
 const { width, height } = Dimensions.get('window');
 
@@ -214,9 +220,28 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = React.memo(
     }, [internalTheme, isDark, setTheme, scrollOffsetY, onScroll]);
 
     return (
-      <ThemeContext.Provider value={output}>{children}</ThemeContext.Provider>
+      <ThemeContext.Provider value={output}>
+        <SafeAreaProvider>
+          <View
+            style={StyleSheet.flatten([
+              styles.wrapper,
+              {
+                backgroundColor: internalTheme.colors.background,
+              },
+            ])}
+          >
+            {children}
+          </View>
+        </SafeAreaProvider>
+      </ThemeContext.Provider>
     );
   }
 );
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+});
 
 export const useTheme = () => React.useContext(ThemeContext);
