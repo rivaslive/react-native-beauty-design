@@ -1,4 +1,4 @@
-import pkg from '../../../packages/native/package.json';
+import pkg from '../../temp/_package.json';
 import {
   colorsDark,
   colorsLight,
@@ -6,7 +6,7 @@ import {
   borderRadius,
   marginSizes,
   zIndices
-} from '../../../packages/native/src/Context/theme/defaultValues';
+} from '../../temp/defaultValues';
 
 export const DEFAULT_VERSION = 'v1';
 export const PATREON_LINK = 'https://www.patreon.com/beautydesign';

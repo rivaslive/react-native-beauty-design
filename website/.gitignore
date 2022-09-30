@@ -31,6 +31,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+temp/_package.json
+temp/defaultValues.ts
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
