@@ -107,21 +107,21 @@ const InputScreen = () => {
           />
         </View>
         {/*<View>
-          <Title level={3}>Badge</Title>
+          <TitleLink level={3}>Badge</TitleLink>
           <Badge.Group>
             <Badge label="Badge 1" value={1} />
             <Badge label="Badge 2" value={2} />
             <Badge label="Badge 3" value={3} />
           </Badge.Group>
 
-          <Title level={4}>Custom colors</Title>
+          <TitleLink level={4}>Custom colors</TitleLink>
           <Badge.Group activeColor="warning" defaultValue={2} align="vertical">
             <Badge label="Badge 1" value={1} />
             <Badge label="Badge 2" value={2} />
             <Badge label="Badge 3" value={3} />
           </Badge.Group>
 
-          <Title level={4}>Horizontal align</Title>
+          <TitleLink level={4}>Horizontal align</TitleLink>
           <Badge.Group align="horizontal">
             <Badge label="Badge 1" value={1} />
             <Badge label="Badge 2" value={2} />
@@ -135,7 +135,7 @@ const InputScreen = () => {
           <Checkbox label="Option 3" error required type="square" />
         </View>
         {/*<View>
-          <Title level={3}>Badge</Title>
+          <TitleLink level={3}>Badge</TitleLink>
           <Badge />
           <Badge error textError="Select Badge" />
           <Badge size="small" />
@@ -143,7 +143,7 @@ const InputScreen = () => {
           <Badge size="large" value={false} />
         </View>
         <View>
-          <Title level={3}>Select</Title>
+          <TitleLink level={3}>Select</TitleLink>
           <Select
             items={[
               { label: 'Option 1', value: 1 },
@@ -168,7 +168,7 @@ const InputScreen = () => {
           />
         </View>
         <View style={{ marginBottom: 22 }}>
-          <Title level={3}>Raiting</Title>
+          <TitleLink level={3}>Raiting</TitleLink>
           <Rate defaultValue={0} showRating align="center" />
         </View>*/}
         <View>

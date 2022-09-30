@@ -3,6 +3,14 @@ import {
   ThemeProviderProps,
   ThemeProvider as InternalThemeProvider,
 } from './theme/context';
+import {
+  colorsDark,
+  colorsLight,
+  paddingSizes,
+  marginSizes,
+  zIndices,
+  borderRadius,
+} from './theme/defaultValues';
 import { MessageProvider, useMessage } from './message/context';
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({
@@ -17,4 +25,13 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({
   );
 };
 
-export { ThemeProvider, useMessage };
+export {
+  ThemeProvider,
+  useMessage,
+  colorsDark,
+  colorsLight,
+  paddingSizes,
+  marginSizes,
+  zIndices,
+  borderRadius,
+};

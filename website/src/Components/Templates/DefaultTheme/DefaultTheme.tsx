@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { libTheme } from '@/config';
 import ROUTES from '@/config/routes';
 import Title from '@/Components/Title';
+import TitleLink from '@/Components/TitleLink';
 import BlockCode from '@/Components/BlockCode';
 import processColor, { isLight } from '@/utils/processColor';
 
@@ -49,9 +50,9 @@ const DefaultThemeTemplate = () => {
       <Title>Default Theme</Title>
       <Text>Beauty Design default theme is based on React Context API.</Text>
 
-      <Title level={2} className="mt-12">
+      <TitleLink>
         Colors:
-      </Title>
+      </TitleLink>
 
       <Text>
         Beauty Design includes a default color palette out-of-the-box that is a
@@ -66,9 +67,9 @@ const DefaultThemeTemplate = () => {
       {colors.map(({ colors, name }) => {
         return (
           <div key={name}>
-            <Title level={2} className="font-bold">
+            <TitleLink>
               {name}
-            </Title>
+            </TitleLink>
 
             <Grid.Container gap={2}>
               {colors.map(({ value: color, name: nameColor }) => {
@@ -99,25 +100,25 @@ const DefaultThemeTemplate = () => {
         );
       })}
 
-      <Title level={2} className="mt-12">
+      <TitleLink>
         Paddings:
-      </Title>
+      </TitleLink>
 
       <BlockCode language="JSON" code={paddingObjectString} />
 
-      <Title level={2} className="mt-12">
+      <TitleLink>
         Margins:
-      </Title>
+      </TitleLink>
       <BlockCode language="JSON" code={marginObjectString} />
 
-      <Title level={2} className="mt-12">
+      <TitleLink>
         Border Radius:
-      </Title>
+      </TitleLink>
       <BlockCode language="JSON" code={borderRadiusObjectString} />
 
-      <Title level={2} className="mt-12">
+      <TitleLink>
         zIndex:
-      </Title>
+      </TitleLink>
       <BlockCode language="JSON" code={zIndicesObjectString} />
     </WrapperStyle>
   );

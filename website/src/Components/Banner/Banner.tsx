@@ -34,6 +34,7 @@ const Banner = (props: BannerProps) => {
         </Text>
 
         <BlockCode
+          isInline
           className="mt-4"
           language="bash"
           code="yarn add react-native-beauty-design"

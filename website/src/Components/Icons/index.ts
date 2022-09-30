@@ -12,3 +12,5 @@ export * from './Book';
 export * from './Font';
 export * from './Layout';
 export * from './Feedback';
+export * from './Right';
+export * from './Left';

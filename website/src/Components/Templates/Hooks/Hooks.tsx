@@ -1,15 +1,27 @@
 import { Text } from '@nextui-org/react';
-import Title from '@/Components/Title';
 
+import Title from '@/Components/Title';
+import TitleLink from '@/Components/TitleLink';
+import BlockCode from '@/Components/BlockCode';
+
+import * as examples from './examples';
 import { WrapperStyle } from './style';
 
 const HooksTemplate = () => {
   return (
     <WrapperStyle>
       <Title>Hooks</Title>
-      <Text>Beauty Design default theme is based on React Context API.</Text>
+      <Text>Hooks utilities.</Text>
 
-      <p className="font-bold">BUILDING...</p>
+      <TitleLink>useTheme</TitleLink>
+      <Text>You can access all values of the current theme</Text>
+
+      <BlockCode code={examples.useTheme} />
+
+      <TitleLink>useModal</TitleLink>
+      <Text>You can toggle modals easy.</Text>
+
+      <BlockCode code={examples.useModal} />
     </WrapperStyle>
   );
 };

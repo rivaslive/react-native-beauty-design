@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 
 import ROUTES from '@/config/routes';
 import Layout from '@/Components/Layout';
-import DarkThemeTemplate from '@/Components/Templates/DarkTheme';
+import DarkThemeTemplate from '@/Components/Templates/DarkMode';
 
 const DarkPage: NextPage = () => {
   return (

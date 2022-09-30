@@ -4,22 +4,25 @@ const path = require('path');
 const rootLib = path.resolve('../packages/native');
 const root = process.cwd();
 
-console.log({root, rootLib});
-
 function copyFiles() {
-  fs.copyFile(`${rootLib}/package.json`, `${root}/temp/_package.json`, (err) => {
+  const pkgDir = `${rootLib}/package.json`;
+  const defaultValuesDir = `${rootLib}/src/Context/theme/defaultValues.ts`;
+
+  console.log(`Copying the package.json file from ${pkgDir}`);
+  fs.copyFile(pkgDir, `${root}/temp/_package.json`, (err) => {
     if (err) {
       console.log("Oops! An Error Occured:", err);
     } else {
-      console.log('--- Finish ---')
+      console.log('File copied')
     }
   })
 
-  fs.copyFile(`${rootLib}/src/Context/theme/defaultValues.ts`, `${root}/temp/defaultValues.ts`, (err) => {
+  console.log(`Copying the variants file from ${defaultValuesDir}`);
+  fs.copyFile(defaultValuesDir, `${root}/temp/defaultValues.ts`, (err) => {
     if (err) {
       console.log("Oops! An Error Occured:", err);
     } else {
-      console.log('--- Finish ---')
+      console.log('File copied')
     }
   })
 }

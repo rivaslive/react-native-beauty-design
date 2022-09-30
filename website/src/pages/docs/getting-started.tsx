@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 
 import ROUTES from '@/config/routes';
 import Layout from '@/Components/Layout';
-import DocsTemplate from '@/Components/Templates/Docs';
+import DocsTemplate from '@/Components/Templates/GettingStarted';
 
 const Docs: NextPage = () => {
   return (

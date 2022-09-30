@@ -9,7 +9,7 @@ const ROUTES = {
   },
   COMPONENTS: {
     name: 'Components',
-    path: '/docs/components/provider'
+    path: '/docs/components/icon'
   },
   DEFAULT_THEME: {
     name: 'Default theme',

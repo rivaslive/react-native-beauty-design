@@ -26,7 +26,7 @@ const NotificationScreen = () => {
   const onPressWithTitle = () => {
     notification({
       app: 'Beauty Design',
-      title: 'Title here!',
+      title: 'TitleLink here!',
       message: 'I love you to Beauty design',
       icon: <Image source={require('../assets/images/icon.png')} />,
     });

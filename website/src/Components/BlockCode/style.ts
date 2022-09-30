@@ -11,6 +11,17 @@ export const TextCodeStyle = styled('div', {
   'pre, code': {
     margin: 0,
     padding: 0,
+    borderRadius: 0,
     background: 'transparent'
+  },
+  variants: {
+    isInline: {
+      false: {
+        overflowX: 'auto',
+        pre: {
+          minWidth: 500
+        }
+      }
+    }
   }
 });

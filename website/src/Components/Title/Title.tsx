@@ -17,7 +17,12 @@ const Title = ({
 }: TitleProps) => {
   if (level === 2) {
     return (
-      <Text h3 b size="$2xl" className={className}>
+      <Text
+        h3
+        b
+        size="$2xl"
+        className={className}
+      >
         {children}
       </Text>
     );
@@ -27,7 +32,7 @@ const Title = ({
       h1={h1}
       h2={h2}
       weight="extrabold"
-      className={`${className}`}
+      className={className}
       css={{
         lineHeight: '$sm',
         maxWidth: withMaxWidth ? 700 : 'auto',

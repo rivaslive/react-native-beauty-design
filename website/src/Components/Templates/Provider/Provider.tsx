@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import ROUTES from '@/config/routes';
 import Title from '@/Components/Title';
+import TitleLink from '@/Components/TitleLink';
 import BlockCode from '@/Components/BlockCode';
 
 import * as examples from './examples';
@@ -17,17 +18,17 @@ const ProviderTemplate = () => {
         need to set up the ThemeProvider at the root of your application.
       </Text>
 
-      <Title level={2} className="mt-12">
+      <TitleLink>
         Setup:
-      </Title>
+      </TitleLink>
 
       <Text>Go to the root of your application and do this:</Text>
 
       <BlockCode className="mt-5" code={examples.basic} />
 
-      <Title level={2} className="mt-12">
+      <TitleLink>
         Editing theme:
-      </Title>
+      </TitleLink>
 
       <Text>
         You can override all{' '}
@@ -38,9 +39,9 @@ const ProviderTemplate = () => {
 
       <BlockCode className="mt-5" code={examples.editingTheme} />
 
-      <Title level={2} className="mt-12">
+      <TitleLink>
         Theme object:
-      </Title>
+      </TitleLink>
 
       <BlockCode className="mt-5" code={examples.themeObject} />
     </WrapperStyle>

@@ -73,7 +73,7 @@ export * from './Space';
 // Badge export
 export * from './Switch';
 
-// Title export
+// TitleLink export
 export * from './Title';
 
 // Text export

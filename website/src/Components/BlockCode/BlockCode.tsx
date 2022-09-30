@@ -2,7 +2,7 @@ import { useState } from 'react';
 import MarkdownIt from 'markdown-it';
 import { Button } from '@nextui-org/react';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/atom-one-dark.css';
+import 'highlight.js/styles/a11y-dark.css';
 
 import { CheckIcon, CopyIcon } from '@/Components/Icons';
 import { TextCodeStyle } from './style';
@@ -28,11 +28,13 @@ const md: any = new MarkdownIt({
 type BlockCodeProps = {
   code: string;
   className?: string;
+  isInline?: boolean;
   language?: 'typescript' | 'bash' | 'JSON';
 };
 
 const BlockCode = ({
   code,
+  isInline = false,
   language = 'typescript',
   className = ''
 }: BlockCodeProps) => {
@@ -59,6 +61,7 @@ const BlockCode = ({
   return (
     <div className={`relative ${className}`}>
       <TextCodeStyle
+        isInline={isInline}
         className="mb-4 pr-11 text-white"
         dangerouslySetInnerHTML={{
           __html: md.render('```' + `${language}\n` + code + '\n```')

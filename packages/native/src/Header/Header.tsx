@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      {/* Title element */}
+      {/* TitleLink element */}
       <Animated.View
         style={StyleSheet.flatten([
           styles.header,

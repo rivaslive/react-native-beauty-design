@@ -1,1 +1,0 @@
-# beaury-ui-landing
