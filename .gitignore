@@ -21,5 +21,4 @@ build
 .changelog
 .docgen/
 .expo/*
-yarn.lock
 yarn-error.log
