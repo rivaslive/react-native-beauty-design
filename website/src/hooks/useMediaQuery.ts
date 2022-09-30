@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect } from 'react';
 export const useMediaQuery = (width: number): boolean => {
   const [targetReached, setTargetReached] = useState(false);
 
-  const updateTarget = useCallback((e) => {
+  const updateTarget = useCallback((e: any) => {
     if (e.matches) {
       setTargetReached(true);
     } else {
@@ -22,6 +22,7 @@ export const useMediaQuery = (width: number): boolean => {
     }
 
     return () => media.removeListener(updateTarget);
+    // eslint-disable-next-line
   }, []);
 
   return targetReached;
