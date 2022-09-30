@@ -2,7 +2,7 @@ import { useState } from 'react';
 import MarkdownIt from 'markdown-it';
 import { Button } from '@nextui-org/react';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/a11y-dark.css';
+import 'highlight.js/styles/atom-one-dark.css';
 
 import { CheckIcon, CopyIcon } from '@/Components/Icons';
 import { TextCodeStyle } from './style';

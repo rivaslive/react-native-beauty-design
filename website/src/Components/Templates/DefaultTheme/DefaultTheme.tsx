@@ -15,6 +15,7 @@ import BlockCode from '@/Components/BlockCode';
 import processColor, { isLight } from '@/utils/processColor';
 
 import { ColorStyle, WrapperStyle } from './style';
+import processObject from '@/utils/processObject';
 
 const DefaultThemeTemplate = () => {
   const { isDark } = useTheme();
@@ -22,6 +23,22 @@ const DefaultThemeTemplate = () => {
   const colors = useMemo(() => {
     return processColor(libTheme[isDark ? 'colorsDark' : 'colorsLight']);
   }, [isDark]);
+
+  const paddingObjectString = useMemo(() => {
+    return processObject(libTheme.paddingSizes);
+  }, []);
+
+  const marginObjectString = useMemo(() => {
+    return processObject(libTheme.marginSizes);
+  }, []);
+
+  const borderRadiusObjectString = useMemo(() => {
+    return processObject(libTheme.borderRadius);
+  }, []);
+
+  const zIndicesObjectString = useMemo(() => {
+    return processObject(libTheme.zIndices);
+  }, []);
 
   const onCopy = (color: string) => {
     return navigator.clipboard.writeText(color);
@@ -86,17 +103,22 @@ const DefaultThemeTemplate = () => {
         Paddings:
       </Title>
 
-      <BlockCode language="JSON" code={JSON.stringify(libTheme.paddingSizes)} />
+      <BlockCode language="JSON" code={paddingObjectString} />
 
       <Title level={2} className="mt-12">
         Margins:
       </Title>
-      <p className="font-bold">BUILDING...</p>
+      <BlockCode language="JSON" code={marginObjectString} />
 
       <Title level={2} className="mt-12">
-        Fonts:
+        Border Radius:
       </Title>
-      <p className="font-bold">BUILDING...</p>
+      <BlockCode language="JSON" code={borderRadiusObjectString} />
+
+      <Title level={2} className="mt-12">
+        zIndex:
+      </Title>
+      <BlockCode language="JSON" code={zIndicesObjectString} />
     </WrapperStyle>
   );
 };
