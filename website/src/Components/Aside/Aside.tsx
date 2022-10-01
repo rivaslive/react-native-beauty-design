@@ -3,15 +3,24 @@ import * as icons from '@/Components/Icons';
 import NavLink from '@/Components/NavLink';
 
 import { CollapseItemStyle, CollapseStyle } from './style';
+import { Text } from '@nextui-org/react';
 
 const RenderIcon = ({ Component }: { Component?: any }) => {
   if (!Component) return null;
   return <Component className="text-xl" />;
 };
 
-const Aside = () => {
+type AsideProps = {
+  titleClass?: string;
+};
+
+const Aside = ({ titleClass }: AsideProps) => {
   return (
     <>
+      <Text weight="bold" size="$xl" className={titleClass}>
+        Documentation
+      </Text>
+
       {menu.map(({ children, name, key, icon }) => {
         return (
           <CollapseStyle

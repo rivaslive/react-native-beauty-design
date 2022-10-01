@@ -14,6 +14,7 @@ import ROUTES from '@/config/routes';
 import { GithubIcon, SunIcon, SearchIcon } from '@/Components/Icons';
 import { onlyMobile } from './style';
 import { ReactNode } from 'react';
+import Aside from '@/Components/Aside';
 
 type NavbarProps = {
   isActive?: string;
@@ -97,6 +98,7 @@ const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
         </Link>
         */}
       </NextNavbar.Content>
+
       <NextNavbar.Content>
         <NextNavbar.Content hideIn="xs">
           <Grid.Container gap={2} className="w-auto">
@@ -125,30 +127,29 @@ const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
           />
         </NextNavbar.Content>
 
-        <NextNavbar.Toggle css={onlyMobile} aria-label="toggle navigation" />
+        <Grid.Container css={onlyMobile} gap={2}>
+          <Button
+            auto
+            icon={<GithubIcon />}
+            className="h-auto bg-transparent text-2xl"
+            css={{
+              color: '$text'
+            }}
+          />
+          <Button
+            auto
+            onClick={toggleTheme}
+            icon={<SunIcon />}
+            className="h-auto bg-transparent text-2xl"
+            css={{
+              color: '$text'
+            }}
+          />
+          <NextNavbar.Toggle aria-label="toggle navigation" />
+        </Grid.Container>
 
         <NextNavbar.Collapse css={{ background: '$background' }}>
-          <NextNavbar.CollapseItem>
-            <Grid.Container gap={2} justify="center" className="my-2">
-              <Button
-                auto
-                icon={<GithubIcon />}
-                className="h-auto bg-transparent text-2xl"
-                css={{
-                  color: '$text'
-                }}
-              />
-              <Button
-                auto
-                onClick={toggleTheme}
-                icon={<SunIcon />}
-                className="h-auto bg-transparent text-2xl"
-                css={{
-                  color: '$text'
-                }}
-              />
-            </Grid.Container>
-          </NextNavbar.CollapseItem>
+          <NextNavbar.CollapseItem></NextNavbar.CollapseItem>
           <NextNavbar.CollapseItem className="w-full">
             <Input
               bordered
@@ -158,17 +159,7 @@ const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
             />
           </NextNavbar.CollapseItem>
 
-          {menu.map(({ path, name }) => (
-            <RenderItem
-              href={path}
-              key={name}
-              Component={NextNavbar.CollapseItem}
-              itemCss={{ fontWeight: '$bold' }}
-              isActive={name === 'Home'}
-            >
-              {name}
-            </RenderItem>
-          ))}
+          <Aside titleClass="mt-3" />
         </NextNavbar.Collapse>
       </NextNavbar.Content>
     </NextNavbar>

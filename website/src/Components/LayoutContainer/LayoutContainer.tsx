@@ -52,10 +52,6 @@ const LayoutContainer = ({ children, ...props }: LayoutProps) => {
       <HeadSeo title={currentComponent?.name} description="Hooks utilities." />
       <AsideStyle className="hidden lg:block fixed z-20 inset-0 top-[88px] left-[max(0px,calc(50%-45rem))] right-auto w-[19.5rem] py-10 px-8 overflow-y-auto">
         <nav className="lg:text-sm lg:leading-6 relative h-full px-5">
-          <Text b size="$xl">
-            Documentation
-          </Text>
-
           <Aside />
         </nav>
       </AsideStyle>
