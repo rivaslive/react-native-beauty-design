@@ -22,7 +22,7 @@ const TitleLink = ({ children, className = '', ...props }: TitleProps) => {
       h2
       size="$2xl"
       id={id}
-      className={`${className} mt-12 linked-heading`}
+      className={`${className} mt-12 linked-heading scroll-mt-24`}
       data-name={text}
       {...props}
     >

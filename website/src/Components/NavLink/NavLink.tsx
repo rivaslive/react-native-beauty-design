@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -17,8 +17,21 @@ const NavLink = ({
   className = '',
   activeCss = {}
 }: NavLinkProps) => {
-  const { pathname } = useRouter();
-  const isActive = pathname.startsWith(href);
+  const { pathname, query } = useRouter();
+
+  const isActive = useMemo(() => {
+    const withSlug = pathname.includes('[...slug]');
+    if (!withSlug) {
+      return pathname.startsWith(href);
+    }
+
+    const newPathname = `${pathname.replace(
+      '[...slug]',
+      query.slug as string
+    )}`;
+
+    return newPathname.startsWith(href);
+  }, [pathname, query, href]);
 
   return (
     <Link href={href} passHref>

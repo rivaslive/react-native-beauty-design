@@ -11,8 +11,13 @@ import Link from 'next/link';
 import { useTheme as useNextTheme } from 'next-themes';
 
 import ROUTES from '@/config/routes';
-import { GithubIcon, SunIcon, SearchIcon } from '@/Components/Icons';
-import { onlyMobile } from './style';
+import {
+  GithubIcon,
+  SunIcon,
+  SearchIcon,
+  DiscordIcon
+} from '@/Components/Icons';
+import { onlyDesk, onlyMobile } from './style';
 import { ReactNode } from 'react';
 import Aside from '@/Components/Aside';
 
@@ -37,6 +42,20 @@ const RenderItem = ({
   return (
     <Link href={href} passHref>
       <Component {...rest}>{children}</Component>
+    </Link>
+  );
+};
+
+const RenderLink = ({ href, children }: Omit<NavbarItemProps, 'Component'>) => {
+  return (
+    <Link href={href} passHref>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex justify-center align-center"
+      >
+        {children}
+      </a>
     </Link>
   );
 };
@@ -77,7 +96,7 @@ const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
           </NextNavbar.Brand>
         </a>
       </Link>
-      <NextNavbar.Content hideIn="xs" variant="underline">
+      <NextNavbar.Content css={onlyDesk} variant="underline">
         {menu.map(({ path, name }) => (
           <RenderItem
             href={path}
@@ -100,16 +119,29 @@ const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
       </NextNavbar.Content>
 
       <NextNavbar.Content>
-        <NextNavbar.Content hideIn="xs">
+        <NextNavbar.Content css={onlyDesk}>
           <Grid.Container gap={2} className="w-auto">
-            <Button
-              auto
-              icon={<GithubIcon />}
-              className="h-auto bg-transparent text-2xl"
-              css={{
-                color: '$text'
-              }}
-            />
+            <RenderLink href={ROUTES.DISCORD.path}>
+              <Button
+                auto
+                icon={<DiscordIcon />}
+                className="h-auto bg-transparent text-2xl"
+                css={{
+                  color: '$text'
+                }}
+              />
+            </RenderLink>
+
+            <RenderLink href={ROUTES.GITHUB.path}>
+              <Button
+                auto
+                icon={<GithubIcon />}
+                className="h-auto bg-transparent text-2xl"
+                css={{
+                  color: '$text'
+                }}
+              />
+            </RenderLink>
             <Button
               auto
               onClick={toggleTheme}
@@ -128,14 +160,26 @@ const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
         </NextNavbar.Content>
 
         <Grid.Container css={onlyMobile} gap={2}>
-          <Button
-            auto
-            icon={<GithubIcon />}
-            className="h-auto bg-transparent text-2xl"
-            css={{
-              color: '$text'
-            }}
-          />
+          <RenderLink href={ROUTES.DISCORD.path}>
+            <Button
+              auto
+              icon={<DiscordIcon />}
+              className="h-auto bg-transparent text-2xl"
+              css={{
+                color: '$text'
+              }}
+            />
+          </RenderLink>
+          <RenderLink href={ROUTES.GITHUB.path}>
+            <Button
+              auto
+              icon={<GithubIcon />}
+              className="h-auto bg-transparent text-2xl"
+              css={{
+                color: '$text'
+              }}
+            />
+          </RenderLink>
           <Button
             auto
             onClick={toggleTheme}

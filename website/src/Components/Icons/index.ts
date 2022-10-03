@@ -14,3 +14,4 @@ export * from './Layout';
 export * from './Feedback';
 export * from './Right';
 export * from './Left';
+export * from './Discord';

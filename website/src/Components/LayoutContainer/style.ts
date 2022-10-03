@@ -1,7 +1,7 @@
 import { styled } from '@nextui-org/react';
 
 export const WrapperStyle = styled('div', {
-  zIndex: '$zIndices$1'
+  zIndex: '$zIndices$1',
 });
 
 export const AsideStyle = styled('aside', {

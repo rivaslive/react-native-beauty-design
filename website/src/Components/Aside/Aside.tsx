@@ -41,11 +41,11 @@ const Aside = ({ titleClass }: AsideProps) => {
                   <NavLink
                     key={key}
                     href={path}
+                    className="text-neutral-400"
                     activeCss={{
                       color: '$text !important',
                       fontWeight: '$bold'
                     }}
-                    className="text-neutral-400"
                   >
                     {name}
                   </NavLink>
