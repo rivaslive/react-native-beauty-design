@@ -17,7 +17,7 @@ import {
   SearchIcon,
   DiscordIcon
 } from '@/Components/Icons';
-import { onlyDesk, onlyMobile } from './style';
+import { AStyle, onlyDesk, onlyMdMobile, onlyMobile } from './style';
 import { ReactNode } from 'react';
 import Aside from '@/Components/Aside';
 
@@ -46,16 +46,21 @@ const RenderItem = ({
   );
 };
 
-const RenderLink = ({ href, children }: Omit<NavbarItemProps, 'Component'>) => {
+const RenderLink = ({
+  href,
+  children,
+  css
+}: Omit<NavbarItemProps, 'Component'>) => {
   return (
     <Link href={href} passHref>
-      <a
+      <AStyle
         target="_blank"
         rel="noopener noreferrer"
         className="flex justify-center align-center"
+        css={css}
       >
         {children}
-      </a>
+      </AStyle>
     </Link>
   );
 };
@@ -160,7 +165,7 @@ const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
         </NextNavbar.Content>
 
         <Grid.Container css={onlyMobile} gap={2}>
-          <RenderLink href={ROUTES.DISCORD.path}>
+          <RenderLink href={ROUTES.DISCORD.path} css={onlyMdMobile}>
             <Button
               auto
               icon={<DiscordIcon />}
@@ -170,7 +175,7 @@ const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
               }}
             />
           </RenderLink>
-          <RenderLink href={ROUTES.GITHUB.path}>
+          <RenderLink href={ROUTES.GITHUB.path} css={onlyMdMobile}>
             <Button
               auto
               icon={<GithubIcon />}
