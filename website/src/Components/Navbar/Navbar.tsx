@@ -20,6 +20,7 @@ import {
 import { AStyle, onlyDesk, onlyMdMobile, onlyMobile } from './style';
 import { ReactNode } from 'react';
 import Aside from '@/Components/Aside';
+import { useRouter } from 'next/router';
 
 type NavbarProps = {
   isActive?: string;
@@ -69,9 +70,23 @@ const menu = [ROUTES.HOME, ROUTES.DOCS, ROUTES.COMPONENTS, ROUTES.ABOUT];
 
 const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
   const { setTheme, theme } = useNextTheme();
+  const router = useRouter();
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  const toggleLanguage = () => {
+    router
+      .replace(
+        {
+          pathname: router.pathname,
+          query: router.query
+        },
+        undefined,
+        { locale: router.locale === 'es' ? 'en' : 'es' }
+      )
+      .then();
   };
 
   return (
@@ -126,6 +141,18 @@ const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
       <NextNavbar.Content>
         <NextNavbar.Content css={onlyDesk}>
           <Grid.Container gap={2} className="w-auto">
+            <Button
+              auto
+              onClick={toggleLanguage}
+              className="h-auto bg-transparent p-0 px-2"
+              css={{
+                color: '$text',
+                fontSize: '1.1rem'
+              }}
+            >
+              <strong>{router.locale === 'es' ? 'EN' : 'ES'}</strong>
+            </Button>
+
             <RenderLink href={ROUTES.DISCORD.path}>
               <Button
                 auto
@@ -165,6 +192,18 @@ const Navbar = ({ isActive, contentFit, ...props }: NavbarProps) => {
         </NextNavbar.Content>
 
         <Grid.Container css={onlyMobile} gap={2}>
+          <Button
+            auto
+            onClick={toggleLanguage}
+            className="h-auto bg-transparent p-0 px-2"
+            css={{
+              color: '$text',
+              fontSize: '1.1rem'
+            }}
+          >
+            <strong>{router.locale === 'es' ? 'EN' : 'ES'}</strong>
+          </Button>
+
           <RenderLink href={ROUTES.DISCORD.path} css={onlyMdMobile}>
             <Button
               auto

@@ -1,13 +1,17 @@
+import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 import { Button, Grid, Text } from '@nextui-org/react';
+
+import ROUTES from '@/config/routes';
+import Title from '@/Components/Title';
 import Frame from '@/Components/Frame';
 import BlockCode from '@/Components/BlockCode';
-import Title from '@/Components/Title';
-import Link from 'next/link';
-import ROUTES from '@/config/routes';
 
 type BannerProps = {};
 
 const Banner = (props: BannerProps) => {
+  const { t } = useTranslation();
+
   return (
     <Grid.Container
       gap={4}
@@ -27,10 +31,16 @@ const Banner = (props: BannerProps) => {
             }
           }}
         >
-          Beauty Design Framework Component for React Native
+          {t(
+            'home:banner.title',
+            'Beauty Design Framework Component for React Native'
+          )}
         </Title>
         <Text size="$2xl" weight="semibold" className="text-center w-full mb-4">
-          Create your apps in React Native in a simple, fast and beautiful way.
+          {t(
+            'home:banner.description',
+            'Create your apps in React Native in a simple, fast and beautiful way.'
+          )}
         </Text>
 
         <BlockCode
@@ -47,7 +57,7 @@ const Banner = (props: BannerProps) => {
           }}
         >
           <Link href={ROUTES.DOCS.path} passHref>
-            <a className="text-current">Get Started</a>
+            <a className="text-current">{t('getStarted', 'Get started')}</a>
           </Link>
         </Button>
       </Grid>

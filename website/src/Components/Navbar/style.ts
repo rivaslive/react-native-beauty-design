@@ -1,7 +1,7 @@
 import { styled } from '@nextui-org/react';
 
 const media = '@media screen and (min-width: 1100px)';
-const media2 = '@media screen and (min-width: 418px)';
+const media2 = '@media screen and (min-width: 470px)';
 
 export const onlyMobile = {
   '@initial': {
